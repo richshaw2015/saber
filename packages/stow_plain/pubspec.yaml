@@ -14,7 +14,6 @@ dependencies:
     git:
       url: "https://gitcode.com/openharmony-tpc/flutter_packages.git"
       path: "packages/shared_preferences/shared_preferences"
-      ref: br_shared_preferences-v2.3.2_ohos
 
   stow:
     path: ../stow

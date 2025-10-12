@@ -204,11 +204,11 @@ packages:
     dependency: "direct main"
     description:
       path: "packages/shared_preferences/shared_preferences"
-      ref: "br_shared_preferences-v2.3.2_ohos"
-      resolved-ref: "1ee5454619806f3c52b941a73261e103390c9434"
+      ref: HEAD
+      resolved-ref: aa8bd278b88bd13ade0d4d95e802b8a29865d028
       url: "https://gitcode.com/openharmony-tpc/flutter_packages.git"
     source: git
-    version: "2.3.2"
+    version: "2.2.0"
   shared_preferences_android:
     dependency: transitive
     description:
@@ -237,11 +237,11 @@ packages:
     dependency: transitive
     description:
       path: "packages/shared_preferences/shared_preferences_ohos"
-      ref: "br_shared_preferences-v2.3.2_ohos"
-      resolved-ref: "1ee5454619806f3c52b941a73261e103390c9434"
-      url: "https://gitcode.com/openharmony-sig/flutter_packages.git"
+      ref: HEAD
+      resolved-ref: aa8bd278b88bd13ade0d4d95e802b8a29865d028
+      url: "https://gitcode.com/openharmony-tpc/flutter_packages.git"
     source: git
-    version: "2.3.1"
+    version: "2.2.0"
   shared_preferences_platform_interface:
     dependency: transitive
     description:
