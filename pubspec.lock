@@ -1410,11 +1410,11 @@ packages:
     dependency: "direct main"
     description:
       path: "packages/shared_preferences/shared_preferences"
-      ref: HEAD
-      resolved-ref: aa8bd278b88bd13ade0d4d95e802b8a29865d028
+      ref: "br_shared_preferences-v2.3.2_ohos"
+      resolved-ref: "1ee5454619806f3c52b941a73261e103390c9434"
       url: "https://gitcode.com/openharmony-tpc/flutter_packages.git"
     source: git
-    version: "2.2.0"
+    version: "2.3.2"
   shared_preferences_android:
     dependency: transitive
     description:
@@ -1443,11 +1443,11 @@ packages:
     dependency: transitive
     description:
       path: "packages/shared_preferences/shared_preferences_ohos"
-      ref: HEAD
-      resolved-ref: aa8bd278b88bd13ade0d4d95e802b8a29865d028
-      url: "https://gitcode.com/openharmony-tpc/flutter_packages.git"
+      ref: "br_shared_preferences-v2.3.2_ohos"
+      resolved-ref: "1ee5454619806f3c52b941a73261e103390c9434"
+      url: "https://gitcode.com/openharmony-sig/flutter_packages.git"
     source: git
-    version: "2.2.0"
+    version: "2.3.1"
   shared_preferences_platform_interface:
     dependency: transitive
     description:
@@ -1580,16 +1580,20 @@ packages:
   super_clipboard:
     dependency: "direct main"
     description:
-      path: "packages/super_clipboard"
-      relative: true
-    source: path
+      path: super_clipboard
+      ref: "br_v0.9.1_ohos"
+      resolved-ref: "0ba6f1c4c9ce628e7785c06f85ff309681f157ff"
+      url: "https://gitcode.com/openharmony-sig/fluttertpc_super_native_extensions.git"
+    source: git
     version: "0.9.1"
   super_native_extensions:
     dependency: transitive
     description:
-      path: "packages/super_native_extensions"
-      relative: true
-    source: path
+      path: super_native_extensions
+      ref: "br_v0.9.1_ohos"
+      resolved-ref: "0ba6f1c4c9ce628e7785c06f85ff309681f157ff"
+      url: "https://gitcode.com/openharmony-sig/fluttertpc_super_native_extensions.git"
+    source: git
     version: "0.9.1"
   synchronized:
     dependency: transitive

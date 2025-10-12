@@ -58,6 +58,7 @@ dependencies:
     git:
       url: "https://gitcode.com/openharmony-tpc/flutter_packages.git"
       path: "packages/shared_preferences/shared_preferences"
+      ref: br_shared_preferences-v2.3.2_ohos
 
   flutter_secure_storage: ^9.2.2
 
@@ -160,7 +161,10 @@ dependencies:
 #      path: "ohos"
 
   super_clipboard:
-    path: packages/super_clipboard
+    git:
+      url: "https://gitcode.com/openharmony-sig/fluttertpc_super_native_extensions.git"
+      path: "super_clipboard"
+      ref: br_v0.9.1_ohos
 
   fast_image_resizer: ^0.0.2
 
@@ -252,6 +256,7 @@ dependency_overrides:
     git:
       url: "https://gitcode.com/openharmony-tpc/flutter_packages.git"
       path: "packages/shared_preferences/shared_preferences"
+      ref: br_shared_preferences-v2.3.2_ohos
   
   # 强制所有包使用我们的 path_provider Git 版本
   path_provider:
