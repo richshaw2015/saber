@@ -30,6 +30,14 @@
         <meta-data
             android:name="flutterEmbedding"
             android:value="2" />
+
+<!--        <provider-->
+<!--            android:name="app.superlist.super_native_extensions.DataProvider"-->
+<!--            android:authorities="app.superedu.saber.SuperClipboardDataProvider"-->
+<!--            android:exported="true"-->
+<!--            android:grantUriPermissions="true" >-->
+<!--        </provider>-->
+
     </application>
     <!-- Required to query activities that can process text, see:
          https://developer.android.com/training/package-visibility and
