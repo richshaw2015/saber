@@ -239,46 +239,48 @@ class _SettingsPageState extends State<SettingsPage> {
                           semanticLabel: t.settings.themeModes.dark)),
                 ],
               ),
-              SettingsSelection(
-                title: t.settings.prefLabels.platform,
-                iconBuilder: (i) => switch (stows.platform.value) {
-                  TargetPlatform.iOS || TargetPlatform.macOS => Icons.apple,
-                  TargetPlatform.linux => FontAwesomeIcons.ubuntu,
-                  _ => materialIcon,
-                },
-                pref: _SettingsStows.platform,
-                optionsWidth: 60,
-                options: [
-                  ToggleButtonsOption(
-                    () {
-                      if (usesMaterialByDefault)
-                        return defaultTargetPlatform.index;
-                      return TargetPlatform.android.index;
-                    }(),
-                    Icon(materialIcon, semanticLabel: 'Material'),
-                  ),
-                  ToggleButtonsOption(
-                    () {
-                      // Hack to allow screenshot golden tests
-                      if (kDebugMode &&
-                          (stows.platform.value == TargetPlatform.iOS ||
-                              stows.platform.value == TargetPlatform.macOS))
-                        return stows.platform.value.index;
-                      if (usesCupertinoByDefault)
-                        return defaultTargetPlatform.index;
-                      return TargetPlatform.iOS.index;
-                    }(),
-                    const Icon(Icons.apple, semanticLabel: 'Cupertino'),
-                  ),
-                  ToggleButtonsOption(
-                    () {
-                      if (usesYaruByDefault) return defaultTargetPlatform.index;
-                      return TargetPlatform.linux.index;
-                    }(),
-                    const Icon(FontAwesomeIcons.ubuntu, semanticLabel: 'Yaru'),
-                  ),
-                ],
-              ),
+
+              // SettingsSelection(
+              //   title: t.settings.prefLabels.platform,
+              //   iconBuilder: (i) => switch (stows.platform.value) {
+              //     TargetPlatform.iOS || TargetPlatform.macOS => Icons.apple,
+              //     TargetPlatform.linux => FontAwesomeIcons.ubuntu,
+              //     _ => materialIcon,
+              //   },
+              //   pref: _SettingsStows.platform,
+              //   optionsWidth: 60,
+              //   options: [
+              //     ToggleButtonsOption(
+              //       () {
+              //         if (usesMaterialByDefault)
+              //           return defaultTargetPlatform.index;
+              //         return TargetPlatform.android.index;
+              //       }(),
+              //       Icon(materialIcon, semanticLabel: 'Material'),
+              //     ),
+              //     ToggleButtonsOption(
+              //       () {
+              //         // Hack to allow screenshot golden tests
+              //         if (kDebugMode &&
+              //             (stows.platform.value == TargetPlatform.iOS ||
+              //                 stows.platform.value == TargetPlatform.macOS))
+              //           return stows.platform.value.index;
+              //         if (usesCupertinoByDefault)
+              //           return defaultTargetPlatform.index;
+              //         return TargetPlatform.iOS.index;
+              //       }(),
+              //       const Icon(Icons.apple, semanticLabel: 'Cupertino'),
+              //     ),
+              //     ToggleButtonsOption(
+              //       () {
+              //         if (usesYaruByDefault) return defaultTargetPlatform.index;
+              //         return TargetPlatform.linux.index;
+              //       }(),
+              //       const Icon(FontAwesomeIcons.ubuntu, semanticLabel: 'Yaru'),
+              //     ),
+              //   ],
+              // ),
+
               SettingsSelection(
                 title: t.settings.prefLabels.layoutSize,
                 subtitle: switch (stows.layoutSize.value) {

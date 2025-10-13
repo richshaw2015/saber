@@ -153,12 +153,14 @@ class _DynamicMaterialAppState extends State<DynamicMaterialApp> {
           // contrastLevel: 1,
         );
 
-        final platform = switch (stows.platform.value) {
-          TargetPlatform.iOS => TargetPlatform.iOS,
-          TargetPlatform.android => TargetPlatform.android,
-          TargetPlatform.linux => TargetPlatform.linux,
-          _ => defaultTargetPlatform,
-        };
+        // 固定主题类型，不支持自定义
+        const platform = TargetPlatform.iOS;
+        // final platform = switch (stows.platform.value) {
+        //   TargetPlatform.iOS => TargetPlatform.iOS,
+        //   TargetPlatform.android => TargetPlatform.android,
+        //   TargetPlatform.linux => TargetPlatform.linux,
+        //   _ => defaultTargetPlatform,
+        // };
 
         return MaterialApp.router(
           routeInformationProvider:
