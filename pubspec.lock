@@ -1014,10 +1014,10 @@ packages:
     source: hosted
     version: "1.1.0"
   path_provider:
-    dependency: "direct main"
+    dependency: "direct overridden"
     description:
       path: "packages/path_provider/path_provider"
-      ref: HEAD
+      ref: master
       resolved-ref: aa8bd278b88bd13ade0d4d95e802b8a29865d028
       url: "https://gitcode.com/openharmony-tpc/flutter_packages.git"
     source: git
@@ -1670,7 +1670,7 @@ packages:
     source: hosted
     version: "3.1.4"
   uuid:
-    dependency: transitive
+    dependency: "direct overridden"
     description:
       name: uuid
       sha256: a5be9ef6618a7ac1e964353ef476418026db906c4facdedaa299b7a2e71690ff
