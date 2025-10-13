@@ -1256,6 +1256,21 @@ class EditorState extends State<Editor> {
   Future paste() async {
     return;
 
+    // /// Maps image formats to their file extension.
+    // const Map<SimpleFileFormat, String> formats = {
+    //   Formats.jpeg: '.jpeg',
+    //   Formats.png: '.png',
+    //   Formats.gif: '.gif',
+    //   Formats.tiff: '.tiff',
+    //   Formats.bmp: '.bmp',
+    //   Formats.ico: '.ico',
+    //   Formats.svg: '.svg',
+    //   Formats.webp: '.webp',
+    // };
+    //
+    // final reader = await SystemClipboard.instance?.read();
+    // if (reader == null) return;
+    //
     // final List<_PhotoInfo> photoInfos = [];
     // final List<ReadProgress> progresses = [];
     //
@@ -1263,7 +1278,7 @@ class EditorState extends State<Editor> {
     //   if (!reader.canProvide(format)) continue;
     //   final progress = reader.getFile(
     //     format,
-    //     (file) async {
+    //         (file) async {
     //       final stream = file.getStream();
     //       final List<int> bytes = [];
     //       await for (final chunk in stream) {
@@ -1283,8 +1298,8 @@ class EditorState extends State<Editor> {
     //       }
     //
     //       photoInfos.add((
-    //         bytes: Uint8List.fromList(bytes),
-    //         extension: extension,
+    //       bytes: Uint8List.fromList(bytes),
+    //       extension: extension,
     //       ));
     //     },
     //   );
