@@ -708,7 +708,7 @@ checksum = "fc0fef456e4baa96da950455cd02c081ca953b141298e41db3fc7e36b1da849c"
 [[package]]
 name = "hilog_rust"
 version = "0.1.0"
-source = "git+https://gitcode.com/openharmony-tpc/ohos_napi_rs#a7ed5c7cff7fba28f19f0ab7253562a35931cb9b"
+source = "git+https://gitcode.com/openharmony-tpc/ohos_napi_rs.git#a7ed5c7cff7fba28f19f0ab7253562a35931cb9b"
 
 [[package]]
 name = "icu_collections"
@@ -998,7 +998,7 @@ dependencies = [
 [[package]]
 name = "napi"
 version = "2.16.11"
-source = "git+https://gitcode.com/openharmony-tpc/ohos_napi_rs#a7ed5c7cff7fba28f19f0ab7253562a35931cb9b"
+source = "git+https://gitcode.com/openharmony-tpc/ohos_napi_rs.git#a7ed5c7cff7fba28f19f0ab7253562a35931cb9b"
 dependencies = [
  "bitflags 2.9.2",
  "ctor",
@@ -1011,7 +1011,7 @@ dependencies = [
 [[package]]
 name = "napi-derive"
 version = "2.16.12"
-source = "git+https://gitcode.com/openharmony-tpc/ohos_napi_rs#a7ed5c7cff7fba28f19f0ab7253562a35931cb9b"
+source = "git+https://gitcode.com/openharmony-tpc/ohos_napi_rs.git#a7ed5c7cff7fba28f19f0ab7253562a35931cb9b"
 dependencies = [
  "cfg-if",
  "convert_case",
@@ -1024,7 +1024,7 @@ dependencies = [
 [[package]]
 name = "napi-derive-backend"
 version = "1.0.74"
-source = "git+https://gitcode.com/openharmony-tpc/ohos_napi_rs#a7ed5c7cff7fba28f19f0ab7253562a35931cb9b"
+source = "git+https://gitcode.com/openharmony-tpc/ohos_napi_rs.git#a7ed5c7cff7fba28f19f0ab7253562a35931cb9b"
 dependencies = [
  "convert_case",
  "once_cell",
@@ -1038,7 +1038,7 @@ dependencies = [
 [[package]]
 name = "napi-sys"
 version = "2.4.0"
-source = "git+https://gitcode.com/openharmony-tpc/ohos_napi_rs#a7ed5c7cff7fba28f19f0ab7253562a35931cb9b"
+source = "git+https://gitcode.com/openharmony-tpc/ohos_napi_rs.git#a7ed5c7cff7fba28f19f0ab7253562a35931cb9b"
 dependencies = [
  "libloading",
 ]
@@ -2323,4 +2323,4 @@ dependencies = [
 [[patch.unused]]
 name = "napi-build"
 version = "2.1.2"
-source = "git+https://gitcode.com/openharmony-tpc/ohos_napi_rs#a7ed5c7cff7fba28f19f0ab7253562a35931cb9b"
+source = "git+https://gitcode.com/openharmony-tpc/ohos_napi_rs.git#a7ed5c7cff7fba28f19f0ab7253562a35931cb9b"
