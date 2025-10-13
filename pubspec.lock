@@ -1524,14 +1524,14 @@ packages:
   super_clipboard:
     dependency: "direct main"
     description:
-      path: "packages/super_clipboard"
+      path: "packages/super_native_extensions/super_clipboard"
       relative: true
     source: path
     version: "0.9.1"
   super_native_extensions:
     dependency: transitive
     description:
-      path: "packages/super_native_extensions"
+      path: "packages/super_native_extensions/super_native_extensions"
       relative: true
     source: path
     version: "0.9.1"

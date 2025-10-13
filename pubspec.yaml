@@ -159,7 +159,7 @@ dependencies:
 #      path: "ohos"
 
   super_clipboard:
-    path: packages/super_clipboard
+    path: packages/super_native_extensions/super_clipboard
 
   fast_image_resizer: ^0.0.2
 
