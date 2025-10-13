@@ -341,10 +341,9 @@ packages:
   dynamic_color:
     dependency: "direct main"
     description:
-      name: dynamic_color
-      sha256: "43a5a6679649a7731ab860334a5812f2067c2d9ce6452cf069c5e0c25336c17c"
-      url: "https://pub.dev"
-    source: hosted
+      path: "packages/dynamic_color"
+      relative: true
+    source: path
     version: "1.8.1"
   dynamite_runtime:
     dependency: transitive
@@ -445,10 +444,9 @@ packages:
   flex_color_picker:
     dependency: "direct main"
     description:
-      name: flex_color_picker
-      sha256: "12dc855ae8ef5491f529b1fc52c655f06dcdf4114f1f7fdecafa41eec2ec8d79"
-      url: "https://pub.dev"
-    source: hosted
+      path: "packages/flex_color_picker"
+      relative: true
+    source: path
     version: "3.6.0"
   flex_seed_scheme:
     dependency: transitive
@@ -535,10 +533,9 @@ packages:
   flutter_quill:
     dependency: "direct main"
     description:
-      name: flutter_quill
-      sha256: "8e33ef670abad16405582a37ce63ac82b7531998682e8bd8348d0f3da998b8ce"
-      url: "https://pub.dev"
-    source: hosted
+      path: "packages/flutter_quill"
+      relative: true
+    source: path
     version: "11.4.2"
   flutter_quill_delta_from_html:
     dependency: transitive
@@ -649,10 +646,9 @@ packages:
   font_awesome_flutter:
     dependency: "direct main"
     description:
-      name: font_awesome_flutter
-      sha256: f50ce90dbe26d977415b9540400d6778bef00894aced6358ae578abd92b14b10
-      url: "https://pub.dev"
-    source: hosted
+      path: "packages/font_awesome_flutter"
+      relative: true
+    source: path
     version: "10.9.0"
   get:
     dependency: "direct main"

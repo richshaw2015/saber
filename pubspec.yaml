@@ -40,7 +40,8 @@ dependencies:
 
   material_symbols_icons: ^4.2758.0
 
-  dynamic_color: ^1.5.4
+  dynamic_color:
+    path: packages/dynamic_color
 
   flutter_staggered_grid_view: ^0.7.0
 
@@ -106,9 +107,11 @@ dependencies:
   slang: ^4.1.0
   slang_flutter:
 
-  flex_color_picker: ^3.4.1
+  flex_color_picker:
+    path: packages/flex_color_picker
 
-  font_awesome_flutter: 10.9.0
+  font_awesome_flutter:
+    path: packages/font_awesome_flutter
 
   flutter_svg: ^2.0.0+1
 
@@ -123,8 +126,8 @@ dependencies:
 
   animations: ^2.0.7
 
-  flutter_quill: ^11.4.2
-
+  flutter_quill:
+    path: packages/flutter_quill
 
   worker_manager: ^7.0.1
   # 还没有 ohos 的支持 TODO
