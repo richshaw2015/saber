@@ -221,8 +221,6 @@ dependencies:
   stack_trace: ^1.11.1
 
   # TODO 这个依赖无用
-  sentry_flutter: ^8.14.2
-  sentry_logging: ^8.14.2
   smooth_corner: ^1.1.0
 
 dev_dependencies:
@@ -251,7 +249,6 @@ dev_dependencies:
 
   # golden_screenshot: ^4.0.0
 
-  # sentry_dart_plugin: ^3.1.1
 
 dependency_overrides:
   # 强制所有包使用我们的 shared_preferences Git 版本
