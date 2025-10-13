@@ -15,7 +15,6 @@ import 'package:saber/components/canvas/image/editor_image.dart';
 import 'package:saber/data/editor/page.dart';
 import 'package:saber/data/extensions/color_extensions.dart';
 import 'package:saber/data/file_manager/file_manager.dart';
-import 'package:saber/data/flavor_config.dart';
 import 'package:saber/data/prefs.dart';
 import 'package:saber/data/tools/stroke_properties.dart';
 import 'package:saber/pages/editor/editor.dart';
@@ -394,7 +393,7 @@ class EditorCoreInfo {
           () async {
             // We need to rerun some "init" methods in the isolate,
             // see https://github.com/saber-notes/saber/issues/1031.
-            FlavorConfig.setupFromEnvironment();
+            // FlavorConfig.setupFromEnvironment();
             await FileManager.init(
               documentsDirectory: documentsDirectory,
               shouldWatchRootDirectory: false,

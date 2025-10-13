@@ -12,7 +12,6 @@ import 'package:saber/data/codecs/base64_codec.dart';
 import 'package:saber/data/codecs/quota_codec.dart';
 import 'package:saber/data/editor/pencil_sound.dart';
 import 'package:saber/data/extensions/color_extensions.dart';
-import 'package:saber/data/flavor_config.dart';
 import 'package:saber/data/sentry/sentry_consent.dart';
 import 'package:saber/data/tools/_tool.dart';
 import 'package:saber/data/tools/highlighter.dart';
@@ -220,12 +219,8 @@ class Stows {
   final lastStorageQuota = PlainStow<Quota?>('lastStorageQuota', null,
       codec: const QuotaCodec(), volatile: !_isOnMainIsolate);
 
-  final shouldCheckForUpdates = PlainStow('shouldCheckForUpdates',
-      FlavorConfig.shouldCheckForUpdatesByDefault && !Platform.isLinux,
-      volatile: !_isOnMainIsolate);
-  final shouldAlwaysAlertForUpdates = PlainStow('shouldAlwaysAlertForUpdates',
-      (kDebugMode || FlavorConfig.dirty) ? true : false,
-      volatile: !_isOnMainIsolate);
+  final shouldCheckForUpdates = false;
+  final shouldAlwaysAlertForUpdates = false;
 
   final locale = PlainStow('locale', '', volatile: !_isOnMainIsolate);
 

@@ -1,6 +1,4 @@
 import 'dart:io';
-
-import 'package:collapsible/collapsible.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -18,12 +16,9 @@ import 'package:saber/components/settings/settings_selection.dart';
 import 'package:saber/components/settings/settings_sentry.dart';
 import 'package:saber/components/settings/settings_subtitle.dart';
 import 'package:saber/components/settings/settings_switch.dart';
-import 'package:saber/components/settings/update_manager.dart';
 import 'package:saber/components/theming/adaptive_alert_dialog.dart';
 import 'package:saber/components/theming/adaptive_toggle_buttons.dart';
 import 'package:saber/data/editor/pencil_sound.dart';
-import 'package:saber/data/file_manager/file_manager.dart';
-import 'package:saber/data/flavor_config.dart';
 import 'package:saber/data/locales.dart';
 import 'package:saber/data/prefs.dart';
 import 'package:saber/data/routes.dart';
@@ -106,7 +101,8 @@ class _SettingsPageState extends State<SettingsPage> {
   @override
   void initState() {
     stows.locale.addListener(onChanged);
-    UpdateManager.status.addListener(onChanged);
+
+    // UpdateManager.status.addListener(onChanged);
     super.initState();
   }
 
@@ -146,7 +142,7 @@ class _SettingsPageState extends State<SettingsPage> {
     final cupertino =
         platform == TargetPlatform.iOS || platform == TargetPlatform.macOS;
 
-    final bool requiresManualUpdates = FlavorConfig.appStore.isEmpty;
+    // final bool requiresManualUpdates = FlavorConfig.appStore.isEmpty;
 
     final IconData materialIcon = switch (defaultTargetPlatform) {
       TargetPlatform.windows => FontAwesomeIcons.windows,
@@ -177,15 +173,15 @@ class _SettingsPageState extends State<SettingsPage> {
                 ),
               ),
               actions: [
-                if (UpdateManager.status.value != UpdateStatus.upToDate)
-                  IconButton(
-                    tooltip: t.home.tooltips.showUpdateDialog,
-                    icon: const Icon(Icons.system_update),
-                    onPressed: () {
-                      UpdateManager.showUpdateDialog(context,
-                          userTriggered: true);
-                    },
-                  ),
+                // if (UpdateManager.status.value != UpdateStatus.upToDate)
+                //   IconButton(
+                //     tooltip: t.home.tooltips.showUpdateDialog,
+                //     icon: const Icon(Icons.system_update),
+                //     onPressed: () {
+                //       UpdateManager.showUpdateDialog(context,
+                //           userTriggered: true);
+                //     },
+                //   ),
               ],
             ),
           ),
@@ -532,41 +528,41 @@ class _SettingsPageState extends State<SettingsPage> {
                   title: t.settings.prefLabels.customDataDir,
                   icon: Icons.folder,
                 ),
-              if (Platform.isWindows || Platform.isLinux || Platform.isMacOS)
-                SettingsButton(
-                  title: t.settings.openDataDir,
-                  icon: Icons.folder_open,
-                  onPressed: () {
-                    if (Platform.isWindows) {
-                      Process.run('explorer', [FileManager.documentsDirectory]);
-                    } else if (Platform.isLinux) {
-                      Process.run('xdg-open', [FileManager.documentsDirectory]);
-                    } else if (Platform.isMacOS) {
-                      Process.run('open', [FileManager.documentsDirectory]);
-                    }
-                  },
-                ),
-              if (requiresManualUpdates ||
-                  stows.shouldCheckForUpdates.value !=
-                      stows.shouldCheckForUpdates.defaultValue) ...[
-                SettingsSwitch(
-                  title: t.settings.prefLabels.shouldCheckForUpdates,
-                  icon: Icons.system_update,
-                  pref: stows.shouldCheckForUpdates,
-                  afterChange: (_) => setState(() {}),
-                ),
-                Collapsible(
-                  collapsed: !stows.shouldCheckForUpdates.value,
-                  axis: CollapsibleAxis.vertical,
-                  child: SettingsSwitch(
-                    title: t.settings.prefLabels.shouldAlwaysAlertForUpdates,
-                    subtitle:
-                        t.settings.prefDescriptions.shouldAlwaysAlertForUpdates,
-                    icon: Icons.system_security_update_warning,
-                    pref: stows.shouldAlwaysAlertForUpdates,
-                  ),
-                ),
-              ],
+              // if (Platform.isWindows || Platform.isLinux || Platform.isMacOS)
+              //   SettingsButton(
+              //     title: t.settings.openDataDir,
+              //     icon: Icons.folder_open,
+              //     onPressed: () {
+              //       if (Platform.isWindows) {
+              //         Process.run('explorer', [FileManager.documentsDirectory]);
+              //       } else if (Platform.isLinux) {
+              //         Process.run('xdg-open', [FileManager.documentsDirectory]);
+              //       } else if (Platform.isMacOS) {
+              //         Process.run('open', [FileManager.documentsDirectory]);
+              //       }
+              //     },
+              //   ),
+              // if (requiresManualUpdates ||
+              //     stows.shouldCheckForUpdates.value !=
+              //         stows.shouldCheckForUpdates.defaultValue) ...[
+              //   SettingsSwitch(
+              //     title: t.settings.prefLabels.shouldCheckForUpdates,
+              //     icon: Icons.system_update,
+              //     pref: stows.shouldCheckForUpdates,
+              //     afterChange: (_) => setState(() {}),
+              //   ),
+              //   Collapsible(
+              //     collapsed: !stows.shouldCheckForUpdates.value,
+              //     axis: CollapsibleAxis.vertical,
+              //     child: SettingsSwitch(
+              //       title: t.settings.prefLabels.shouldAlwaysAlertForUpdates,
+              //       subtitle:
+              //           t.settings.prefDescriptions.shouldAlwaysAlertForUpdates,
+              //       icon: Icons.system_security_update_warning,
+              //       pref: stows.shouldAlwaysAlertForUpdates,
+              //     ),
+              //   ),
+              // ],
               SettingsSwitch(
                 title: t.settings.prefLabels.allowInsecureConnections,
                 subtitle: t.settings.prefDescriptions.allowInsecureConnections,
@@ -589,7 +585,7 @@ class _SettingsPageState extends State<SettingsPage> {
   @override
   void dispose() {
     stows.locale.removeListener(onChanged);
-    UpdateManager.status.removeListener(onChanged);
+    // UpdateManager.status.removeListener(onChanged);
     super.dispose();
   }
 }
