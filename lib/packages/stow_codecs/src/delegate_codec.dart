@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:stow_codecs/stow_codecs.dart';
+import 'package:saber/packages/stow_codecs/stow_codecs.dart';
 
 /// A [Codec] that delegates encoding and decoding to functions
 /// provided to its constructor.

@@ -77,15 +77,15 @@ class _DynamicMaterialAppState extends State<DynamicMaterialApp> {
     setState(() {});
   }
 
-  @override
-  void onWindowEnterFullScreen() {
-    DynamicMaterialApp.setFullscreen(true, updateSystem: false);
-  }
-
-  @override
-  void onWindowLeaveFullScreen() {
-    DynamicMaterialApp.setFullscreen(false, updateSystem: false);
-  }
+  // @override
+  // void onWindowEnterFullScreen() {
+  //   DynamicMaterialApp.setFullscreen(true, updateSystem: false);
+  // }
+  //
+  // @override
+  // void onWindowLeaveFullScreen() {
+  //   DynamicMaterialApp.setFullscreen(false, updateSystem: false);
+  // }
 
   Future<void> _onFullscreenChange(bool systemOverlaysAreVisible) async {
     DynamicMaterialApp.setFullscreen(!systemOverlaysAreVisible,

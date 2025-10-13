@@ -1,4 +1,4 @@
-import 'package:stow_codecs/stow_codecs.dart';
+import 'package:saber/packages/stow_codecs/stow_codecs.dart';
 
 /// Encodes a [DateTime] using [DateTime.toIso8601String].
 class DateTimeCodec extends AbstractCodec<DateTime, String> {

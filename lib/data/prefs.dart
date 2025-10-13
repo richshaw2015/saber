@@ -17,10 +17,11 @@ import 'package:saber/data/sentry/sentry_consent.dart';
 import 'package:saber/data/tools/_tool.dart';
 import 'package:saber/data/tools/highlighter.dart';
 import 'package:saber/data/tools/pen.dart';
-import 'package:stow/stow.dart';
-import 'package:stow_codecs/stow_codecs.dart';
-import 'package:stow_plain/stow_plain.dart';
-import 'package:stow_secure/stow_secure.dart';
+
+import 'package:saber/packages/stow/stow.dart';
+import 'package:saber/packages/stow_codecs/stow_codecs.dart';
+import 'package:saber/packages/stow_plain/stow_plain.dart';
+import 'package:saber/packages/stow_secure/stow_secure.dart';
 
 /// If false, all stows are stuck at their default values.
 bool _isOnMainIsolate = false;

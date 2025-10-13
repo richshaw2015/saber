@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:stow_codecs/stow_codecs.dart';
+import 'package:saber/packages/stow_codecs/stow_codecs.dart';
 
 /// A codec that wraps the standard [JsonCodec] to loosen its type constraints.
 /// This allows us to use it with e.g. [PlainStow] more easily.

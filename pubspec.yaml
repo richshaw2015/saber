@@ -209,14 +209,6 @@ dependencies:
   # 使用本地包
   pdfrx:
     path: packages/pdfrx
-  stow_codecs:
-    path: packages/stow_codecs
-  stow:
-    path: packages/stow
-  stow_plain:
-    path: packages/stow_plain
-  stow_secure:
-    path: packages/stow_secure
 
   stack_trace: ^1.11.1
 

@@ -1,4 +1,4 @@
-import 'package:stow_codecs/stow_codecs.dart';
+import 'package:saber/packages/stow_codecs/stow_codecs.dart';
 
 /// Encodes an enum value as its ([Enum.index]).
 class EnumCodec<T extends Enum> extends AbstractCodec<T, int> {

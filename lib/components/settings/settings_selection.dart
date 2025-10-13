@@ -4,7 +4,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:saber/components/settings/settings_dropdown.dart';
 import 'package:saber/components/theming/adaptive_toggle_buttons.dart';
 import 'package:saber/pages/home/settings.dart';
-import 'package:stow/stow.dart';
+import 'package:saber/packages/stow/stow.dart';
 
 class SettingsSelection<T extends num> extends StatefulWidget {
   const SettingsSelection({

@@ -30,7 +30,7 @@ import 'package:saber/data/routes.dart';
 import 'package:saber/data/sentry/sentry_init.dart';
 import 'package:saber/data/tools/shape_pen.dart';
 import 'package:saber/i18n/strings.g.dart';
-import 'package:stow/stow.dart';
+import 'package:saber/packages/stow/stow.dart';
 
 class SettingsPage extends StatefulWidget {
   const SettingsPage({super.key});

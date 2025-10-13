@@ -1,4 +1,4 @@
-import 'package:stow_codecs/stow_codecs.dart';
+import 'package:saber/packages/stow_codecs/stow_codecs.dart';
 
 /// Encodes an integer by calling toString() on it.
 class IntToStringCodec extends AbstractCodec<int, String> {

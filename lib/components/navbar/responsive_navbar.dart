@@ -8,7 +8,7 @@ import 'package:saber/data/prefs.dart';
 import 'package:saber/data/routes.dart';
 import 'package:saber/pages/home/home.dart';
 import 'package:saber/pages/home/whiteboard.dart';
-import 'package:stow_codecs/stow_codecs.dart';
+import 'package:saber/packages/stow_codecs/stow_codecs.dart';
 
 class ResponsiveNavbar extends StatefulWidget {
   const ResponsiveNavbar({

@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:meta/meta.dart';
-import 'package:stow_codecs/stow_codecs.dart';
+import 'package:saber/packages/stow_codecs/stow_codecs.dart';
 
 /// An abtract [Codec] whose [encode] and [decode] methods need to be
 /// overridden.

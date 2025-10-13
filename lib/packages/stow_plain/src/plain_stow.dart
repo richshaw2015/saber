@@ -1,9 +1,9 @@
 import 'dart:async';
 import 'dart:convert';
 
+import 'package:saber/packages/stow/src/abstract_stow.dart';
+import 'package:saber/packages/stow_codecs/stow_codecs.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:stow/stow.dart';
-import 'package:stow_codecs/stow_codecs.dart';
 
 /// A [Stow] implementation that stores plaintext (unencrypted) values with
 /// shared preferences.

@@ -1,6 +1,6 @@
 import 'dart:ui' show Color;
 
-import 'package:stow_codecs/stow_codecs.dart';
+import 'package:saber/packages/stow_codecs/stow_codecs.dart';
 
 /// Encodes a [Color] as an ARGB32 integer.
 class ColorCodec extends AbstractCodec<Color, int> {

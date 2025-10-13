@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:io';
 import 'dart:math';
 
 import 'package:audioplayers/audioplayers.dart';
@@ -7,7 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:saber/data/prefs.dart';
 import 'package:saber/i18n/strings.g.dart';
-import 'package:stow_codecs/stow_codecs.dart';
+import 'package:saber/packages/stow_codecs/stow_codecs.dart';
 
 /// Emulates the scratchy sound of pencil on paper.
 abstract class PencilSound {

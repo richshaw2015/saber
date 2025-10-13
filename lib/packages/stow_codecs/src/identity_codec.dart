@@ -1,4 +1,4 @@
-import 'package:stow_codecs/stow_codecs.dart';
+import 'package:saber/packages/stow_codecs/stow_codecs.dart';
 
 /// A codec that does not change the input or output types.
 /// It simply passes the data through unchanged.

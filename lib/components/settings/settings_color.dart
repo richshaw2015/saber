@@ -5,7 +5,7 @@ import 'package:saber/components/theming/adaptive_alert_dialog.dart';
 import 'package:saber/data/prefs.dart';
 import 'package:saber/i18n/strings.g.dart';
 import 'package:saber/pages/home/settings.dart';
-import 'package:stow/stow.dart';
+import 'package:saber/packages/stow/stow.dart';
 
 class SettingsColor extends StatefulWidget {
   const SettingsColor({

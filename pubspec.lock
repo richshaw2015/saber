@@ -1505,34 +1505,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.11.1"
-  stow:
-    dependency: "direct main"
-    description:
-      path: "packages/stow"
-      relative: true
-    source: path
-    version: "1.0.0"
-  stow_codecs:
-    dependency: "direct main"
-    description:
-      path: "packages/stow_codecs"
-      relative: true
-    source: path
-    version: "1.0.0"
-  stow_plain:
-    dependency: "direct main"
-    description:
-      path: "packages/stow_plain"
-      relative: true
-    source: path
-    version: "1.0.0"
-  stow_secure:
-    dependency: "direct main"
-    description:
-      path: "packages/stow_secure"
-      relative: true
-    source: path
-    version: "1.0.0"
   stream_channel:
     dependency: transitive
     description:

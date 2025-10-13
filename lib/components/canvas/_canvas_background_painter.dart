@@ -2,7 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:saber/data/extensions/color_extensions.dart';
 import 'package:saber/i18n/strings.g.dart';
-import 'package:stow_codecs/stow_codecs.dart';
+import 'package:saber/packages/stow_codecs/stow_codecs.dart';
 
 class CanvasBackgroundPainter extends CustomPainter {
   const CanvasBackgroundPainter({

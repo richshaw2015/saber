@@ -1,7 +1,5 @@
 import 'package:event_bus/event_bus.dart';
-import 'package:flutter/foundation.dart';
 import 'package:get/get.dart';
-import 'package:logger/logger.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 

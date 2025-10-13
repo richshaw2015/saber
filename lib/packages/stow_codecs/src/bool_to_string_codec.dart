@@ -1,4 +1,4 @@
-import 'package:stow_codecs/stow_codecs.dart';
+import 'package:saber/packages/stow_codecs/stow_codecs.dart';
 
 class BoolToStringCodec extends AbstractCodec<bool, String> {
   const BoolToStringCodec();
