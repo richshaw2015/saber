@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-extension ColorExtensions on Color {
+extension ColorExtQuill on Color {
   /// Inverts the color's HSL lightness if [invert] is true.
   /// This does not affect the hue or saturation.
   Color withInversion([bool invert = true]) {
