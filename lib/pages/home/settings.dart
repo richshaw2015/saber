@@ -523,13 +523,17 @@ class _SettingsPageState extends State<SettingsPage> {
                     simplified ? Icons.grid_view : Symbols.browse,
                 pref: stows.simplifiedHomeLayout,
               ),
-              SettingsSubtitle(subtitle: t.settings.prefCategories.advanced),
-              if (isSentryAvailable) const SettingsSentryConsent(),
-              if (Platform.isAndroid)
-                SettingsDirectorySelector(
-                  title: t.settings.prefLabels.customDataDir,
-                  icon: Icons.folder,
-                ),
+
+              // TODO 通用 -》用户隐私 / 服务协议
+              // SettingsSubtitle(subtitle: t.settings.prefCategories.advanced),
+
+              // if (isSentryAvailable) const SettingsSentryConsent(),
+              // disable data directory setting
+              // if (Platform.isAndroid)
+              //   SettingsDirectorySelector(
+              //     title: t.settings.prefLabels.customDataDir,
+              //     icon: Icons.folder,
+              //   ),
               // if (Platform.isWindows || Platform.isLinux || Platform.isMacOS)
               //   SettingsButton(
               //     title: t.settings.openDataDir,
@@ -565,18 +569,20 @@ class _SettingsPageState extends State<SettingsPage> {
               //     ),
               //   ),
               // ],
-              SettingsSwitch(
-                title: t.settings.prefLabels.allowInsecureConnections,
-                subtitle: t.settings.prefDescriptions.allowInsecureConnections,
-                icon: Icons.private_connectivity,
-                pref: stows.allowInsecureConnections,
-              ),
-              SettingsButton(
-                title: t.logs.viewLogs,
-                subtitle: t.logs.debuggingInfo,
-                icon: Icons.receipt_long,
-                onPressed: () => context.push(RoutePaths.logs),
-              ),
+              // TODO disable for now, re-enable when supporting server
+              // SettingsSwitch(
+              //   title: t.settings.prefLabels.allowInsecureConnections,
+              //   subtitle: t.settings.prefDescriptions.allowInsecureConnections,
+              //   icon: Icons.private_connectivity,
+              //   pref: stows.allowInsecureConnections,
+              // ),
+              // do not show logs for now
+              // SettingsButton(
+              //   title: t.logs.viewLogs,
+              //   subtitle: t.logs.debuggingInfo,
+              //   icon: Icons.receipt_long,
+              //   onPressed: () => context.push(RoutePaths.logs),
+              // ),
             ],
           )),
         ],
