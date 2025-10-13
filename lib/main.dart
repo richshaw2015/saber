@@ -1,7 +1,5 @@
 import 'dart:async';
 import 'dart:io';
-
-import 'package:args/args.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -20,60 +18,41 @@ import 'package:saber/data/nextcloud/nc_http_overrides.dart';
 import 'package:saber/data/nextcloud/saber_syncer.dart';
 import 'package:saber/data/prefs.dart';
 import 'package:saber/data/routes.dart';
-import 'package:saber/data/sentry/sentry_init.dart';
 import 'package:saber/data/tools/stroke_properties.dart';
 import 'package:saber/i18n/strings.g.dart';
 import 'package:saber/pages/editor/editor.dart';
 import 'package:saber/pages/home/home.dart';
 import 'package:saber/pages/logs.dart';
 import 'package:saber/pages/user/login.dart';
+import 'package:saber/service/crashlytics/crash.dart';
 import 'package:worker_manager/worker_manager.dart';
 import 'package:workmanager/workmanager.dart';
 
-Future<void> main(List<String> args) async {
-  /// To set the flavor config e.g. for the Play Store, use:
-  /// flutter build \
-  ///   --dart-define=FLAVOR="Google Play" \
-  ///   --dart-define=APP_STORE="Google Play" \
-  ///   --dart-define=UPDATE_CHECK="false" \
-  ///   --dart-define=DIRTY="false"
-  FlavorConfig.setupFromEnvironment();
+import 'common/constant.dart';
+import 'common/strings.dart';
 
-  await initSentry(() => appRunner(args));
-}
-
-Future<void> appRunner(List<String> args) async {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  final parser = ArgParser()..addFlag('verbose', abbr: 'v', negatable: false);
-  final parsedArgs = parser.parse(args);
+  // 方便截图
+  // if (kDebugMode) {
+  //   await SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: []);
+  // }
 
-  Logger.root.level =
-      (kDebugMode || parsedArgs.flag('verbose')) ? Level.INFO : Level.WARNING;
-  Logger.root.onRecord.listen((record) {
-    logsHistory.add(record);
+  // 初始化全局设置
+  await G.initGlobals();
 
-    if (!isSentryEnabled) {
-      // ignore: avoid_print
-      print('${record.level.name}: ${record.loggerName}: ${record.message}');
-    }
-  });
+  // 崩溃及异常上报
+  FlutterError.onError = Crashlytics.recordFlutterFatalError;
+  PlatformDispatcher.instance.onError = (error, stack) {
+    Crashlytics.recordError(error, stack, fatal: true);
+    return true;
+  };
 
-  // For some reason, logging errors breaks hot reload while debugging.
-  if (!kDebugMode && !isSentryEnabled) {
-    final errorLogger = Logger('ErrorLogger');
-    FlutterError.onError = (details) {
-      errorLogger.severe(
-          details.exceptionAsString(), details.exception, details.stack);
-      FlutterError.presentError(details);
-    };
-    PlatformDispatcher.instance.onError = (error, stackTrace) {
-      errorLogger.severe(error, stackTrace);
-      // Returns false in debug mode so the error is printed to stderr
-      return !kDebugMode;
-    };
-  }
+  await appRunner();
+}
 
+Future<void> appRunner() async {
   StrokeOptionsExtension.setDefaults();
   Stows.markAsOnMainIsolate();
 
@@ -108,7 +87,7 @@ Future<void> appRunner(List<String> args) async {
   });
 
   HttpOverrides.global = NcHttpOverrides();
-  runApp(SentryWidget(child: TranslationProvider(child: const App())));
+  runApp(TranslationProvider(child: const App()));
   startSyncAfterLoaded();
   setupBackgroundSync();
 }
@@ -327,7 +306,7 @@ class _AppState extends State<App> {
   @override
   Widget build(BuildContext context) {
     return DynamicMaterialApp(
-      title: 'Saber',
+      title: Strings.appName,
       router: App._router,
     );
   }
