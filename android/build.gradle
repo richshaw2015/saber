@@ -13,6 +13,11 @@ allprojects {
                         namespace project.group
                     }
 
+                    // 统一设置 NDK 版本，避免使用不完整的 NDK
+                    if (project.android.hasProperty('ndkVersion') && project.android.ndkVersion == null) {
+                        project.android.ndkVersion = "28.0.13004108"
+                    }
+
                     // Enforce consistent JVM target across all modules
                     compileOptions {
                         sourceCompatibility JavaVersion.VERSION_17

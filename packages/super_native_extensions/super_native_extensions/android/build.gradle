@@ -27,6 +27,7 @@ android {
     }
 
     compileSdkVersion 31
+    ndkVersion "28.0.13004108"  // 使用完整的 NDK 28
 
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
