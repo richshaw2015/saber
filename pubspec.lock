@@ -722,24 +722,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.19.0"
-  irondash_engine_context:
-    dependency: transitive
-    description:
-      path: "engine_context/dart"
-      ref: "br_v0.5.5_ohos"
-      resolved-ref: affe11d220696ba63818dd06fd98754694669d36
-      url: "https://gitcode.com/openharmony-sig/fluttertpc_irondash.git"
-    source: git
-    version: "0.5.5"
-  irondash_message_channel:
-    dependency: transitive
-    description:
-      path: "message_channel/dart"
-      ref: "br_v0.5.5_ohos"
-      resolved-ref: affe11d220696ba63818dd06fd98754694669d36
-      url: "https://gitcode.com/openharmony-sig/fluttertpc_irondash.git"
-    source: git
-    version: "0.7.0"
   js:
     dependency: transitive
     description:
@@ -1175,14 +1157,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "6.0.2"
-  pixel_snap:
-    dependency: transitive
-    description:
-      name: pixel_snap
-      sha256: "677410ea37b07cd37ecb6d5e6c0d8d7615a7cf3bd92ba406fd1ac57e937d1fb0"
-      url: "https://pub.dev"
-    source: hosted
-    version: "0.1.5"
   platform:
     dependency: transitive
     description:
@@ -1521,20 +1495,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.2.0"
-  super_clipboard:
-    dependency: "direct main"
-    description:
-      path: "packages/super_native_extensions/super_clipboard"
-      relative: true
-    source: path
-    version: "0.9.1"
-  super_native_extensions:
-    dependency: transitive
-    description:
-      path: "packages/super_native_extensions/super_native_extensions"
-      relative: true
-    source: path
-    version: "0.9.1"
   synchronized:
     dependency: transitive
     description:

@@ -158,8 +158,9 @@ dependencies:
 #      url: https://gitcode.com/openharmony-sig/fluttertpc_open_file.git
 #      path: "ohos"
 
-  super_clipboard:
-    path: packages/super_native_extensions/super_clipboard
+  # 临时禁用 super_clipboard TODO 后续支持
+  # super_clipboard:
+  #   path: packages/super_native_extensions/super_clipboard
 
   fast_image_resizer: ^0.0.2
 

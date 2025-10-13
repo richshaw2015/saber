@@ -51,7 +51,8 @@ import 'package:saber/data/tools/shape_pen.dart';
 import 'package:saber/i18n/strings.g.dart';
 import 'package:saber/pages/home/whiteboard.dart';
 import 'package:screenshot/screenshot.dart';
-import 'package:super_clipboard/super_clipboard.dart';
+// 临时禁用 super_clipboard 来测试冲突
+// import 'package:super_clipboard/super_clipboard.dart';
 
 typedef _PhotoInfo = ({Uint8List bytes, String extension});
 
@@ -1251,63 +1252,51 @@ class EditorState extends State<Editor> {
     return true;
   }
 
+  // TODO 这里先简单返回，后续再完善剪贴板功能
   Future paste() async {
-    /// Maps image formats to their file extension.
-    const Map<SimpleFileFormat, String> formats = {
-      Formats.jpeg: '.jpeg',
-      Formats.png: '.png',
-      Formats.gif: '.gif',
-      Formats.tiff: '.tiff',
-      Formats.bmp: '.bmp',
-      Formats.ico: '.ico',
-      Formats.svg: '.svg',
-      Formats.webp: '.webp',
-    };
+    return;
 
-    final reader = await SystemClipboard.instance?.read();
-    if (reader == null) return;
-
-    final List<_PhotoInfo> photoInfos = [];
-    final List<ReadProgress> progresses = [];
-
-    for (SimpleFileFormat format in formats.keys) {
-      if (!reader.canProvide(format)) continue;
-      final progress = reader.getFile(
-        format,
-        (file) async {
-          final stream = file.getStream();
-          final List<int> bytes = [];
-          await for (final chunk in stream) {
-            bytes.addAll(chunk);
-          }
-          if (bytes.isEmpty) {
-            log.warning('Pasted empty file: $file (${formats[format]})');
-            return;
-          }
-
-          String extension;
-          if (file.fileName != null) {
-            extension =
-                file.fileName!.substring(file.fileName!.lastIndexOf('.'));
-          } else {
-            extension = formats[format]!;
-          }
-
-          photoInfos.add((
-            bytes: Uint8List.fromList(bytes),
-            extension: extension,
-          ));
-        },
-      );
-      if (progress != null) progresses.add(progress);
-    }
-
-    while (progresses.isNotEmpty) {
-      progresses.removeWhere((progress) => progress.fraction.value == 1);
-      await Future.delayed(const Duration(milliseconds: 50));
-    }
-
-    await _pickPhotos(photoInfos);
+    // final List<_PhotoInfo> photoInfos = [];
+    // final List<ReadProgress> progresses = [];
+    //
+    // for (SimpleFileFormat format in formats.keys) {
+    //   if (!reader.canProvide(format)) continue;
+    //   final progress = reader.getFile(
+    //     format,
+    //     (file) async {
+    //       final stream = file.getStream();
+    //       final List<int> bytes = [];
+    //       await for (final chunk in stream) {
+    //         bytes.addAll(chunk);
+    //       }
+    //       if (bytes.isEmpty) {
+    //         log.warning('Pasted empty file: $file (${formats[format]})');
+    //         return;
+    //       }
+    //
+    //       String extension;
+    //       if (file.fileName != null) {
+    //         extension =
+    //             file.fileName!.substring(file.fileName!.lastIndexOf('.'));
+    //       } else {
+    //         extension = formats[format]!;
+    //       }
+    //
+    //       photoInfos.add((
+    //         bytes: Uint8List.fromList(bytes),
+    //         extension: extension,
+    //       ));
+    //     },
+    //   );
+    //   if (progress != null) progresses.add(progress);
+    // }
+    //
+    // while (progresses.isNotEmpty) {
+    //   progresses.removeWhere((progress) => progress.fraction.value == 1);
+    //   await Future.delayed(const Duration(milliseconds: 50));
+    // }
+    //
+    // await _pickPhotos(photoInfos);
   }
 
   Future exportAsPdf(BuildContext context) async {
