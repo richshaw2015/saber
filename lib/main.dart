@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:io';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:flutter/services.dart';
 import 'package:go_router/go_router.dart';
 import 'package:logging/logging.dart';
@@ -86,7 +87,9 @@ Future<void> appRunner() async {
   });
 
   HttpOverrides.global = NcHttpOverrides();
+
   runApp(TranslationProvider(child: const App()));
+
   startSyncAfterLoaded();
   setupBackgroundSync();
 }
@@ -304,9 +307,13 @@ class _AppState extends State<App> {
 
   @override
   Widget build(BuildContext context) {
-    return DynamicMaterialApp(
+    return GetMaterialApp(
       title: Strings.appName,
-      router: App._router,
+      debugShowCheckedModeBanner: false,
+      home: DynamicMaterialApp(
+        title: Strings.appName,
+        router: App._router,
+      )
     );
   }
 

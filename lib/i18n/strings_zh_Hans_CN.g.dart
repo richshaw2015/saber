@@ -384,8 +384,8 @@ class _TranslationsSettingsPrefLabelsZhHansCn extends TranslationsSettingsPrefLa
 	final TranslationsZhHansCn _root; // ignore: unused_field
 
 	// Translations
-	@override String get locale => '应用语言';
-	@override String get appTheme => '应用主题';
+	@override String get locale => '语言';
+	@override String get appTheme => '主题';
 	@override String get platform => '主题类型';
 	@override String get layoutSize => '布局大小';
 	@override String get customAccentColor => '自定义主题色';
