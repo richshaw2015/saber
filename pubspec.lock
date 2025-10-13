@@ -1524,20 +1524,16 @@ packages:
   super_clipboard:
     dependency: "direct main"
     description:
-      path: super_clipboard
-      ref: "br_v0.9.1_ohos"
-      resolved-ref: "0ba6f1c4c9ce628e7785c06f85ff309681f157ff"
-      url: "https://gitcode.com/openharmony-sig/fluttertpc_super_native_extensions.git"
-    source: git
+      path: "packages/super_clipboard"
+      relative: true
+    source: path
     version: "0.9.1"
   super_native_extensions:
     dependency: transitive
     description:
-      path: super_native_extensions
-      ref: "br_v0.9.1_ohos"
-      resolved-ref: "0ba6f1c4c9ce628e7785c06f85ff309681f157ff"
-      url: "https://gitcode.com/openharmony-sig/fluttertpc_super_native_extensions.git"
-    source: git
+      path: "packages/super_native_extensions"
+      relative: true
+    source: path
     version: "0.9.1"
   synchronized:
     dependency: transitive
