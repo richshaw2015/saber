@@ -4,16 +4,18 @@ class SettingsSubtitle extends StatelessWidget {
   const SettingsSubtitle({
     super.key,
     required this.subtitle,
+    this.topPadding = true,
   });
 
   final String subtitle;
+  final bool topPadding;
 
   @override
   Widget build(BuildContext context) {
     final colorScheme = Theme.of(context).colorScheme;
     return Padding(
-      padding: const EdgeInsets.only(
-        top: 32,
+      padding: EdgeInsets.only(
+        top: topPadding ? 32 : 0,
         left: 16,
         right: 16,
         bottom: 0,

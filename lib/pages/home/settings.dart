@@ -178,6 +178,7 @@ class _SettingsPageState extends State<SettingsPage> {
               // const AppInfo(),
               SettingsSubtitle(
                 subtitle: t.settings.prefCategories.general,
+                topPadding: false,
               ),
               SettingsDropdown(
                 title: t.settings.prefLabels.locale,
