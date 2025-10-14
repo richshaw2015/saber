@@ -8,6 +8,8 @@ import 'package:saber/data/prefs.dart';
 import 'package:saber/i18n/strings.g.dart';
 import 'package:saber/packages/stow_codecs/stow_codecs.dart';
 
+import 'package:saber/service/log/log.dart';
+
 /// Emulates the scratchy sound of pencil on paper.
 abstract class PencilSound {
   static const _source = 'audio/white-noise-8117.ogg';
@@ -24,7 +26,7 @@ abstract class PencilSound {
   /// Loads the audio file into the audio cache
   /// and sets the audio context.
   static Future<void> preload() => Future.wait([
-        stows.pencilSound.waitUntilRead().then((_) => setAudioContext()),
+        stows.pencilSoundEffect.waitUntilRead().then((_) => setAudioContext()),
         _player.audioCache.loadPath(_source),
       ]);
 
@@ -40,27 +42,24 @@ abstract class PencilSound {
   
   /// Updates the `respectSilence` setting in the audio context.
   static Future<void> setAudioContext() async {
-    // audioplayers v6.1.0 的 API
-    final respectSilence = stows.pencilSound.value.respectSilence;
-    
-    final config = AudioContext(
+    // audioplayers v6.1.0 的 API, do not support respectSilence param
+    const config = AudioContext(
       iOS: AudioContextIOS(
-        // 在 iOS 上，根据 respectSilence 设置选择音频类别
-        category: respectSilence
-            ? AVAudioSessionCategory.ambient  // 尊重静音模式
-            : AVAudioSessionCategory.playback,  // 忽略静音模式
+        category: AVAudioSessionCategory.playback,  // 忽略静音模式
         options: [
           AVAudioSessionOptions.mixWithOthers,  // 与其他音频混合播放
         ],
       ),
-      android: const AudioContextAndroid(
+      android: AudioContextAndroid(
         isSpeakerphoneOn: false,
         stayAwake: false,
         contentType: AndroidContentType.music,
         usageType: AndroidUsageType.media,
-        audioFocus: AndroidAudioFocus.none,  // 不抢占音频焦点
+        // AndroidAudioFocus.none,  // 不抢占音频焦点 this option is incompatible with audioplayers 6.1
+        // 短暂获得焦点，允许其他音频降低音量
+        audioFocus: AndroidAudioFocus.gainTransientMayDuck,
       ),
-      ohos: const AudioContextOhos(
+      ohos: AudioContextOhos(
         isSpeakerphoneOn: false,
         stayAwake: false,
         usageType: OhosUsageType.music,
@@ -74,7 +73,13 @@ abstract class PencilSound {
     _pauseTimer?.cancel();
     _limitPlaybackRate();
     _player.setVolume(0);
-    _player.resume();
+    
+    // 添加异常处理，避免音频焦点问题
+    try {
+      _player.resume();
+    } catch (e) {
+      Log.w('PencilSound resume failed: $e');
+    }
   }
 
   static void pause() {
@@ -119,34 +124,29 @@ abstract class PencilSound {
   }
 }
 
-enum PencilSoundSetting {
-  /// Pencil sound is disabled
-  off(icon: FontAwesomeIcons.bellSlash),
-
-  /// Pencil sound is enabled, but only when the device is not in silent mode
-  onButNotInSilentMode(icon: FontAwesomeIcons.bell),
-
-  /// Pencil sound is always enabled, even when the device is in silent mode
-  onAlways(icon: FontAwesomeIcons.solidBell);
-
-  const PencilSoundSetting({required this.icon});
-
-  final IconData icon;
-
-  String get description => switch (this) {
-        PencilSoundSetting.off =>
-          t.settings.prefDescriptions.pencilSoundSetting.off,
-        PencilSoundSetting.onButNotInSilentMode =>
-          t.settings.prefDescriptions.pencilSoundSetting.onButNotInSilentMode,
-        PencilSoundSetting.onAlways =>
-          t.settings.prefDescriptions.pencilSoundSetting.onAlways,
-      };
-
-  bool get respectSilence => switch (this) {
-        PencilSoundSetting.off => true,
-        PencilSoundSetting.onButNotInSilentMode => true,
-        PencilSoundSetting.onAlways => false,
-      };
-
-  static const codec = EnumCodec(values);
-}
+// enum PencilSoundSetting {
+//   /// Pencil sound effect is disabled
+//   off(icon: FontAwesomeIcons.bellSlash),
+//
+//   /// Pencil sound effect is enabled
+//   on(icon: FontAwesomeIcons.solidBell);
+//
+//   const PencilSoundSetting({required this.icon});
+//
+//   final IconData icon;
+//
+//   String get description => switch (this) {
+//         PencilSoundSetting.off =>
+//           t.settings.prefDescriptions.pencilSoundSetting.off,
+//         PencilSoundSetting.on =>
+//           t.settings.prefDescriptions.pencilSoundSetting.onAlways,
+//       };
+//
+//   // bool get respectSilence => switch (this) {
+//   //       PencilSoundSetting.off => true,
+//   //       PencilSoundSetting.onButNotInSilentMode => true,
+//   //       PencilSoundSetting.onAlways => false,
+//   //     };
+//
+//   static const codec = EnumCodec(values);
+// }

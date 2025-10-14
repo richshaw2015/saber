@@ -65,11 +65,11 @@ abstract class _SettingsStows {
     (int value) => ThemeMode.values[value],
   );
 
-  static final platform = TransformedStow(
-    stows.platform,
-    (TargetPlatform value) => value.index,
-    (int value) => TargetPlatform.values[value],
-  );
+  // static final platform = TransformedStow(
+  //   stows.platform,
+  //   (TargetPlatform value) => value.index,
+  //   (int value) => TargetPlatform.values[value],
+  // );
 
   static final layoutSize = TransformedStow(
     stows.layoutSize,
@@ -83,11 +83,7 @@ abstract class _SettingsStows {
     (int value) => AxisDirection.values[value],
   );
 
-  static final pencilSound = TransformedStow(
-    stows.pencilSound,
-    (PencilSoundSetting value) => value.index,
-    (int value) => PencilSoundSetting.values[value],
-  );
+  static final pencilSoundEffect = stows.pencilSoundEffect;
 }
 
 class _SettingsPageState extends State<SettingsPage> {
@@ -103,17 +99,17 @@ class _SettingsPageState extends State<SettingsPage> {
     setState(() {});
   }
 
-  static final bool usesCupertinoByDefault = switch (defaultTargetPlatform) {
-    TargetPlatform.iOS => true,
-    TargetPlatform.macOS => true,
-    _ => false,
-  };
-  static final bool usesYaruByDefault = switch (defaultTargetPlatform) {
-    TargetPlatform.linux => true,
-    _ => false,
-  };
-  static final bool usesMaterialByDefault =
-      !usesCupertinoByDefault && !usesYaruByDefault;
+  // static final bool usesCupertinoByDefault = switch (defaultTargetPlatform) {
+  //   TargetPlatform.iOS => true,
+  //   TargetPlatform.macOS => true,
+  //   _ => false,
+  // };
+  // static final bool usesYaruByDefault = switch (defaultTargetPlatform) {
+  //   TargetPlatform.linux => true,
+  //   _ => false,
+  // };
+  // static final bool usesMaterialByDefault =
+  //     !usesCupertinoByDefault && !usesYaruByDefault;
 
   static const cupertinoDirectionIcons = [
     CupertinoIcons.arrow_up_to_line,
@@ -137,10 +133,10 @@ class _SettingsPageState extends State<SettingsPage> {
 
     // final bool requiresManualUpdates = FlavorConfig.appStore.isEmpty;
 
-    final IconData materialIcon = switch (defaultTargetPlatform) {
-      TargetPlatform.windows => FontAwesomeIcons.windows,
-      _ => Icons.android,
-    };
+    // final IconData materialIcon = switch (defaultTargetPlatform) {
+    //   TargetPlatform.windows => FontAwesomeIcons.windows,
+    //   _ => Icons.android,
+    // };
 
     return Scaffold(
       body: CustomScrollView(
@@ -449,19 +445,16 @@ class _SettingsPageState extends State<SettingsPage> {
                 icon: Icons.numbers,
                 pref: stows.printPageIndicators,
               ),
-              SettingsSelection(
+
+              SettingsSwitch(
                 title: t.settings.prefLabels.pencilSoundSetting,
-                subtitle: stows.pencilSound.value.description,
-                icon: stows.pencilSound.value.icon,
-                pref: _SettingsStows.pencilSound,
-                optionsWidth: 60,
-                options: [
-                  for (final setting in PencilSoundSetting.values)
-                    ToggleButtonsOption(
-                      setting.index,
-                      Icon(setting.icon, semanticLabel: setting.description),
-                    ),
-                ],
+                // subtitle: stows.pencilSoundEffect.value
+                //     ? t.settings.prefDescriptions.pencilSoundSetting.onAlways
+                //     : t.settings.prefDescriptions.pencilSoundSetting.off,
+                icon: stows.pencilSoundEffect.value 
+                    ? FontAwesomeIcons.solidBell
+                    : FontAwesomeIcons.bellSlash,
+                pref: _SettingsStows.pencilSoundEffect,
                 afterChange: (_) {
                   PencilSound.setAudioContext();
                   setState(() {});

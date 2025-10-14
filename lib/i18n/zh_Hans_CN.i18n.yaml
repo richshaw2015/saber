@@ -82,8 +82,8 @@ settings:
     performance: 性能
     advanced: 高级
   prefLabels: 
-    locale: 应用语言
-    appTheme: 应用主题
+    locale: 语言
+    appTheme: 主题
     platform: 主题类型
     layoutSize: 布局大小
     customAccentColor: 自定义主题色
@@ -109,7 +109,7 @@ settings:
     autoStraightenLines: 自动拉直线
     simplifiedHomeLayout: 简化主页布局
     customDataDir: 自定义 Saber 文件夹
-    pencilSoundSetting: 铅笔音效
+    pencilSoundSetting: 画笔音效
     sentry: 错误报告
   prefDescriptions: 
     hyperlegibleFont: Atkinson Hyperlegible 字体为低视力读者提高易读性

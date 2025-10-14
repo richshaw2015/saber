@@ -582,8 +582,9 @@ class EditorState extends State<Editor> {
       shouldPlayPencilSound = false;
     }
 
-    if (stows.pencilSound.value != PencilSoundSetting.off &&
-        shouldPlayPencilSound) PencilSound.resume();
+    if (stows.pencilSoundEffect.value && shouldPlayPencilSound) {
+      PencilSound.resume();
+    }
 
     previousPosition = position;
     moveOffset = Offset.zero;

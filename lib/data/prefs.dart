@@ -112,9 +112,13 @@ class Stows {
       PlainStow('shapeRecognitionDelay', 500, volatile: !_isOnMainIsolate);
   final autoStraightenLines =
       PlainStow('autoStraightenLines', true, volatile: !_isOnMainIsolate);
-  final pencilSound = PlainStow(
-      'pencilSound', PencilSoundSetting.onButNotInSilentMode,
-      codec: PencilSoundSetting.codec, volatile: !_isOnMainIsolate);
+
+  final pencilSoundEffect =
+  PlainStow('pencilSoundEffect', true, volatile: !_isOnMainIsolate);
+
+  // final pencilSound = PlainStow(
+  //     'pencilSound', PencilSoundSetting.onAlways,
+  //     codec: PencilSoundSetting.codec, volatile: !_isOnMainIsolate);
 
   final simplifiedHomeLayout =
       PlainStow('simplifiedHomeLayout', false, volatile: !_isOnMainIsolate);
