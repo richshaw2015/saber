@@ -5,7 +5,6 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:material_symbols_icons/symbols.dart';
 import 'package:saber/components/navbar/responsive_navbar.dart';
 import 'package:saber/components/settings/app_info.dart';
-import 'package:saber/components/settings/nextcloud_profile.dart';
 import 'package:saber/components/settings/settings_color.dart';
 import 'package:saber/components/settings/settings_dropdown.dart';
 import 'package:saber/components/settings/settings_selection.dart';

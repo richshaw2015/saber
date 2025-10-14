@@ -53,14 +53,17 @@ class _HomePageState extends State<HomePage> {
   }
 
   Widget get body {
-    return AnimatedSwitcher(
-      duration: const Duration(milliseconds: 300),
-      child: switch (widget.subpage) {
-        HomePage.browseSubpage => BrowsePage(path: widget.path),
-        HomePage.whiteboardSubpage => const Whiteboard(),
-        HomePage.settingsSubpage => const SettingsPage(),
-        _ => const RecentPage(),
-      },
+    return IndexedStack(
+      index: HomePage.subpages.indexOf(widget.subpage),
+      children: [
+        const RecentPage(),                    // index 0
+        BrowsePage(
+          key: ValueKey(widget.path),          // 路径变化时重建 BrowsePage
+          path: widget.path,
+        ),                                     // index 1
+        const Whiteboard(),                    // index 2
+        const SettingsPage(),                  // index 3
+      ],
     );
   }
 

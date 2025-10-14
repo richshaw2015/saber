@@ -1,15 +1,16 @@
 import 'dart:io';
 
 import 'package:dynamic_color/dynamic_color.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_quill/flutter_quill.dart';
+import 'package:get/get.dart';
 import 'package:go_router/go_router.dart';
 import 'package:saber/components/theming/font_fallbacks.dart';
 import 'package:saber/data/prefs.dart';
 import 'package:saber/i18n/strings.g.dart';
+import 'package:saber/service/log/log.dart';
 
 class DynamicMaterialApp extends StatefulWidget {
   const DynamicMaterialApp({
@@ -63,14 +64,16 @@ class _DynamicMaterialAppState extends State<DynamicMaterialApp> {
 
   @override
   void initState() {
+    super.initState();
+
+    Log.i(Get.size);
+
     stows.appTheme.addListener(onChanged);
     stows.platform.addListener(onChanged);
     stows.accentColor.addListener(onChanged);
     stows.hyperlegibleFont.addListener(onChanged);
 
     SystemChrome.setSystemUIChangeCallback(_onFullscreenChange);
-
-    super.initState();
   }
 
   void onChanged() {
