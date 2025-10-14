@@ -8,6 +8,8 @@ import 'package:saber/data/version.dart';
 import 'package:saber/i18n/strings.g.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+import '../../common/constant.dart';
+
 class AppInfo extends StatelessWidget {
   const AppInfo({super.key});
 
@@ -21,11 +23,11 @@ class AppInfo extends StatelessWidget {
       Uri.parse('https://github.com/saber-notes/saber/releases');
 
   static String get info => [
-        'V$buildName',
+        'V${G.pkg.version}',
         // if (FlavorConfig.flavor.isNotEmpty) FlavorConfig.flavor,
         // if (FlavorConfig.dirty) t.appInfo.dirty,
         if (kDebugMode && showDebugMessage) t.appInfo.debug,
-        '($buildNumber)',
+        '(${G.pkg.buildNumber})',
       ].join(' ');
 
   @visibleForTesting
@@ -47,7 +49,7 @@ class AppInfo extends StatelessWidget {
         applicationVersion: info,
         applicationIcon:
             SvgPicture.asset('assets/icon/icon.svg', width: 50, height: 50),
-        applicationLegalese: t.appInfo.licenseNotice(buildYear: buildYear),
+        applicationLegalese: t.appInfo.licenseNotice(buildYear: 2025),
         children: [
           const SizedBox(height: 10),
           if (!Platform.isIOS && !Platform.isMacOS)

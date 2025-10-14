@@ -13,11 +13,13 @@ import 'package:saber/data/nextcloud/errors.dart';
 import 'package:saber/data/prefs.dart';
 import 'package:saber/data/version.dart';
 
+import '../../common/constant.dart';
+
 extension NextcloudClientExtension on NextcloudClient {
   static final Uri defaultNextcloudUri =
       Uri.parse('https://nc.saber.adil.hanney.org');
 
-  static final userAgent = 'Saber/$buildName '
+  static final userAgent = 'Saber/${G.pkg.version} '
       '(${Platform.operatingSystem}) '
       'Dart/${Platform.version.split(' ').first}';
   static IOClient newHttpClient() => IOClient(
