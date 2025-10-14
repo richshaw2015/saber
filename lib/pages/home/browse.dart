@@ -17,6 +17,8 @@ import 'package:saber/data/routes.dart';
 import 'package:saber/i18n/strings.g.dart';
 import 'package:saber/pages/editor/editor.dart';
 
+import '../../common/responsive.dart';
+
 class BrowsePage extends StatefulWidget {
   const BrowsePage({
     super.key,
@@ -130,7 +132,7 @@ class _BrowsePageState extends State<BrowsePage> {
           slivers: [
             SliverAppBar(
               collapsedHeight: kToolbarHeight,
-              expandedHeight: 200 - 8,
+              expandedHeight: RWD.expandedHeight - 8,
               pinned: true,
               scrolledUnderElevation: 1,
               flexibleSpace: FlexibleSpaceBar(

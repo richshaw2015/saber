@@ -145,21 +145,14 @@ class _SettingsPageState extends State<SettingsPage> {
               bottom: 8,
             ),
             sliver: SliverAppBar(
-              collapsedHeight: kToolbarHeight,
-              expandedHeight: 200,
+              expandedHeight: kToolbarHeight, // 固定为标准高度，去掉展开效果
               pinned: true,
               scrolledUnderElevation: 1,
-              flexibleSpace: FlexibleSpaceBar(
-                title: Text(
-                  t.home.titles.settings,
-                  style: TextStyle(color: colorScheme.onSurface),
-                ),
-                centerTitle: cupertino,
-                titlePadding: EdgeInsetsDirectional.only(
-                  start: cupertino ? 0 : 16,
-                  bottom: 16,
-                ),
+              title: Text(
+                t.home.titles.settings,
+                style: TextStyle(color: colorScheme.onSurface),
               ),
+              centerTitle: cupertino,
               actions: [
                 // if (UpdateManager.status.value != UpdateStatus.upToDate)
                 //   IconButton(
@@ -182,7 +175,7 @@ class _SettingsPageState extends State<SettingsPage> {
               //   padding: EdgeInsets.all(8),
               //   child: AppInfo(),
               // ),
-              const AppInfo(),
+              // const AppInfo(),
               SettingsSubtitle(
                 subtitle: t.settings.prefCategories.general,
               ),

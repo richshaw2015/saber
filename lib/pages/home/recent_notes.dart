@@ -17,6 +17,8 @@ import 'package:saber/data/routes.dart';
 import 'package:saber/i18n/strings.g.dart';
 import 'package:saber/pages/editor/editor.dart';
 
+import '../../common/responsive.dart';
+
 class RecentPage extends StatefulWidget {
   const RecentPage({super.key});
 
@@ -124,7 +126,7 @@ class _RecentPageState extends State<RecentPage> {
               ),
               sliver: SliverAppBar(
                 collapsedHeight: kToolbarHeight,
-                expandedHeight: 200,
+                expandedHeight: RWD.expandedHeight,
                 pinned: true,
                 scrolledUnderElevation: 1,
                 flexibleSpace: FlexibleSpaceBar(

@@ -52,6 +52,9 @@ class RWD {
   static double get innerHeight => Get.height - Get.mediaQuery.padding.top
       - Get.mediaQuery.padding.bottom;
 
+  // 折叠高度
+  static double get expandedHeight => Get.height < _screenPad ? 100.0 : 200.0;
+
   /// 根据设备返回不同的值
   static T rwdValue<T>(T mobile, [T? pad, T? desktop]) {
     if (isMobile) {
