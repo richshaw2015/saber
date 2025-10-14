@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:get/get.dart' hide Node;
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:meta/meta.dart';
@@ -167,17 +168,17 @@ Future<LinkMenuAction> _showCupertinoLinkMenu(
           _CupertinoAction(
             title: context.loc.open,
             icon: Icons.language_sharp,
-            onPressed: () => Navigator.of(context).pop(LinkMenuAction.launch),
+            onPressed: () => Get.back(result: LinkMenuAction.launch),
           ),
           _CupertinoAction(
             title: context.loc.copy,
             icon: Icons.copy_sharp,
-            onPressed: () => Navigator.of(context).pop(LinkMenuAction.copy),
+            onPressed: () => Get.back(result: LinkMenuAction.copy),
           ),
           _CupertinoAction(
             title: context.loc.remove,
             icon: Icons.link_off_sharp,
-            onPressed: () => Navigator.of(context).pop(LinkMenuAction.remove),
+            onPressed: () => Get.back(result: LinkMenuAction.remove),
           ),
         ],
       );
@@ -236,17 +237,17 @@ Future<LinkMenuAction> _showMaterialMenu(
           _MaterialAction(
             title: context.loc.open,
             icon: Icons.language_sharp,
-            onPressed: () => Navigator.of(context).pop(LinkMenuAction.launch),
+            onPressed: () => Get.back(result: LinkMenuAction.launch),
           ),
           _MaterialAction(
             title: context.loc.copy,
             icon: Icons.copy_sharp,
-            onPressed: () => Navigator.of(context).pop(LinkMenuAction.copy),
+            onPressed: () => Get.back(result: LinkMenuAction.copy),
           ),
           _MaterialAction(
             title: context.loc.remove,
             icon: Icons.link_off_sharp,
-            onPressed: () => Navigator.of(context).pop(LinkMenuAction.remove),
+            onPressed: () => Get.back(result: LinkMenuAction.remove),
           ),
         ],
       );

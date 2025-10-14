@@ -237,7 +237,7 @@ class _MoveNoteDialogState extends State<_MoveNoteDialog> {
       actions: [
         CupertinoDialogAction(
           onPressed: () {
-            Navigator.of(context).pop();
+            Get.back();
           },
           child: Text(t.common.cancel),
         ),
@@ -253,7 +253,7 @@ class _MoveNoteDialogState extends State<_MoveNoteDialog> {
             }
             widget.unselectNotes();
             if (!context.mounted) return;
-            Navigator.of(context).pop();
+            Get.back();
           },
           child: Text(t.home.moveNote.move),
         ),

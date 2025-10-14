@@ -238,7 +238,7 @@ class _LoginFlowDialogState extends State<_LoginFlowDialog> {
     super.initState();
     widget.loginFlow.future.then((_) {
       if (!mounted) return;
-      Navigator.of(context).pop();
+      Get.back();
     });
   }
 
@@ -260,7 +260,7 @@ class _LoginFlowDialogState extends State<_LoginFlowDialog> {
         TextButton(
           onPressed: () {
             widget.loginFlow.dispose();
-            Navigator.of(context).pop();
+            Get.back();
           },
           child: Text(t.common.cancel),
         ),

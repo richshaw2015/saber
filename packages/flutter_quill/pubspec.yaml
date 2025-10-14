@@ -25,6 +25,7 @@ dependencies:
   flutter_localizations:
     sdk: flutter
 
+  get: ^4.7.2
   dart_quill_delta: ^10.0.0
   collection: ^1.17.0
   quiver: ^3.2.0

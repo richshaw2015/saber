@@ -94,7 +94,7 @@ class _CanvasImageDialogState extends State<CanvasImageDialog> {
           if (!context.mounted) return;
           FileManager.exportFile(imageFileName, bytes,
               isImage: true, context: context);
-          Navigator.of(context).pop();
+          Get.back();
         },
         title: t.editor.imageOptions.download,
         child: const AdaptiveIcon(
@@ -105,7 +105,7 @@ class _CanvasImageDialogState extends State<CanvasImageDialog> {
       _CanvasImageDialogItem(
         onTap: () {
           widget.toggleAsBackground?.call();
-          Navigator.of(context).pop();
+          Get.back();
         },
         title: widget.isBackground
             ? t.editor.imageOptions.removeAsBackground
@@ -119,7 +119,7 @@ class _CanvasImageDialogState extends State<CanvasImageDialog> {
         onTap: () {
           widget.image.onDeleteImage?.call(widget.image);
           widget.redrawImage();
-          Navigator.of(context).pop();
+          Get.back();
         },
         title: t.editor.imageOptions.delete,
         child: const AdaptiveIcon(

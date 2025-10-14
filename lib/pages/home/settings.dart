@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:get/get.dart';
 import 'package:material_symbols_icons/symbols.dart';
 import 'package:saber/components/navbar/responsive_navbar.dart';
 import 'package:saber/components/settings/app_info.dart';
@@ -39,15 +39,15 @@ class SettingsPage extends StatefulWidget {
         actions: [
           CupertinoDialogAction(
             onPressed: () {
-              Navigator.of(context).pop(false);
+              Get.back(result: false);
             },
-            child: Text(MaterialLocalizations.of(context).cancelButtonLabel),
+            child: Text(t.common.cancel),
           ),
           CupertinoDialogAction(
             isDestructiveAction: true,
             onPressed: () {
               pref.value = pref.defaultValue;
-              Navigator.of(context).pop(true);
+              Get.back(result: true);
             },
             child: Text(t.settings.reset.button),
           ),

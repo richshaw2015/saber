@@ -1,11 +1,12 @@
 import 'package:flex_color_picker/flex_color_picker.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:saber/components/theming/adaptive_alert_dialog.dart';
 import 'package:saber/data/prefs.dart';
 import 'package:saber/i18n/strings.g.dart';
-import 'package:saber/pages/home/settings.dart';
 import 'package:saber/packages/stow/stow.dart';
+import 'package:saber/pages/home/settings.dart';
 
 class SettingsColor extends StatefulWidget {
   const SettingsColor({
@@ -65,7 +66,7 @@ class _SettingsSwitchState extends State<SettingsColor> {
         CupertinoDialogAction(
           child: Text(MaterialLocalizations.of(context).saveButtonLabel),
           onPressed: () {
-            Navigator.of(context).pop(true);
+            Get.back(result: true);
           },
         ),
       ],

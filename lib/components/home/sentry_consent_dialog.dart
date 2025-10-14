@@ -63,14 +63,14 @@ class SentryConsentDialog extends StatelessWidget {
         ElevatedButton(
           onPressed: () {
             stows.sentryConsent.value = SentryConsent.granted;
-            Navigator.of(context).pop();
+            Get.back();
           },
           child: Text(t.sentry.consent.answers.yes),
         ),
         ElevatedButton(
           onPressed: () {
             stows.sentryConsent.value = SentryConsent.denied;
-            Navigator.of(context).pop();
+            Get.back();
           },
           child: Text(t.sentry.consent.answers.no),
         ),
@@ -78,7 +78,7 @@ class SentryConsentDialog extends StatelessWidget {
           ElevatedButton(
             onPressed: () {
               stows.sentryConsent.value = SentryConsent.unknown;
-              Navigator.of(context).pop();
+              Get.back();
             },
             child: Text(t.sentry.consent.answers.later),
           ),

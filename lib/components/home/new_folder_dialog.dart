@@ -63,7 +63,7 @@ class _NewFolderDialogState extends State<NewFolderDialog> {
       actions: [
         CupertinoDialogAction(
           onPressed: () {
-            Navigator.of(context).pop();
+            Get.back();
           },
           child: Text(t.common.cancel),
         ),
@@ -72,7 +72,7 @@ class _NewFolderDialogState extends State<NewFolderDialog> {
             if (!_formKey.currentState!.validate()) return;
             final folderName = reformatFolderName(_controller.text);
             widget.createFolder(folderName);
-            Navigator.of(context).pop();
+            Get.back();
           },
           child: Text(t.home.newFolder.create),
         ),

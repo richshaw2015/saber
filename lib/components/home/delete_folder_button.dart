@@ -92,14 +92,14 @@ class _DeleteFolderDialogState extends State<_DeleteFolderDialog> {
             ),
       actions: [
         CupertinoDialogAction(
-          onPressed: () => Navigator.of(context).pop(),
+          onPressed: () => Get.back(),
           child: Text(t.common.cancel),
         ),
         CupertinoDialogAction(
           onPressed: deleteAllowed
               ? () async {
                   await widget.deleteFolder(widget.folderName);
-                  if (context.mounted) Navigator.of(context).pop();
+                  if (context.mounted) Get.back();
                 }
               : null,
           isDestructiveAction: true,

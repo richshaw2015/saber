@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 
 import '../../../common/utils/platform.dart';
@@ -131,7 +132,7 @@ class QuillToolbarSearchDialogState extends State<QuillToolbarSearchDialog> {
             tooltip: context.loc.close,
             visualDensity: VisualDensity.compact,
             onPressed: () {
-              Navigator.of(context).pop();
+              Get.back();
             },
           ),
           IconButton(

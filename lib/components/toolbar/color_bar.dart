@@ -329,7 +329,7 @@ class _ColorBarState extends State<ColorBar> {
           CupertinoDialogAction(
             child: Text(MaterialLocalizations.of(context).saveButtonLabel),
             onPressed: () {
-              Navigator.of(context).pop(true);
+              Get.back(true);
             },
           ),
         ],

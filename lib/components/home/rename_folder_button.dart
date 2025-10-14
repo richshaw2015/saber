@@ -98,7 +98,7 @@ class _RenameFolderDialogState extends State<_RenameFolderDialog> {
       actions: [
         CupertinoDialogAction(
           onPressed: () {
-            Navigator.of(context).pop();
+            Get.back();
           },
           child: Text(t.common.cancel),
         ),
@@ -109,7 +109,7 @@ class _RenameFolderDialogState extends State<_RenameFolderDialog> {
               await widget.renameFolder(_controller.text);
             }
             if (!context.mounted) return;
-            Navigator.of(context).pop();
+            Get.back();
           },
           child: Text(t.home.renameFolder.rename),
         ),

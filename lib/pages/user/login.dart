@@ -95,7 +95,7 @@ class _NcLoginPageState extends State<NcLoginPage> {
         leading: widget.forceAppBarLeading
             ? IconButton(
                 icon: const Icon(Icons.arrow_back),
-                onPressed: () => Navigator.of(context).pop(),
+                onPressed: () => Get.back(),
               )
             : null,
         bottom: PreferredSize(

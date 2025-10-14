@@ -119,7 +119,7 @@ class _RenameNoteDialogState extends State<_RenameNoteDialog> {
       actions: [
         CupertinoDialogAction(
           onPressed: () {
-            Navigator.of(context).pop();
+            Get.back();
           },
           child: Text(t.common.cancel),
         ),
@@ -130,7 +130,7 @@ class _RenameNoteDialogState extends State<_RenameNoteDialog> {
               await renameNote(_controller.text);
             }
             if (!context.mounted) return;
-            Navigator.of(context).pop();
+            Get.back();
             widget.unselectNotes();
           },
           child: Text(t.home.renameNote.rename),

@@ -1,3 +1,4 @@
+import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_colorpicker/flutter_colorpicker.dart' as color_picker
     show ColorPicker, MaterialPicker, colorToHex;
@@ -56,7 +57,7 @@ class ColorPickerDialogState extends State<ColorPickerDialog> {
         TextButton(
             onPressed: () {
               widget.onRequestChangeColor(context, selectedColor);
-              Navigator.of(context).pop();
+              Get.back();
             },
             child: Text(context.loc.ok)),
       ],
@@ -86,7 +87,7 @@ class ColorPickerDialogState extends State<ColorPickerDialog> {
                 TextButton(
                   onPressed: () {
                     widget.onRequestChangeColor(context, null);
-                    Navigator.of(context).pop();
+                    Get.back();
                   },
                   child: Text(context.loc.clear),
                 ),
@@ -100,7 +101,7 @@ class ColorPickerDialogState extends State<ColorPickerDialog> {
                     pickerColor: selectedColor,
                     onColorChanged: (color) {
                       widget.onRequestChangeColor(context, color);
-                      Navigator.of(context).pop();
+                      Get.back();
                     },
                   ),
                 if (pickerType == _PickerType.color)
