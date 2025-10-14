@@ -19,6 +19,6 @@ const Map<String, String> localeNames = {
   'pt-BR': 'português (Brasil)',
   'ru': 'русский',
   'tr': 'Türkçe',
-  'zh-Hans-CN': '中文 (简体中文, 中国)',
-  'zh-Hant-TW': '中文 (繁體, 台灣)',
+  'zh-Hans-CN': '简体中文',
+  'zh-Hant-TW': '繁體中文',
 };
