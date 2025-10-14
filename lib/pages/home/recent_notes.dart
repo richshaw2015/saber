@@ -137,7 +137,7 @@ class _RecentPageState extends State<RecentPage> {
                       start: cupertino ? 0 : 16, bottom: 16),
                 ),
                 actions: const [
-                  SyncingButton(),
+                  // SyncingButton(),
                 ],
               ),
             ),

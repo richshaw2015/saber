@@ -1,21 +1,23 @@
 import 'dart:async';
 import 'dart:io';
+
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:flutter/services.dart';
+import 'package:get/get.dart';
 import 'package:go_router/go_router.dart';
 import 'package:logging/logging.dart';
 import 'package:path_to_regexp/path_to_regexp.dart';
 import 'package:pdfrx/pdfrx.dart';
 import 'package:printing/printing.dart';
 import 'package:receive_sharing_intent/receive_sharing_intent.dart';
+import 'package:saber/common/constant.dart';
+import 'package:saber/common/strings.dart';
 import 'package:saber/components/canvas/pencil_shader.dart';
 import 'package:saber/components/theming/dynamic_material_app.dart';
 import 'package:saber/data/editor/pencil_sound.dart';
 import 'package:saber/data/file_manager/file_manager.dart';
 import 'package:saber/data/nextcloud/nc_http_overrides.dart';
-import 'package:saber/data/nextcloud/saber_syncer.dart';
 import 'package:saber/data/prefs.dart';
 import 'package:saber/data/routes.dart';
 import 'package:saber/data/tools/stroke_properties.dart';
@@ -26,10 +28,7 @@ import 'package:saber/pages/logs.dart';
 import 'package:saber/pages/user/login.dart';
 import 'package:saber/service/crashlytics/crash.dart';
 import 'package:worker_manager/worker_manager.dart';
-import 'package:workmanager/workmanager.dart';
-
-import 'common/constant.dart';
-import 'common/strings.dart';
+// import 'package:workmanager/workmanager.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -90,30 +89,30 @@ Future<void> appRunner() async {
 
   runApp(TranslationProvider(child: const App()));
 
-  startSyncAfterLoaded();
-  setupBackgroundSync();
+  // startSyncAfterLoaded();
+  // setupBackgroundSync();
 }
 
-void startSyncAfterLoaded() async {
-  await stows.username.waitUntilRead();
-  await stows.encPassword.waitUntilRead();
-
-  stows.username.removeListener(startSyncAfterLoaded);
-  stows.encPassword.removeListener(startSyncAfterLoaded);
-  if (!stows.loggedIn) {
-    // try again when logged in
-    stows.username.addListener(startSyncAfterLoaded);
-    stows.encPassword.addListener(startSyncAfterLoaded);
-    return;
-  }
-
-  // wait for other prefs to load
-  await Future.delayed(const Duration(milliseconds: 100));
-
-  // start syncing
-  syncer.downloader.refresh();
-  syncer.uploader.refresh();
-}
+// void startSyncAfterLoaded() async {
+//   await stows.username.waitUntilRead();
+//   await stows.encPassword.waitUntilRead();
+//
+//   stows.username.removeListener(startSyncAfterLoaded);
+//   stows.encPassword.removeListener(startSyncAfterLoaded);
+//   if (!stows.loggedIn) {
+//     // try again when logged in
+//     stows.username.addListener(startSyncAfterLoaded);
+//     stows.encPassword.addListener(startSyncAfterLoaded);
+//     return;
+//   }
+//
+//   // wait for other prefs to load
+//   await Future.delayed(const Duration(milliseconds: 100));
+//
+//   // start syncing
+//   syncer.downloader.refresh();
+//   syncer.uploader.refresh();
+// }
 
 void setLocale() {
   if (stows.locale.value.isNotEmpty &&
@@ -124,70 +123,70 @@ void setLocale() {
   }
 }
 
-void setupBackgroundSync() {
-  if (!Platform.isAndroid && !Platform.isIOS) return;
-  if (!stows.syncInBackground.loaded) {
-    return stows.syncInBackground.addListener(setupBackgroundSync);
-  } else {
-    stows.syncInBackground.removeListener(setupBackgroundSync);
-  }
-  if (!stows.syncInBackground.value) return;
+// void setupBackgroundSync() {
+//   if (!Platform.isAndroid && !Platform.isIOS) return;
+//   if (!stows.syncInBackground.loaded) {
+//     return stows.syncInBackground.addListener(setupBackgroundSync);
+//   } else {
+//     stows.syncInBackground.removeListener(setupBackgroundSync);
+//   }
+//   if (!stows.syncInBackground.value) return;
+//
+//   Workmanager().initialize(doBackgroundSync);
+//   const uniqueName = 'background-sync';
+//   const initialDelay = Duration(hours: 12);
+//   final constraints = Constraints(
+//     networkType: NetworkType.unmetered,
+//     requiresBatteryNotLow: true,
+//     requiresCharging: false,
+//     requiresDeviceIdle: true,
+//     requiresStorageNotLow: true,
+//   );
+//
+//   if (Platform.isAndroid)
+//     Workmanager().registerPeriodicTask(uniqueName, uniqueName,
+//         frequency: initialDelay,
+//         initialDelay: initialDelay,
+//         constraints: constraints);
+//   else if (Platform.isIOS)
+//     Workmanager().registerOneOffTask(uniqueName, uniqueName,
+//         initialDelay: initialDelay, constraints: constraints);
+// }
 
-  Workmanager().initialize(doBackgroundSync);
-  const uniqueName = 'background-sync';
-  const initialDelay = Duration(hours: 12);
-  final constraints = Constraints(
-    networkType: NetworkType.unmetered,
-    requiresBatteryNotLow: true,
-    requiresCharging: false,
-    requiresDeviceIdle: true,
-    requiresStorageNotLow: true,
-  );
-
-  if (Platform.isAndroid)
-    Workmanager().registerPeriodicTask(uniqueName, uniqueName,
-        frequency: initialDelay,
-        initialDelay: initialDelay,
-        constraints: constraints);
-  else if (Platform.isIOS)
-    Workmanager().registerOneOffTask(uniqueName, uniqueName,
-        initialDelay: initialDelay, constraints: constraints);
-}
-
-@pragma('vm:entry-point')
-void doBackgroundSync() {
-  Workmanager().executeTask((_, __) async {
-    // FlavorConfig.setupFromEnvironment();
-    StrokeOptionsExtension.setDefaults();
-    Editor.canRasterPdf = false;
-
-    await Future.wait([
-      FileManager.init(),
-      workerManager.init(),
-      stows.url.waitUntilRead(),
-      stows.allowInsecureConnections.waitUntilRead(),
-    ]);
-
-    /// Only sync a few files to avoid using too much data/battery
-    const maxFilesSynced = 10;
-    var filesSynced = 0;
-    final completer = Completer<bool>();
-    late final StreamSubscription<SaberSyncFile> transferSubscription;
-    void transferListener([_]) {
-      filesSynced++;
-      if (filesSynced >= maxFilesSynced ||
-          syncer.downloader.numPending <= 0 ||
-          completer.isCompleted) {
-        transferSubscription.cancel();
-        if (!completer.isCompleted) completer.complete(filesSynced > 0);
-      }
-    }
-
-    transferSubscription =
-        syncer.downloader.transferStream.listen(transferListener);
-    return completer.future;
-  });
-}
+// @pragma('vm:entry-point')
+// void doBackgroundSync() {
+//   Workmanager().executeTask((_, __) async {
+//     // FlavorConfig.setupFromEnvironment();
+//     StrokeOptionsExtension.setDefaults();
+//     Editor.canRasterPdf = false;
+//
+//     await Future.wait([
+//       FileManager.init(),
+//       workerManager.init(),
+//       stows.url.waitUntilRead(),
+//       stows.allowInsecureConnections.waitUntilRead(),
+//     ]);
+//
+//     /// Only sync a few files to avoid using too much data/battery
+//     const maxFilesSynced = 10;
+//     var filesSynced = 0;
+//     final completer = Completer<bool>();
+//     late final StreamSubscription<SaberSyncFile> transferSubscription;
+//     void transferListener([_]) {
+//       filesSynced++;
+//       if (filesSynced >= maxFilesSynced ||
+//           syncer.downloader.numPending <= 0 ||
+//           completer.isCompleted) {
+//         transferSubscription.cancel();
+//         if (!completer.isCompleted) completer.complete(filesSynced > 0);
+//       }
+//     }
+//
+//     transferSubscription =
+//         syncer.downloader.transferStream.listen(transferListener);
+//     return completer.future;
+//   });
+// }
 
 class App extends StatefulWidget {
   const App({super.key});

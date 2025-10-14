@@ -143,7 +143,7 @@ class _BrowsePageState extends State<BrowsePage> {
                     start: cupertino ? 0 : 16, bottom: 8),
               ),
               actions: const [
-                SyncingButton(),
+                // SyncingButton(),
               ],
             ),
             SliverToBoxAdapter(
