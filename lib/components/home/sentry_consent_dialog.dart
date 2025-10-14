@@ -1,5 +1,6 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:saber/components/settings/app_info.dart';
 import 'package:saber/data/prefs.dart';
 import 'package:saber/data/sentry/sentry_consent.dart';

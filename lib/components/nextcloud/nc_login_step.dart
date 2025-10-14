@@ -4,6 +4,7 @@ import 'dart:math';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
 import 'package:nextcloud/core.dart';
 import 'package:nextcloud/nextcloud.dart';
 import 'package:regexed_validator/regexed_validator.dart';

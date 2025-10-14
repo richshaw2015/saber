@@ -2,6 +2,7 @@ import 'package:flex_color_picker/flex_color_picker.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:get/get.dart';
 import 'package:saber/components/theming/adaptive_alert_dialog.dart';
 import 'package:saber/components/toolbar/color_option.dart';
 import 'package:saber/data/extensions/color_extensions.dart';
@@ -329,7 +330,7 @@ class _ColorBarState extends State<ColorBar> {
           CupertinoDialogAction(
             child: Text(MaterialLocalizations.of(context).saveButtonLabel),
             onPressed: () {
-              Get.back(true);
+              Get.back(result: true);
             },
           ),
         ],
