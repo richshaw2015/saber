@@ -93,8 +93,9 @@ class _SettingsSwitchState extends State<SettingsColor> {
               : null,
         ),
       ),
-      subtitle:
-          Text(widget.subtitle ?? '', style: const TextStyle(fontSize: 13)),
+      subtitle: widget.subtitle != null
+          ? Text(widget.subtitle ?? '', style: const TextStyle(fontSize: 13))
+          : null,
       trailing: Row(
         mainAxisSize: MainAxisSize.min,
         children: [

@@ -91,8 +91,9 @@ class _SettingsDropdownState<T> extends State<SettingsDropdown<T>> {
                 : null,
           ),
         ),
-        subtitle:
-            Text(widget.subtitle ?? '', style: const TextStyle(fontSize: 13)),
+        subtitle: widget.subtitle != null
+            ? Text(widget.subtitle!, style: const TextStyle(fontSize: 13))
+            : null,
         trailing: DropdownButton<T>(
           value: widget.pref.value,
           onChanged: (T? value) {

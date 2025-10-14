@@ -111,8 +111,9 @@ class _SettingsSelectionState<T extends num>
               : null,
         ),
       ),
-      subtitle:
-          Text(widget.subtitle ?? '', style: const TextStyle(fontSize: 13)),
+      subtitle: widget.subtitle != null
+          ? Text(widget.subtitle!, style: const TextStyle(fontSize: 13))
+          : null,
       trailing: AdaptiveToggleButtons(
         value: widget.pref.value,
         options: widget.options,
