@@ -37,21 +37,28 @@ part 'strings_en.g.dart';
 /// - if (LocaleSettings.currentLocale == AppLocale.en) // locale check
 enum AppLocale with BaseAppLocale<AppLocale, Translations> {
 	en(languageCode: 'en'),
-	ar(languageCode: 'ar'),
-	cs(languageCode: 'cs'),
-	de(languageCode: 'de'),
-	es(languageCode: 'es'),
-	fa(languageCode: 'fa'),
+	zhHansCn(languageCode: 'zh', scriptCode: 'Hans', countryCode: 'CN'),
+	zhHantTw(languageCode: 'zh', scriptCode: 'Hant', countryCode: 'TW'),
 	fr(languageCode: 'fr'),
-	he(languageCode: 'he'),
-	hu(languageCode: 'hu'),
+	es(languageCode: 'es'),
+	ru(languageCode: 'ru'),
+	ar(languageCode: 'ar'),
+
+	ptBr(languageCode: 'pt', countryCode: 'BR'),
+	de(languageCode: 'de'),
 	it(languageCode: 'it'),
 	ja(languageCode: 'ja'),
-	ptBr(languageCode: 'pt', countryCode: 'BR'),
-	ru(languageCode: 'ru'),
 	tr(languageCode: 'tr'),
-	zhHansCn(languageCode: 'zh', scriptCode: 'Hans', countryCode: 'CN'),
-	zhHantTw(languageCode: 'zh', scriptCode: 'Hant', countryCode: 'TW');
+
+	// cs - 捷克语 (Czech) - 捷克共和国 🇨🇿
+	// fa - 波斯语 (Persian/Farsi) - 伊朗 🇮🇷
+	// he - 希伯来语 (Hebrew) - 以色列 🇮🇱
+	// hu - 匈牙利语 (Hungarian) - 匈牙利 🇭🇺
+	cs(languageCode: 'cs'),
+	fa(languageCode: 'fa'),
+	he(languageCode: 'he'),
+	hu(languageCode: 'hu');
+
 
 	const AppLocale({
 		required this.languageCode,
