@@ -38,7 +38,7 @@ abstract class HomeRoutes {
           label: t.home.tabs.home,
           icon: const AdaptiveIcon(
             icon: Icons.home,
-            cupertinoIcon: CupertinoIcons.house_fill,
+            cupertinoIcon: CupertinoIcons.house,
           ),
         ),
         _Route(
@@ -46,7 +46,7 @@ abstract class HomeRoutes {
           label: t.home.tabs.browse,
           icon: const AdaptiveIcon(
             icon: Icons.folder,
-            cupertinoIcon: CupertinoIcons.folder_fill,
+            cupertinoIcon: CupertinoIcons.folder,
           ),
         ),
         _Route(
@@ -62,7 +62,7 @@ abstract class HomeRoutes {
           label: t.home.tabs.settings,
           icon: const AdaptiveIcon(
             icon: Icons.settings,
-            cupertinoIcon: CupertinoIcons.settings_solid,
+            cupertinoIcon: CupertinoIcons.settings,
           ),
         ),
       ];
