@@ -255,7 +255,7 @@ class Stroke {
       return smoothPathFromPolygon(validPolygon);
     }
 
-    return Path()..addPolygon(polygon, true);
+    return Path()..addPolygon(validPolygon, true);
   }
 
   /// Returns a list with every Nth point in [points].
@@ -278,8 +278,11 @@ class Stroke {
   }
 
   static Path smoothPathFromPolygon(List<Offset> polygon) {
+    if (polygon.isEmpty) return Path();
+    
     final path = Path();
     path.moveTo(polygon.first.dx, polygon.first.dy);
+    
     for (int i = 1; i < polygon.length - 1; i++) {
       final p1 = polygon[i];
       final p2 = polygon[i + 1];
