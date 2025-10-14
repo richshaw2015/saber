@@ -411,7 +411,7 @@ class _TranslationsSettingsPrefLabelsZhHansCn extends TranslationsSettingsPrefLa
 	@override String get autoStraightenLines => '自动拉直线';
 	@override String get simplifiedHomeLayout => '简化主页布局';
 	@override String get customDataDir => '自定义 Saber 文件夹';
-	@override String get pencilSoundSetting => '铅笔音效';
+	@override String get pencilSoundSetting => '画笔音效';
 	@override String get sentry => '错误报告';
 }
 
