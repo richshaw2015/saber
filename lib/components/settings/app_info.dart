@@ -21,7 +21,7 @@ class AppInfo extends StatelessWidget {
       Uri.parse('https://github.com/saber-notes/saber/releases');
 
   static String get info => [
-        'v$buildName',
+        'V$buildName',
         // if (FlavorConfig.flavor.isNotEmpty) FlavorConfig.flavor,
         // if (FlavorConfig.dirty) t.appInfo.dirty,
         if (kDebugMode && showDebugMessage) t.appInfo.debug,

@@ -181,11 +181,13 @@ class _SettingsPageState extends State<SettingsPage> {
           SliverSafeArea(
               sliver: SliverList.list(
             children: [
-              const NextcloudProfile(),
-              const Padding(
-                padding: EdgeInsets.all(8),
-                child: AppInfo(),
-              ),
+              // disable nextcloud profile for now
+              // const NextcloudProfile(),
+              // const Padding(
+              //   padding: EdgeInsets.all(8),
+              //   child: AppInfo(),
+              // ),
+              const AppInfo(),
               SettingsSubtitle(
                 subtitle: t.settings.prefCategories.general,
               ),

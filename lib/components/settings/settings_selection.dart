@@ -49,7 +49,9 @@ class _SettingsSelectionState<T extends num>
 
   void onChanged() {
     widget.afterChange?.call(widget.pref.value);
-    setState(() {});
+    if (mounted) {
+      setState(() {});
+    }
   }
 
   @override
