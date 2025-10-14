@@ -1,6 +1,5 @@
 import 'dart:io';
 
-import 'package:dynamic_color/dynamic_color.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -108,115 +107,98 @@ class _DynamicMaterialAppState extends State<DynamicMaterialApp> {
 
   @override
   Widget build(BuildContext context) {
-    return DynamicColorBuilder(
-      builder: (ColorScheme? lightDynamic, ColorScheme? darkDynamic) {
-        final Color seedColor;
-        final ColorScheme lightColorScheme;
-        final ColorScheme darkColorScheme;
+    final Color seedColor;
+    final ColorScheme lightColorScheme;
+    final ColorScheme darkColorScheme;
 
-        final chosenAccentColor = stows.accentColor.value;
-        if (chosenAccentColor != null &&
-            chosenAccentColor != Colors.transparent) {
-          seedColor = chosenAccentColor;
-          lightColorScheme = ColorScheme.fromSeed(
-            brightness: Brightness.light,
-            seedColor: seedColor,
-          );
-          darkColorScheme = ColorScheme.fromSeed(
-            brightness: Brightness.dark,
-            seedColor: seedColor,
-          );
-        } else if (lightDynamic != null && darkDynamic != null) {
-          lightColorScheme = lightDynamic.harmonized();
-          darkColorScheme = darkDynamic.harmonized();
-          seedColor = lightColorScheme.primary;
-        } else {
-          seedColor = widget.defaultSwatch;
-          lightColorScheme = ColorScheme.fromSeed(
-            brightness: Brightness.light,
-            seedColor: seedColor,
-          );
-          darkColorScheme = ColorScheme.fromSeed(
-            brightness: Brightness.dark,
-            seedColor: seedColor,
-          );
-        }
+    // 简化颜色选择逻辑：自定义颜色 -> 默认颜色
+    final chosenAccentColor = stows.accentColor.value;
+    if (chosenAccentColor != null &&
+        chosenAccentColor != Colors.transparent) {
+      seedColor = chosenAccentColor;
+    } else {
+      seedColor = widget.defaultSwatch;
+    }
 
-        // TODO 低版本的 flutter 暂不支持 contrastLevel 属性
-        final highContrastLightColorScheme = ColorScheme.fromSeed(
-          brightness: Brightness.light,
-          seedColor: seedColor,
-          surface: Colors.white,
-          // contrastLevel: 1,
-        );
-        final highContrastDarkColorScheme = ColorScheme.fromSeed(
-          brightness: Brightness.dark,
-          seedColor: seedColor,
-          surface: Colors.black,
-          // contrastLevel: 1,
-        );
+    lightColorScheme = ColorScheme.fromSeed(
+      brightness: Brightness.light,
+      seedColor: seedColor,
+    );
+    darkColorScheme = ColorScheme.fromSeed(
+      brightness: Brightness.dark,
+      seedColor: seedColor,
+    );
 
-        // 固定主题类型，不支持自定义
-        const platform = TargetPlatform.iOS;
-        // final platform = switch (stows.platform.value) {
-        //   TargetPlatform.iOS => TargetPlatform.iOS,
-        //   TargetPlatform.android => TargetPlatform.android,
-        //   TargetPlatform.linux => TargetPlatform.linux,
-        //   _ => defaultTargetPlatform,
-        // };
+    // TODO 低版本的 flutter 暂不支持 contrastLevel 属性
+    final highContrastLightColorScheme = ColorScheme.fromSeed(
+      brightness: Brightness.light,
+      seedColor: seedColor,
+      surface: Colors.white,
+      // contrastLevel: 1,
+    );
+    final highContrastDarkColorScheme = ColorScheme.fromSeed(
+      brightness: Brightness.dark,
+      seedColor: seedColor,
+      surface: Colors.black,
+      // contrastLevel: 1,
+    );
 
-        return MaterialApp.router(
-          routeInformationProvider:
-          widget.router.routeInformationProvider,
-          routeInformationParser: widget.router.routeInformationParser,
-          routerDelegate: widget.router.routerDelegate,
-          locale: TranslationProvider.of(context).flutterLocale,
-          supportedLocales: AppLocaleUtils.supportedLocales,
-          localizationsDelegates: const [
-            ...GlobalMaterialLocalizations.delegates,
-            FlutterQuillLocalizations.delegate,
-          ],
-          title: widget.title,
-          themeMode: stows.appTheme.loaded
-              ? stows.appTheme.value
-              : ThemeMode.system,
-          theme: ThemeData(
-            useMaterial3: true,
-            colorScheme: lightColorScheme,
-            textTheme: getTextTheme(Brightness.light),
-            scaffoldBackgroundColor: lightColorScheme.surface,
-            platform: platform,
-            pageTransitionsTheme: _pageTransitionsTheme,
-          ),
-          darkTheme: ThemeData(
-            useMaterial3: true,
-            colorScheme: darkColorScheme,
-            textTheme: getTextTheme(Brightness.dark),
-            scaffoldBackgroundColor: darkColorScheme.surface,
-            platform: platform,
-            pageTransitionsTheme: _pageTransitionsTheme,
-          ),
-          highContrastTheme: ThemeData(
-            useMaterial3: true,
-            colorScheme: highContrastLightColorScheme,
-            textTheme: getTextTheme(Brightness.light),
-            scaffoldBackgroundColor:
-            highContrastLightColorScheme.surface,
-            platform: platform,
-            pageTransitionsTheme: _pageTransitionsTheme,
-          ),
-          highContrastDarkTheme: ThemeData(
-            useMaterial3: true,
-            colorScheme: highContrastDarkColorScheme,
-            textTheme: getTextTheme(Brightness.dark),
-            scaffoldBackgroundColor:
-            highContrastDarkColorScheme.surface,
-            platform: platform,
-            pageTransitionsTheme: _pageTransitionsTheme,
-          ),
-          debugShowCheckedModeBanner: false,
-        );
-      },
+    // 固定主题类型，不支持自定义
+    const platform = TargetPlatform.iOS;
+    // final platform = switch (stows.platform.value) {
+    //   TargetPlatform.iOS => TargetPlatform.iOS,
+    //   TargetPlatform.android => TargetPlatform.android,
+    //   TargetPlatform.linux => TargetPlatform.linux,
+    //   _ => defaultTargetPlatform,
+    // };
+
+    return MaterialApp.router(
+      routeInformationProvider: widget.router.routeInformationProvider,
+      routeInformationParser: widget.router.routeInformationParser,
+      routerDelegate: widget.router.routerDelegate,
+      locale: TranslationProvider.of(context).flutterLocale,
+      supportedLocales: AppLocaleUtils.supportedLocales,
+      localizationsDelegates: const [
+        ...GlobalMaterialLocalizations.delegates,
+        FlutterQuillLocalizations.delegate,
+      ],
+      title: widget.title,
+      themeMode: stows.appTheme.loaded
+          ? stows.appTheme.value
+          : ThemeMode.system,
+      theme: ThemeData(
+        useMaterial3: true,
+        colorScheme: lightColorScheme,
+        textTheme: getTextTheme(Brightness.light),
+        scaffoldBackgroundColor: lightColorScheme.surface,
+        platform: platform,
+        pageTransitionsTheme: _pageTransitionsTheme,
+      ),
+      darkTheme: ThemeData(
+        useMaterial3: true,
+        colorScheme: darkColorScheme,
+        textTheme: getTextTheme(Brightness.dark),
+        scaffoldBackgroundColor: darkColorScheme.surface,
+        platform: platform,
+        pageTransitionsTheme: _pageTransitionsTheme,
+      ),
+      highContrastTheme: ThemeData(
+        useMaterial3: true,
+        colorScheme: highContrastLightColorScheme,
+        textTheme: getTextTheme(Brightness.light),
+        scaffoldBackgroundColor: highContrastLightColorScheme.surface,
+        platform: platform,
+        pageTransitionsTheme: _pageTransitionsTheme,
+      ),
+      highContrastDarkTheme: ThemeData(
+        useMaterial3: true,
+        colorScheme: highContrastDarkColorScheme,
+        textTheme: getTextTheme(Brightness.dark),
+        scaffoldBackgroundColor: highContrastDarkColorScheme.surface,
+        platform: platform,
+        pageTransitionsTheme: _pageTransitionsTheme,
+      ),
+      debugShowCheckedModeBanner: false,
     );
   }
 
