@@ -14,6 +14,8 @@ import 'package:saber/data/extensions/list_extensions.dart';
 import 'package:saber/data/extensions/point_extensions.dart';
 import 'package:saber/data/tools/pen.dart';
 
+import 'package:saber/service/log/log.dart';
+
 class Stroke {
   static final log = Logger('Stroke');
 
@@ -233,8 +235,24 @@ class Stroke {
   /// in [polygon] for performance.
   @protected
   Path getPath(List<Offset> polygon, {bool smooth = true}) {
+    // 过滤掉包含 NaN 的点
+    final validPolygon = polygon.where((offset) => 
+        offset.dx.isFinite && offset.dy.isFinite).toList();
+    
+    // 记录被过滤的无效点
+    final invalidCount = polygon.length - validPolygon.length;
+    if (invalidCount > 0) {
+      Log.w('Filtered $invalidCount invalid points (NaN/Infinity) from stroke polygon');
+    }
+    
+    // 如果没有有效点，返回空路径
+    if (validPolygon.isEmpty) {
+      Log.w('All points in polygon are invalid, returning empty path');
+      return Path();
+    }
+    
     if (smooth && options.isComplete) {
-      return smoothPathFromPolygon(polygon);
+      return smoothPathFromPolygon(validPolygon);
     }
 
     return Path()..addPolygon(polygon, true);
@@ -266,7 +284,12 @@ class Stroke {
       final p1 = polygon[i];
       final p2 = polygon[i + 1];
       final mid = (p1 + p2) / 2;
-      path.quadraticBezierTo(p1.dx, p1.dy, mid.dx, mid.dy);
+      
+      // 检查计算结果是否有效
+      if (p1.dx.isFinite && p1.dy.isFinite && 
+          mid.dx.isFinite && mid.dy.isFinite) {
+        path.quadraticBezierTo(p1.dx, p1.dy, mid.dx, mid.dy);
+      }
     }
     return path..close();
   }

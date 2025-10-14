@@ -5,6 +5,8 @@ import 'package:saber/components/canvas/image/editor_image.dart';
 import 'package:saber/data/editor/_color_change.dart';
 import 'package:saber/data/editor/page.dart';
 
+import '../../service/log/log.dart';
+
 class EditorHistory {
   static const int maxHistoryLength = 100;
 
@@ -84,8 +86,14 @@ class EditorHistory {
   EditorHistoryItem? removeAccidentalStroke() {
     _isRedoPossible = true;
     if (_past.isEmpty) return null;
-    assert(_past.last.type == EditorHistoryItemType.draw,
-        'Accidental stroke is not a draw');
+
+    // 缩放的时候，容易触发画笔
+    if (_past.last.type == EditorHistoryItemType.draw) {
+      Log.w('Accidental stroke is not a draw');
+      return null;
+    }
+    // assert(_past.last.type == EditorHistoryItemType.draw,
+    //     'Accidental stroke is not a draw');
     assert(_past.last.strokes.length == 1,
         'Accidental strokes should be single-stroke');
     assert(_past.last.images.isEmpty,
