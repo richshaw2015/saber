@@ -300,7 +300,8 @@ class _SettingsPageState extends State<SettingsPage> {
               ),
               SettingsSwitch(
                 title: t.settings.prefLabels.autoClearWhiteboardOnExit,
-                subtitle: t.settings.prefDescriptions.autoClearWhiteboardOnExit,
+                // no sync features currently
+                // subtitle: t.settings.prefDescriptions.autoClearWhiteboardOnExit,
                 icon: Icons.cleaning_services,
                 pref: stows.autoClearWhiteboardOnExit,
               ),
