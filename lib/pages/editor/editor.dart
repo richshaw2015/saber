@@ -51,6 +51,8 @@ import 'package:saber/data/tools/shape_pen.dart';
 import 'package:saber/i18n/strings.g.dart';
 import 'package:saber/pages/home/whiteboard.dart';
 import 'package:screenshot/screenshot.dart';
+
+import '../../service/log/log.dart';
 // 临时禁用 super_clipboard 来测试冲突
 // import 'package:super_clipboard/super_clipboard.dart';
 
@@ -664,6 +666,8 @@ class EditorState extends State<Editor> {
         final erased = (currentTool as Eraser).onDragEnd();
         if (tmpTool != null &&
             (stylusButtonPressed || stows.disableEraserAfterUse.value)) {
+          Log.d('自动禁用橡皮擦：$tmpTool $stylusButtonPressed ${stows.disableEraserAfterUse.value}');
+
           // restore previous tool
           stylusButtonPressed = false;
           currentTool = tmpTool!;
@@ -737,21 +741,30 @@ class EditorState extends State<Editor> {
   }
 
   void onStylusButtonChanged(bool buttonPressed) {
-    // whether the stylus button is or was pressed
-    stylusButtonPressed = stylusButtonPressed || buttonPressed;
+    Log.d('onStylusButtonChanged: buttonPressed=$buttonPressed, stylusButtonPressed=$stylusButtonPressed, isHovering=$isHovering, currentTool=$currentTool, tmpTool=$tmpTool');
 
     if (isHovering) {
       if (buttonPressed) {
+        // 触控笔按钮被按下：切换到橡皮擦
         if (currentTool is Eraser) return;
         tmpTool = currentTool;
         currentTool = Eraser();
+        stylusButtonPressed = true;  // 标记触控笔按钮被按下
         setState(() {});
       } else {
-        if (tmpTool != null) {
+        // 触控笔按钮被释放：恢复到之前的工具
+        // 只有当之前确实按下了触控笔按钮时才恢复
+        if (tmpTool != null && stylusButtonPressed) {
           currentTool = tmpTool!;
           tmpTool = null;
+          stylusButtonPressed = false;
           setState(() {});
         }
+      }
+    } else {
+      // 不在悬停状态时，重置触控笔按钮状态
+      if (!buttonPressed) {
+        stylusButtonPressed = false;
       }
     }
   }
