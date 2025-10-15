@@ -1,0 +1,11 @@
+[
+    {
+        "Name": "flutter_keyboard_visibility",
+        "License": "MIT License",
+        "License File": "LICENSE",
+        "Version Number": "6.0.0",
+        "Owner": "george.lihui@huawei.com",
+        "Upstream URL": "https://github.com/MisterJimson/flutter_keyboard_visibility",
+        "Description": "React to keyboard visibility changes."
+    }
+]
