@@ -1,7 +1,21 @@
 
 {
   "app": {
-    "signingConfigs": [],
+    "signingConfigs": [
+      {
+        "name": "default",
+        "type": "HarmonyOS",
+        "material": {
+          "storeFile": "/Users/neo/keys/ohos.p12",
+          "storePassword": "0000001B0484EFE4E550A246EA4A1C1B30932DE3BAE08528D16F222B36361B2F45BC7C0A2C5094B9E86FBA",
+          "keyAlias": "ohos",
+          "keyPassword": "0000001B3D3CE5B3144484BAD46A86C1622FEE71BE7A90C475AFC811C61173AD9749A4E01348214A9BC0CA",
+          "signAlg": "SHA256withECDSA",
+          "profile": "/Users/neo/keys/saberRelease.p7b",
+          "certpath": "/Users/neo/keys/ohos.cer"
+        }
+      }
+    ],
     "products": [
       {
         "name": "default",
