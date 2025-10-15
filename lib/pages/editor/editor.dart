@@ -1268,6 +1268,7 @@ class EditorState extends State<Editor> {
 
   // TODO 这里先简单返回，后续再完善剪贴板功能
   Future paste() async {
+    Log.w('TODO paste...');
     return;
 
     // /// Maps image formats to their file extension.
@@ -1495,6 +1496,8 @@ class EditorState extends State<Editor> {
               final page = coreInfo.pages[select.selectResult.pageIndex];
               final strokes = select.selectResult.strokes;
               final images = select.selectResult.images;
+
+              Log.d('$strokes, $images');
 
               for (Stroke stroke in strokes) {
                 page.strokes.remove(stroke);
