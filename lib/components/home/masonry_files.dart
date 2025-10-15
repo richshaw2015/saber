@@ -4,6 +4,8 @@ import 'package:saber/components/home/preview_card.dart';
 import 'package:saber/data/extensions/change_notifier_extensions.dart';
 import 'package:saber/data/prefs.dart';
 
+import '../../service/log/log.dart';
+
 class MasonryFiles extends StatefulWidget {
   const MasonryFiles({
     super.key,
@@ -53,6 +55,17 @@ class _MasonryFilesState extends State<MasonryFiles> {
         );
       },
     );
+  }
+
+  @override
+  void initState() {
+    super.initState();
+
+    stows.simplifiedHomeLayout.addListener(() {
+      Log.d('MasonryFiles: simplifiedHomeLayout changed');
+
+      if (mounted) setState(() {});
+    });
   }
 
   @override
