@@ -47,7 +47,9 @@ dependencies:
       url: "https://gitcode.com/openharmony-tpc/flutter_packages.git"
       path: "packages/url_launcher/url_launcher"
 
-  flutter_keyboard_visibility_temp_fork: ^0.1.1
+  flutter_keyboard_visibility:
+    path: "../flutter_keyboard_visibility/flutter_keyboard_visibility"
+
   quill_native_bridge: ^11.0.0
 
 dev_dependencies:
