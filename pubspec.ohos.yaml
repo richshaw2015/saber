@@ -252,8 +252,6 @@ dependency_overrides:
 
   file: ^7.0.0
 
-  quill_native_bridge_windows: 0.0.1
-
   # 强制使用新版本的 vector_math
   vector_math: ^2.2.0
   

@@ -1239,7 +1239,7 @@ packages:
     source: hosted
     version: "0.0.2"
   quill_native_bridge_windows:
-    dependency: "direct overridden"
+    dependency: transitive
     description:
       name: quill_native_bridge_windows
       sha256: "60e50d74238f22ceb43113d9a42b6627451dab9fc27f527b979a32051cf1da45"
