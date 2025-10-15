@@ -70,9 +70,9 @@ public class FlutterKeyboardVisibilityPlugin implements FlutterPlugin, ActivityA
       Rect r = new Rect();
       mainView.getWindowVisibleDisplayFrame(r);
 
-      // check if the visible part of the screen is less than 85%
+      // check if the visible part of the screen is less than 82%
       // if it is then the keyboard is showing
-      boolean newState = ((double)r.height() / (double)mainView.getRootView().getHeight()) < 0.85;
+      boolean newState = ((double)r.height() / (double)mainView.getRootView().getHeight()) < 0.82;
 
       if (newState != isVisible) {
         isVisible = newState;
