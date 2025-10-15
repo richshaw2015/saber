@@ -27,13 +27,18 @@ class DynamicMaterialApp extends StatefulWidget {
   static bool get isFullscreen => _isFullscreen.value;
 
   static void setFullscreen(bool value, {required bool updateSystem}) {
+    Log.d('Set fullscreen: $value, updateSystem: $updateSystem');
+
     _isFullscreen.value = value;
     if (!updateSystem) return;
 
-    if (Platform.isWindows || Platform.isLinux || Platform.isMacOS) {} else {
-      SystemChrome.setEnabledSystemUIMode(
-          value ? SystemUiMode.immersive : SystemUiMode.edgeToEdge);
+    if (value) {
+      SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: []);
+    } else {
+      SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: SystemUiOverlay.values);
     }
+    // SystemChrome.setEnabledSystemUIMode(
+    //     value ? SystemUiMode.immersive : SystemUiMode.edgeToEdge);
   }
 
   static void addFullscreenListener(void Function() listener) {
@@ -78,16 +83,6 @@ class _DynamicMaterialAppState extends State<DynamicMaterialApp> {
   void onChanged() {
     setState(() {});
   }
-
-  // @override
-  // void onWindowEnterFullScreen() {
-  //   DynamicMaterialApp.setFullscreen(true, updateSystem: false);
-  // }
-  //
-  // @override
-  // void onWindowLeaveFullScreen() {
-  //   DynamicMaterialApp.setFullscreen(false, updateSystem: false);
-  // }
 
   Future<void> _onFullscreenChange(bool systemOverlaysAreVisible) async {
     DynamicMaterialApp.setFullscreen(!systemOverlaysAreVisible,
