@@ -4,7 +4,7 @@ import 'package:saber/data/prefs.dart';
 import 'package:saber/i18n/strings.g.dart';
 import 'package:saber/pages/editor/editor.dart';
 
-class Whiteboard extends StatelessWidget {
+class Whiteboard extends StatefulWidget {
   const Whiteboard({super.key});
 
   static const String filePath = '/_whiteboard';
@@ -26,10 +26,45 @@ class Whiteboard extends StatelessWidget {
   }
 
   @override
+  State<Whiteboard> createState() => _WhiteboardState();
+}
+
+class _WhiteboardState extends State<Whiteboard> {
+  @override
+  void initState() {
+    super.initState();
+
+    // 监听影响白板显示的设置变化
+    stows.editorToolbarAlignment.addListener(_onSettingsChanged);
+    stows.editorToolbarShowInFullscreen.addListener(_onSettingsChanged);
+    stows.editorFingerDrawing.addListener(_onSettingsChanged);
+    stows.editorAutoInvert.addListener(_onSettingsChanged);
+  }
+
+  @override
+  void dispose() {
+    // 移除监听器
+    stows.editorToolbarAlignment.removeListener(_onSettingsChanged);
+    stows.editorToolbarShowInFullscreen.removeListener(_onSettingsChanged);
+    stows.editorFingerDrawing.removeListener(_onSettingsChanged);
+    stows.editorAutoInvert.removeListener(_onSettingsChanged);
+
+    super.dispose();
+  }
+
+  void _onSettingsChanged() {
+    if (mounted) {
+      setState(() {
+        // 触发重建，应用新的设置
+      });
+    }
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Editor(
-      key: _whiteboardKey,
-      path: filePath,
+      key: Whiteboard._whiteboardKey,
+      path: Whiteboard.filePath,
       customTitle: t.home.titles.whiteboard,
     );
   }
