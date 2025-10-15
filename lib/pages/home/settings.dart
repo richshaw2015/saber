@@ -425,9 +425,9 @@ class _SettingsPageState extends State<SettingsPage> {
                 icon: Icons.photo_size_select_large,
                 pref: stows.maxImageSize,
                 options: <ToggleButtonsOption<double>>[
-                  ToggleButtonsOption(500, Text('500', style: toggleBtnTextStyle)),
-                  ToggleButtonsOption(1000, Text('1000', style: toggleBtnTextStyle)),
-                  ToggleButtonsOption(2000, Text('2000', style: toggleBtnTextStyle)),
+                  ToggleButtonsOption(500, Text('500px', style: toggleBtnTextStyle)),
+                  ToggleButtonsOption(1000, Text('1000px', style: toggleBtnTextStyle)),
+                  ToggleButtonsOption(2000, Text('2000px', style: toggleBtnTextStyle)),
                 ],
               ),
               SettingsSelection(
