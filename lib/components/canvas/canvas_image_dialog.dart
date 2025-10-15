@@ -135,17 +135,10 @@ class _CanvasImageDialogState extends State<CanvasImageDialog> {
       children: children,
     );
     // issues with intrinsic sizes with each type of dialog
-    if (cupertino) {
-      return AspectRatio(
-        aspectRatio: widget.singleRow ? children.length / 1 : 2,
-        child: gridView,
-      );
-    } else {
-      return SizedBox(
-        width: 250,
-        child: gridView,
-      );
-    }
+    return AspectRatio(
+      aspectRatio: widget.singleRow ? children.length / 1 : 2,
+      child: gridView,
+    );
   }
 }
 
