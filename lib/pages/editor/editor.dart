@@ -1339,9 +1339,6 @@ class EditorState extends State<Editor> {
   @override
   Widget build(BuildContext context) {
     final colorScheme = Theme.of(context).colorScheme;
-    final platform = Theme.of(context).platform;
-    final cupertino =
-        platform == TargetPlatform.iOS || platform == TargetPlatform.macOS;
     final isToolbarVertical =
         stows.editorToolbarAlignment.value == AxisDirection.left ||
             stows.editorToolbarAlignment.value == AxisDirection.right;
@@ -1711,7 +1708,7 @@ class EditorState extends State<Editor> {
         floatingActionButton: (DynamicMaterialApp.isFullscreen &&
                 !stows.editorToolbarShowInFullscreen.value)
             ? FloatingActionButton(
-                shape: cupertino ? const CircleBorder() : null,
+                shape: const CircleBorder(),
                 onPressed: () {
                   DynamicMaterialApp.setFullscreen(false, updateSystem: true);
                 },

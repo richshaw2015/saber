@@ -51,8 +51,6 @@ class LogsPage extends StatelessWidget {
         builder: (context, _) {
           final theme = Theme.of(context);
           final colorScheme = theme.colorScheme;
-          final cupertino = theme.platform == TargetPlatform.iOS ||
-              theme.platform == TargetPlatform.macOS;
           return CustomScrollView(
             slivers: [
               SliverAppBar(
@@ -65,7 +63,7 @@ class LogsPage extends StatelessWidget {
                     t.logs.logs,
                     style: TextStyle(color: colorScheme.onSurface),
                   ),
-                  centerTitle: cupertino,
+                  centerTitle: true,
                 ),
                 actions: [
                   if (logsHistory.isFrozen)

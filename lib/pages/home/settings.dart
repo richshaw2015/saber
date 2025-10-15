@@ -116,19 +116,10 @@ class _SettingsPageState extends State<SettingsPage> {
     CupertinoIcons.arrow_down_to_line,
     CupertinoIcons.arrow_left_to_line,
   ];
-  static const materialDirectionIcons = [
-    Icons.north,
-    Icons.east,
-    Icons.south,
-    Icons.west,
-  ];
 
   @override
   Widget build(BuildContext context) {
     final colorScheme = Theme.of(context).colorScheme;
-    final platform = Theme.of(context).platform;
-    final cupertino =
-        platform == TargetPlatform.iOS || platform == TargetPlatform.macOS;
 
     // final bool requiresManualUpdates = FlavorConfig.appStore.isEmpty;
 
@@ -152,7 +143,7 @@ class _SettingsPageState extends State<SettingsPage> {
                 t.home.titles.settings,
                 style: TextStyle(color: colorScheme.onSurface),
               ),
-              centerTitle: cupertino,
+              centerTitle: true,
               actions: [
                 // if (UpdateManager.status.value != UpdateStatus.upToDate)
                 //   IconButton(
@@ -182,7 +173,7 @@ class _SettingsPageState extends State<SettingsPage> {
               ),
               SettingsDropdown(
                 title: t.settings.prefLabels.locale,
-                icon: cupertino ? CupertinoIcons.globe : Icons.language,
+                icon: CupertinoIcons.globe,
                 pref: stows.locale,
                 options: [
                   ToggleButtonsOption('', Text(t.settings.systemLanguage)),
@@ -305,12 +296,8 @@ class _SettingsPageState extends State<SettingsPage> {
                 subtitle: t.settings.prefDescriptions.hyperlegibleFont,
                 iconBuilder: (b) {
                   if (b)
-                    return cupertino
-                        ? CupertinoIcons.textformat
-                        : Icons.font_download;
-                  return cupertino
-                      ? CupertinoIcons.textformat_alt
-                      : Icons.font_download_off;
+                    return CupertinoIcons.textformat;
+                  return CupertinoIcons.textformat_alt;
                 },
                 pref: stows.hyperlegibleFont,
               ),
@@ -360,11 +347,9 @@ class _SettingsPageState extends State<SettingsPage> {
                 subtitle: t.settings.axisDirections[
                     _SettingsStows.editorToolbarAlignment.value],
                 iconBuilder: (num i) {
-                  if (i is! int || i >= materialDirectionIcons.length)
+                  if (i is! int || i >= cupertinoDirectionIcons.length)
                     return null;
-                  return cupertino
-                      ? cupertinoDirectionIcons[i]
-                      : materialDirectionIcons[i];
+                  return cupertinoDirectionIcons[i];
                 },
                 pref: _SettingsStows.editorToolbarAlignment,
                 optionsWidth: 60,
@@ -373,9 +358,7 @@ class _SettingsPageState extends State<SettingsPage> {
                     ToggleButtonsOption(
                       direction.index,
                       Icon(
-                        cupertino
-                            ? cupertinoDirectionIcons[direction.index]
-                            : materialDirectionIcons[direction.index],
+                        cupertinoDirectionIcons[direction.index],
                         semanticLabel:
                             t.settings.axisDirections[direction.index],
                       ),
@@ -385,7 +368,7 @@ class _SettingsPageState extends State<SettingsPage> {
               ),
               SettingsSwitch(
                 title: t.settings.prefLabels.editorToolbarShowInFullscreen,
-                icon: cupertino ? CupertinoIcons.fullscreen : Icons.fullscreen,
+                icon: CupertinoIcons.fullscreen,
                 pref: stows.editorToolbarShowInFullscreen,
               ),
               SettingsSwitch(
@@ -400,10 +383,8 @@ class _SettingsPageState extends State<SettingsPage> {
                 subtitle: t.settings.prefDescriptions.editorPromptRename,
                 iconBuilder: (b) {
                   if (b)
-                    return cupertino ? CupertinoIcons.keyboard : Icons.keyboard;
-                  return cupertino
-                      ? CupertinoIcons.keyboard_chevron_compact_down
-                      : Icons.keyboard_hide;
+                    return CupertinoIcons.keyboard;
+                  return CupertinoIcons.keyboard_chevron_compact_down;
                 },
                 pref: stows.editorPromptRename,
               ),
@@ -411,10 +392,8 @@ class _SettingsPageState extends State<SettingsPage> {
                 title: t.settings.prefLabels.hideHomeBackgrounds,
                 subtitle: t.settings.prefDescriptions.hideHomeBackgrounds,
                 iconBuilder: (b) {
-                  if (b) return cupertino ? CupertinoIcons.photo : Icons.photo;
-                  return cupertino
-                      ? CupertinoIcons.photo_fill
-                      : Icons.photo_library;
+                  if (b) return CupertinoIcons.photo;
+                  return CupertinoIcons.photo_fill;
                 },
                 pref: stows.hideHomeBackgrounds,
               ),

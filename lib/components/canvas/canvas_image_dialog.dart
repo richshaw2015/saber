@@ -44,9 +44,6 @@ class _CanvasImageDialogState extends State<CanvasImageDialog> {
 
   @override
   Widget build(BuildContext context) {
-    final platform = Theme.of(context).platform;
-    final cupertino =
-        platform == TargetPlatform.iOS || platform == TargetPlatform.macOS;
 
     final children = <Widget>[
       MergeSemantics(

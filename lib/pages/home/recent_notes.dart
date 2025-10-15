@@ -108,9 +108,6 @@ class _RecentPageState extends State<RecentPage> {
   @override
   Widget build(BuildContext context) {
     final colorScheme = Theme.of(context).colorScheme;
-    final platform = Theme.of(context).platform;
-    final cupertino =
-        platform == TargetPlatform.iOS || platform == TargetPlatform.macOS;
     final crossAxisCount = MediaQuery.sizeOf(context).width ~/ 300 + 1;
     return Scaffold(
       body: RefreshIndicator(
@@ -134,9 +131,9 @@ class _RecentPageState extends State<RecentPage> {
                     t.home.titles.home,
                     style: TextStyle(color: colorScheme.onSurface),
                   ),
-                  centerTitle: cupertino,
-                  titlePadding: EdgeInsetsDirectional.only(
-                      start: cupertino ? 0 : 16, bottom: 16),
+                  centerTitle: true,
+                  titlePadding: const EdgeInsetsDirectional.only(
+                      start: 0, bottom: 16),
                 ),
                 actions: const [
                   // SyncingButton(),
@@ -167,9 +164,7 @@ class _RecentPageState extends State<RecentPage> {
           ],
         ),
       ),
-      floatingActionButton: NewNoteButton(
-        cupertino: cupertino,
-      ),
+      floatingActionButton: const NewNoteButton(),
       persistentFooterButtons: selectedFiles.value.isEmpty
           ? null
           : [

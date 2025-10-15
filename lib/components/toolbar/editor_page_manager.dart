@@ -46,12 +46,9 @@ class _EditorPageManagerState extends State<EditorPageManager> {
 
   @override
   Widget build(BuildContext context) {
-    final platform = Theme.of(context).platform;
-    final cupertino =
-        platform == TargetPlatform.iOS || platform == TargetPlatform.macOS;
     return SizedBox(
-      width: cupertino ? null : 300,
-      height: cupertino ? 600 : null,
+      width: null,
+      height: 600,
       child: ReorderableListView.builder(
         buildDefaultDragHandles: false,
         itemCount: widget.coreInfo.pages.length,
@@ -73,8 +70,8 @@ class _EditorPageManagerState extends State<EditorPageManager> {
                         '${pageIndex + 1} / ${widget.coreInfo.pages.length}',
                       ),
                       ConstrainedBox(
-                        constraints: BoxConstraints(
-                          maxWidth: cupertino ? 100 : 150,
+                        constraints: const BoxConstraints(
+                          maxWidth: 100,
                           maxHeight: 250,
                         ),
                         child: FittedBox(

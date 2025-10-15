@@ -10,11 +10,9 @@ import 'package:saber/pages/editor/editor.dart';
 class NewNoteButton extends StatefulWidget {
   const NewNoteButton({
     super.key,
-    required this.cupertino,
     this.path,
   });
 
-  final bool cupertino;
   final String? path;
 
   @override
@@ -35,7 +33,7 @@ class _NewNoteButtonState extends State<NewNoteButton> {
       switchLabelPosition: Directionality.of(context) == TextDirection.rtl,
       dialRoot: (ctx, open, toggleChildren) {
         return FloatingActionButton(
-            shape: widget.cupertino ? const CircleBorder() : null,
+            shape: const CircleBorder(),
             onPressed: toggleChildren,
             tooltip: t.home.tooltips.newNote,
             child: const Icon(Icons.add));

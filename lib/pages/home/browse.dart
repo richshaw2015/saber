@@ -116,9 +116,6 @@ class _BrowsePageState extends State<BrowsePage> {
   @override
   Widget build(BuildContext context) {
     final colorScheme = Theme.of(context).colorScheme;
-    final platform = Theme.of(context).platform;
-    final cupertino =
-        platform == TargetPlatform.iOS || platform == TargetPlatform.macOS;
 
     final crossAxisCount = MediaQuery.sizeOf(context).width ~/ 300 + 1;
 
@@ -140,9 +137,9 @@ class _BrowsePageState extends State<BrowsePage> {
                   t.home.titles.browse,
                   style: TextStyle(color: colorScheme.onSurface),
                 ),
-                centerTitle: cupertino,
-                titlePadding: EdgeInsetsDirectional.only(
-                    start: cupertino ? 0 : 16, bottom: 8),
+                centerTitle: true,
+                titlePadding: const EdgeInsetsDirectional.only(
+                    start: 0, bottom: 8),
               ),
               actions: const [
                 // SyncingButton(),
@@ -214,7 +211,6 @@ class _BrowsePageState extends State<BrowsePage> {
         ),
       ),
       floatingActionButton: NewNoteButton(
-        cupertino: cupertino,
         path: path,
       ),
       persistentFooterButtons: selectedFiles.value.isEmpty

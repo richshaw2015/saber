@@ -20,34 +20,7 @@ class AdaptiveToggleButtons<T extends Object> extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    ThemeData theme = Theme.of(context);
-    bool cupertino = theme.platform == TargetPlatform.iOS ||
-        theme.platform == TargetPlatform.macOS;
-
-    if (cupertino) {
-      return _buildCupertino(context);
-    } else {
-      return _buildMaterial(context);
-    }
-  }
-
-  Widget _buildMaterial(BuildContext context) {
-    return ToggleButtons(
-      borderRadius: BorderRadius.circular(1000),
-      constraints: BoxConstraints(
-        minWidth: optionsWidth,
-        minHeight: optionsHeight,
-      ),
-      onPressed: (int index) {
-        onChange(options[index].value);
-      },
-      isSelected: [
-        for (ToggleButtonsOption option in options) value == option.value,
-      ],
-      children: [
-        for (ToggleButtonsOption option in options) option.widget,
-      ],
-    );
+    return _buildCupertino(context);
   }
 
   Widget _buildCupertino(BuildContext context) {
