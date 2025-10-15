@@ -4,6 +4,8 @@ import 'package:saber/data/prefs.dart';
 import 'package:saber/i18n/strings.g.dart';
 import 'package:saber/pages/editor/editor.dart';
 
+import '../../service/log/log.dart';
+
 class Whiteboard extends StatefulWidget {
   const Whiteboard({super.key});
 
@@ -17,12 +19,15 @@ class Whiteboard extends StatefulWidget {
 
   static SavingState? get savingState =>
       _whiteboardKey.currentState?.savingState.value;
+
   static void triggerSave() {
+    Log.d('Whiteboard: triggerSave called');
+
     final editorState = _whiteboardKey.currentState;
     if (editorState == null) return;
     assert(editorState.savingState.value == SavingState.waitingToSave);
     editorState.saveToFile();
-    editorState.snackBarNeedsToSaveBeforeExiting();
+    // editorState.snackBarNeedsToSaveBeforeExiting();
   }
 
   @override
@@ -39,6 +44,10 @@ class _WhiteboardState extends State<Whiteboard> {
     stows.editorToolbarShowInFullscreen.addListener(_onSettingsChanged);
     stows.editorFingerDrawing.addListener(_onSettingsChanged);
     stows.editorAutoInvert.addListener(_onSettingsChanged);
+    stows.preferGreyscale.addListener(_onSettingsChanged);
+    stows.hideFingerDrawingToggle.addListener(_onSettingsChanged);
+    stows.autoStraightenLines.addListener(_onSettingsChanged);
+    stows.disableEraserAfterUse.addListener(_onSettingsChanged);
   }
 
   @override
@@ -48,6 +57,10 @@ class _WhiteboardState extends State<Whiteboard> {
     stows.editorToolbarShowInFullscreen.removeListener(_onSettingsChanged);
     stows.editorFingerDrawing.removeListener(_onSettingsChanged);
     stows.editorAutoInvert.removeListener(_onSettingsChanged);
+    stows.preferGreyscale.removeListener(_onSettingsChanged);
+    stows.hideFingerDrawingToggle.removeListener(_onSettingsChanged);
+    stows.autoStraightenLines.removeListener(_onSettingsChanged);
+    stows.disableEraserAfterUse.removeListener(_onSettingsChanged);
 
     super.dispose();
   }

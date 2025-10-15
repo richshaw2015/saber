@@ -46,16 +46,21 @@ class _ResponsiveNavbarState extends State<ResponsiveNavbar> {
         {'subpage': HomePage.whiteboardSubpage});
     if (HomeRoutes.getRoute(widget.selectedIndex) == whiteboardPath) {
       final savingState = Whiteboard.savingState;
-      switch (savingState) {
-        case null:
-        case SavingState.saved:
-          break;
-        case SavingState.waitingToSave:
-          Whiteboard.triggerSave();
-          return;
-        case SavingState.saving:
-          return;
+      // no longer block navigation jump
+      if (savingState == SavingState.waitingToSave) {
+        Whiteboard.triggerSave();
       }
+
+      // switch (savingState) {
+      //   case null:
+      //   case SavingState.saved:
+      //     break;
+      //   case SavingState.waitingToSave:
+      //     Whiteboard.triggerSave();
+      //     return;
+      //   case SavingState.saving:
+      //     return;
+      // }
     }
 
     context.go(HomeRoutes.getRoute(index));
