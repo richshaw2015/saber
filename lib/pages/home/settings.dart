@@ -19,6 +19,8 @@ import 'package:saber/data/tools/shape_pen.dart';
 import 'package:saber/i18n/strings.g.dart';
 import 'package:saber/packages/stow/stow.dart';
 
+import '../../common/config.dart';
+
 class SettingsPage extends StatefulWidget {
   const SettingsPage({super.key});
 
@@ -64,12 +66,6 @@ abstract class _SettingsStows {
     (int value) => ThemeMode.values[value],
   );
 
-  // static final platform = TransformedStow(
-  //   stows.platform,
-  //   (TargetPlatform value) => value.index,
-  //   (int value) => TargetPlatform.values[value],
-  // );
-
   static final layoutSize = TransformedStow(
     stows.layoutSize,
     (LayoutSize value) => value.index,
@@ -98,18 +94,6 @@ class _SettingsPageState extends State<SettingsPage> {
     setState(() {});
   }
 
-  // static final bool usesCupertinoByDefault = switch (defaultTargetPlatform) {
-  //   TargetPlatform.iOS => true,
-  //   TargetPlatform.macOS => true,
-  //   _ => false,
-  // };
-  // static final bool usesYaruByDefault = switch (defaultTargetPlatform) {
-  //   TargetPlatform.linux => true,
-  //   _ => false,
-  // };
-  // static final bool usesMaterialByDefault =
-  //     !usesCupertinoByDefault && !usesYaruByDefault;
-
   static const cupertinoDirectionIcons = [
     CupertinoIcons.arrow_up_to_line,
     CupertinoIcons.arrow_right_to_line,
@@ -120,7 +104,9 @@ class _SettingsPageState extends State<SettingsPage> {
   @override
   Widget build(BuildContext context) {
     final colorScheme = Theme.of(context).colorScheme;
-
+    final toggleBtnTextStyle = const TextStyle(
+      fontSize: Cfg.fontBodySmall,
+    );
     // final bool requiresManualUpdates = FlavorConfig.appStore.isEmpty;
 
     // final IconData materialIcon = switch (defaultTargetPlatform) {
@@ -176,7 +162,7 @@ class _SettingsPageState extends State<SettingsPage> {
                 icon: CupertinoIcons.globe,
                 pref: stows.locale,
                 options: [
-                  ToggleButtonsOption('', Text(t.settings.systemLanguage)),
+                  ToggleButtonsOption('', Text(t.settings.systemLanguage, style: toggleBtnTextStyle,)),
                   ...AppLocaleUtils.supportedLocales.map((locale) {
                     final String localeCode = locale.toLanguageTag();
                     String? localeName = localeNames[localeCode];
@@ -184,7 +170,7 @@ class _SettingsPageState extends State<SettingsPage> {
                         'Missing locale name for $localeCode');
                     return ToggleButtonsOption(
                       localeCode,
-                      Text(localeName ?? localeCode),
+                      Text(localeName ?? localeCode, style: toggleBtnTextStyle),
                     );
                   }),
                 ],
@@ -406,9 +392,9 @@ class _SettingsPageState extends State<SettingsPage> {
                 title: t.settings.prefLabels.recentColorsLength,
                 icon: Icons.history,
                 pref: stows.recentColorsLength,
-                options: const [
-                  ToggleButtonsOption(5, Text('5')),
-                  ToggleButtonsOption(10, Text('10')),
+                options: [
+                  ToggleButtonsOption(5, Text('5', style: toggleBtnTextStyle)),
+                  ToggleButtonsOption(10, Text('10', style: toggleBtnTextStyle)),
                 ],
               ),
               SettingsSwitch(
@@ -438,10 +424,10 @@ class _SettingsPageState extends State<SettingsPage> {
                 subtitle: t.settings.prefDescriptions.maxImageSize,
                 icon: Icons.photo_size_select_large,
                 pref: stows.maxImageSize,
-                options: const <ToggleButtonsOption<double>>[
-                  ToggleButtonsOption(500, Text('500')),
-                  ToggleButtonsOption(1000, Text('1000')),
-                  ToggleButtonsOption(2000, Text('2000')),
+                options: <ToggleButtonsOption<double>>[
+                  ToggleButtonsOption(500, Text('500', style: toggleBtnTextStyle)),
+                  ToggleButtonsOption(1000, Text('1000', style: toggleBtnTextStyle)),
+                  ToggleButtonsOption(2000, Text('2000', style: toggleBtnTextStyle)),
                 ],
               ),
               SettingsSelection(
@@ -450,9 +436,9 @@ class _SettingsPageState extends State<SettingsPage> {
                 icon: Icons.save,
                 pref: stows.autosaveDelay,
                 options: [
-                  const ToggleButtonsOption(5000, Text('5s')),
-                  const ToggleButtonsOption(10000, Text('10s')),
-                  ToggleButtonsOption(-1, Text(t.settings.autosaveDisabled)),
+                  ToggleButtonsOption(5000, Text('5s', style: toggleBtnTextStyle)),
+                  ToggleButtonsOption(10000, Text('10s', style: toggleBtnTextStyle)),
+                  ToggleButtonsOption(-1, Text(t.settings.autosaveDisabled, style: toggleBtnTextStyle)),
                 ],
               ),
               SettingsSelection(
@@ -461,10 +447,10 @@ class _SettingsPageState extends State<SettingsPage> {
                 icon: FontAwesomeIcons.shapes,
                 pref: stows.shapeRecognitionDelay,
                 options: [
-                  const ToggleButtonsOption(500, Text('0.5s')),
-                  const ToggleButtonsOption(1000, Text('1s')),
+                  ToggleButtonsOption(500, Text('0.5s', style: toggleBtnTextStyle)),
+                  ToggleButtonsOption(1000, Text('1s', style: toggleBtnTextStyle)),
                   ToggleButtonsOption(
-                      -1, Text(t.settings.shapeRecognitionDisabled)),
+                      -1, Text(t.settings.shapeRecognitionDisabled, style: toggleBtnTextStyle)),
                 ],
                 afterChange: (ms) {
                   ShapePen.debounceDuration = ShapePen.getDebounceFromPref();
