@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -56,15 +54,15 @@ class DynamicMaterialApp extends StatefulWidget {
 class _DynamicMaterialAppState extends State<DynamicMaterialApp> {
   /// Synced with [PageTransitionsTheme._defaultBuilders]
   /// but with PredictiveBackPageTransitionsBuilder for Android.
-  static const _pageTransitionsTheme = PageTransitionsTheme(
-    builders: {
-      TargetPlatform.android: PredictiveBackPageTransitionsBuilder(),
-      TargetPlatform.iOS: CupertinoPageTransitionsBuilder(),
-      TargetPlatform.macOS: CupertinoPageTransitionsBuilder(),
-      TargetPlatform.windows: ZoomPageTransitionsBuilder(),
-      TargetPlatform.linux: ZoomPageTransitionsBuilder(),
-    },
-  );
+  // static const _pageTransitionsTheme = PageTransitionsTheme(
+  //   builders: {
+  //     TargetPlatform.android: PredictiveBackPageTransitionsBuilder(),
+  //     TargetPlatform.iOS: CupertinoPageTransitionsBuilder(),
+  //     TargetPlatform.macOS: CupertinoPageTransitionsBuilder(),
+  //     TargetPlatform.windows: ZoomPageTransitionsBuilder(),
+  //     TargetPlatform.linux: ZoomPageTransitionsBuilder(),
+  //   },
+  // );
 
   @override
   void initState() {
@@ -73,7 +71,6 @@ class _DynamicMaterialAppState extends State<DynamicMaterialApp> {
     Log.i(Get.size);
 
     stows.appTheme.addListener(onChanged);
-    stows.platform.addListener(onChanged);
     stows.accentColor.addListener(onChanged);
     stows.hyperlegibleFont.addListener(onChanged);
 
@@ -167,7 +164,6 @@ class _DynamicMaterialAppState extends State<DynamicMaterialApp> {
         textTheme: getTextTheme(Brightness.light),
         scaffoldBackgroundColor: lightColorScheme.surface,
         platform: platform,
-        pageTransitionsTheme: _pageTransitionsTheme,
       ),
       darkTheme: ThemeData(
         useMaterial3: true,
@@ -175,7 +171,6 @@ class _DynamicMaterialAppState extends State<DynamicMaterialApp> {
         textTheme: getTextTheme(Brightness.dark),
         scaffoldBackgroundColor: darkColorScheme.surface,
         platform: platform,
-        pageTransitionsTheme: _pageTransitionsTheme,
       ),
       highContrastTheme: ThemeData(
         useMaterial3: true,
@@ -183,7 +178,6 @@ class _DynamicMaterialAppState extends State<DynamicMaterialApp> {
         textTheme: getTextTheme(Brightness.light),
         scaffoldBackgroundColor: highContrastLightColorScheme.surface,
         platform: platform,
-        pageTransitionsTheme: _pageTransitionsTheme,
       ),
       highContrastDarkTheme: ThemeData(
         useMaterial3: true,
@@ -191,7 +185,6 @@ class _DynamicMaterialAppState extends State<DynamicMaterialApp> {
         textTheme: getTextTheme(Brightness.dark),
         scaffoldBackgroundColor: highContrastDarkColorScheme.surface,
         platform: platform,
-        pageTransitionsTheme: _pageTransitionsTheme,
       ),
       debugShowCheckedModeBanner: false,
     );
@@ -200,7 +193,6 @@ class _DynamicMaterialAppState extends State<DynamicMaterialApp> {
   @override
   void dispose() {
     stows.appTheme.removeListener(onChanged);
-    stows.platform.removeListener(onChanged);
     stows.accentColor.removeListener(onChanged);
     stows.hyperlegibleFont.removeListener(onChanged);
 
