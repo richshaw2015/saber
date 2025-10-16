@@ -52,13 +52,6 @@ class AppInfo extends StatelessWidget {
         applicationLegalese: t.appInfo.licenseNotice(buildYear: 2025),
         children: [
           const SizedBox(height: 10),
-          if (!Platform.isIOS && !Platform.isMacOS)
-            // Apple rejected the app for having donations not through the App Store
-            TextButton(
-              onPressed: () => launchUrl(sponsorUrl),
-              child: SizedBox(
-                  width: double.infinity, child: Text(t.appInfo.sponsorButton)),
-            ),
           TextButton(
             onPressed: () => launchUrl(licenseUrl),
             child: SizedBox(

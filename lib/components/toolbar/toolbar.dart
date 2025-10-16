@@ -28,6 +28,8 @@ import 'package:saber/data/tools/pencil.dart';
 import 'package:saber/data/tools/select.dart';
 import 'package:saber/i18n/strings.g.dart';
 
+import '../../common/responsive.dart';
+
 class Toolbar extends StatefulWidget {
   const Toolbar({
     super.key,
@@ -298,9 +300,8 @@ class _ToolbarState extends State<Toolbar> {
                             iconTheme: iconTheme,
                           ),
                         ),
-                        // scrollable on Android and iOS
-                        multiRowsDisplay:
-                            !Platform.isAndroid && !Platform.isIOS,
+                        // scrollable on phone or tablet
+                        multiRowsDisplay: Stows.isDesktop,
                         showUndo: false,
                         showRedo: false,
                         showFontSize: false,

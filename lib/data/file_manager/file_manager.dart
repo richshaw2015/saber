@@ -3,7 +3,6 @@ import 'dart:io';
 
 import 'package:archive/archive_io.dart';
 import 'package:device_info_plus/device_info_plus.dart';
-import 'package:file_picker/file_picker.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/widgets.dart';
 import 'package:intl/intl.dart' show DateFormat;
@@ -262,49 +261,23 @@ class FileManager {
       await file.writeAsBytes(bytes);
       return file;
     }
-
-    if (Platform.isAndroid || Platform.isIOS) {
-      if (isImage) {
-        // request permission
-        final permissionGranted = await _requestPhotosPermission();
-        // save image to gallery
-        if (permissionGranted) {
-          await SaverGallery.saveImage(
-            Uint8List.fromList(bytes),
-            fileName: fileName,
-            androidRelativePath: 'Pictures/Saber',
-            skipIfExists: true,
-          );
-        }
-      } else {
-        // share file
-        tempFile = await getTempFile();
-        if (Platform.isIOS || Platform.isMacOS) {
-          if (!context.mounted) return;
-          final box = context.findRenderObject() as RenderBox;
-          // 旧版本 share_plus API
-          await Share.shareXFiles(
-            [XFile(tempFile.path)],
-            // iOS requires a sharePositionOrigin for the share sheet to appear
-            sharePositionOrigin: box.localToGlobal(Offset.zero) & box.size,
-          );
-        } else {
-          // 旧版本 share_plus API
-          await Share.shareXFiles([XFile(tempFile.path)]);
-        }
+    if (isImage) {
+      // request permission
+      final permissionGranted = await _requestPhotosPermission();
+      // save image to gallery
+      if (permissionGranted) {
+        await SaverGallery.saveImage(
+          Uint8List.fromList(bytes),
+          fileName: fileName,
+          androidRelativePath: 'Pictures/Saber',
+          skipIfExists: true,
+        );
       }
     } else {
-      // desktop, open save-as dialog
-      String? outputFile = await FilePicker.platform.saveFile(
-        fileName: fileName,
-        initialDirectory: (await getDownloadsDirectory())?.path,
-        type: FileType.custom,
-        allowedExtensions: [fileName.split('.').last],
-      );
-      if (outputFile != null) {
-        File file = File(outputFile);
-        await file.writeAsBytes(bytes);
-      }
+      // share file
+      tempFile = await getTempFile();
+      // 旧版本 share_plus API
+      await Share.shareXFiles([XFile(tempFile.path)]);
     }
 
     // delete temp file if it isn't null
@@ -312,19 +285,17 @@ class FileManager {
   }
 
   static Future<bool> _requestPhotosPermission() async {
-    if (Platform.isIOS) {
-      return await Permission.photosAddOnly.request().isGranted;
-    } else if (!Platform.isAndroid) {
-      return true;
-    }
-
-    final sdkInt = await DeviceInfoPlugin()
-        .androidInfo
-        .then((info) => info.version.sdkInt);
-    if (sdkInt > 33) {
-      return await Permission.photos.request().isGranted;
+    if (Platform.isAndroid) {
+      final sdkInt = await DeviceInfoPlugin()
+          .androidInfo
+          .then((info) => info.version.sdkInt);
+      if (sdkInt > 33) {
+        return await Permission.photos.request().isGranted;
+      } else {
+        return await Permission.storage.request().isGranted;
+      }
     } else {
-      return await Permission.storage.request().isGranted;
+      return await Permission.photosAddOnly.request().isGranted;
     }
   }
 

@@ -285,25 +285,23 @@ class _AppState extends State<App> {
   }
 
   void setupSharingIntent() {
-    if (Platform.isAndroid || Platform.isIOS) {
-      // for files opened while the app is closed
-      ReceiveSharingIntent.instance
-          .getInitialMedia()
-          .then((List<SharedMediaFile> files) {
-        for (final file in files) {
-          App.openFile(file);
-        }
-      });
+    // for files opened while the app is closed
+    ReceiveSharingIntent.instance
+        .getInitialMedia()
+        .then((List<SharedMediaFile> files) {
+      for (final file in files) {
+        App.openFile(file);
+      }
+    });
 
-      // for files opened while the app is open
-      final stream = ReceiveSharingIntent.instance.getMediaStream();
-      _intentDataStreamSubscription =
-          stream.listen((List<SharedMediaFile> files) {
-        for (final file in files) {
-          App.openFile(file);
-        }
-      });
-    }
+    // for files opened while the app is open
+    final stream = ReceiveSharingIntent.instance.getMediaStream();
+    _intentDataStreamSubscription =
+        stream.listen((List<SharedMediaFile> files) {
+      for (final file in files) {
+        App.openFile(file);
+      }
+    });
   }
 
   @override
