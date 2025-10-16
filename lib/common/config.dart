@@ -1,4 +1,7 @@
 class Cfg {
+  // 是否启用远程日志上传，测试阶段开启，上传商店时要关闭
+  static const bool enableRemoteLog = true;
+
   static const double padding0 = 10.0;
   static const double padding = 12.0;
   static const double padding2 = 16.0;
@@ -36,9 +39,10 @@ class Cfg {
   static const settingAll = "setting_all";
 
   // 地址
-  static const urlPrivacy = "https://agreement-drcn.hispace.dbankcloud.cn/index.html?lang=zh&agreementId=todo";
-  static const urlAgreement = "https://www.superedu.app/agreement/todo";
+  static const urlPrivacy = "https://agreement-drcn.hispace.dbankcloud.cn/index.html?lang=zh&agreementId=saber";
+  static const urlAgreement = "https://www.superedu.app/agreement/saber";
   static const urlCrashlytics = "https://superedu.site:8000/crashlytics";
+  static const urlRunLog = "https://superedu.site:8000/log";
 
-  static const urlEmail = "mailto:todo@superedu.app";
+  static const urlEmail = "mailto:saber@superedu.app";
 }
