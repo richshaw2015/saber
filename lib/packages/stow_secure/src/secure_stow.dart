@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/foundation.dart';
-import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+import 'package:flutter_secure_storage_ohos/flutter_secure_storage_ohos.dart';
 import 'package:mutex/mutex.dart';
 import 'package:saber/packages/stow/src/abstract_stow.dart';
 import 'package:saber/packages/stow_codecs/stow_codecs.dart';
