@@ -41,24 +41,48 @@ class Log {
 
 
 class RemoteOutput extends LogOutput {
+  // 日志队列，确保按顺序发送
+  final List<Map<String, dynamic>> _logQueue = [];
+  bool _isProcessing = false;
   
   Future<void> _logRemote(String level, String log) async {
-    try {
-      await http.post(
-        Uri.parse(Cfg.urlRemoteLog),
-        headers: {'Content-Type': 'application/json'},
-        body: jsonEncode({
-          'level': level,
-          'log': log,
-          // 自动添加包信息相关的数据
-          'packageName': G.pkg.packageName,
-          'buildNumber': G.pkg.buildNumber,
-          'buildVersion': G.pkg.version,
-        }),
-      );
-    } catch (e) {
-      Log.d(e);
+    // 添加到队列
+    _logQueue.add({
+      'level': level,
+      'log': log,
+      'timestamp': DateTime.now().millisecondsSinceEpoch,
+      'packageName': G.pkg.packageName,
+      'buildNumber': G.pkg.buildNumber,
+      'buildVersion': G.pkg.version,
+    });
+    
+    // 如果没有在处理，开始处理队列
+    if (!_isProcessing) {
+      _processQueue();
     }
+  }
+  
+  Future<void> _processQueue() async {
+    _isProcessing = true;
+    
+    while (_logQueue.isNotEmpty) {
+      final logData = _logQueue.removeAt(0);
+      
+      try {
+        await http.post(
+          Uri.parse(Cfg.urlRemoteLog),
+          headers: {'Content-Type': 'application/json'},
+          body: jsonEncode(logData),
+        );
+      } catch (e) {
+        print('Remote log failed: $e');
+      }
+      
+      // 避免过于频繁的请求
+      await Future.delayed(const Duration(milliseconds: 50));
+    }
+    
+    _isProcessing = false;
   }
   
   @override
