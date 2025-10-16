@@ -42,10 +42,10 @@ class Log {
 
 class RemoteOutput extends LogOutput {
   
-  Future<void> _doUpload(String level, String log) async {
+  Future<void> _logRemote(String level, String log) async {
     try {
       await http.post(
-        Uri.parse(Cfg.urlRunLog),
+        Uri.parse(Cfg.urlRemoteLog),
         headers: {'Content-Type': 'application/json'},
         body: jsonEncode({
           'level': level,
@@ -64,7 +64,7 @@ class RemoteOutput extends LogOutput {
   @override
   void output(OutputEvent event) {
     if (Cfg.enableRemoteLog) {
-      _doUpload(event.level.name, event.lines.join('\n'));
+      _logRemote(event.level.name, event.lines.join('\n'));
     }
   }
 }

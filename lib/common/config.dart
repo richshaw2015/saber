@@ -42,7 +42,7 @@ class Cfg {
   static const urlPrivacy = "https://agreement-drcn.hispace.dbankcloud.cn/index.html?lang=zh&agreementId=saber";
   static const urlAgreement = "https://www.superedu.app/agreement/saber";
   static const urlCrashlytics = "https://superedu.site:8000/crashlytics";
-  static const urlRunLog = "https://superedu.site:8000/log";
+  static const urlRemoteLog = "https://superedu.site:8000/log";
 
   static const urlEmail = "mailto:saber@superedu.app";
 }
