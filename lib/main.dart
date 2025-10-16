@@ -56,7 +56,7 @@ Future<void> appRunner() async {
     // stows.customDataDir.waitUntilRead().then((_) => FileManager.init()),
     workerManager.init(),
     stows.locale.waitUntilRead(),
-    stows.url.waitUntilRead(),
+    // stows.url.waitUntilRead(),
     // stows.allowInsecureConnections.waitUntilRead(),
     PencilShader.init(),
     PencilSound.preload(),
