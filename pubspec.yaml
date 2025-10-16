@@ -134,10 +134,10 @@ dependencies:
       url: "https://gitcode.com/openharmony-sig/flutter_plus_plugins.git"
       path: "packages/package_info_plus/package_info_plus"
 
-  open_file_ohos:
-    git:
-      url: https://gitcode.com/openharmony-sig/fluttertpc_open_file.git
-      path: "ohos"
+#  open_file_ohos:
+#    git:
+#      url: https://gitcode.com/openharmony-sig/fluttertpc_open_file.git
+#      path: "ohos"
 
   # 临时禁用 super_clipboard 后续支持
   # super_clipboard:
