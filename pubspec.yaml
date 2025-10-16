@@ -5,7 +5,7 @@ description: A cross-platform libre notes app
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 
-version: 1.0.1+3
+version: 1.0.1+7
 
 environment:
   sdk: ">=3.4.0 <4.0.0"
@@ -178,6 +178,10 @@ dependencies:
       url: "https://gitcode.com/openharmony-sig/flutter_audioplayers.git"
       path: "packages/audioplayers"
       ref: br_audioplayers-v6.1.0_ohos
+
+  audio_session:
+    git:
+      url: "https://gitcode.com/openharmony-sig/flutter_audio_session.git"
 
   abstract_sync: ^1.3.0
 

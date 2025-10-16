@@ -24,6 +24,7 @@ import 'package:saber/pages/home/home.dart';
 import 'package:saber/pages/logs.dart';
 import 'package:saber/pages/user/login.dart';
 import 'package:saber/service/crashlytics/crash.dart';
+import 'package:saber/service/log/log.dart';
 import 'package:worker_manager/worker_manager.dart';
 // import 'package:workmanager/workmanager.dart';
 
@@ -52,11 +53,14 @@ Future<void> appRunner() async {
   StrokeOptionsExtension.setDefaults();
   Stows.markAsOnMainIsolate();
 
+  await FileManager.init();
   await workerManager.init();
   await stows.locale.waitUntilRead();
   await PencilShader.init();
+
   await PencilSound.preload();
 
+  Log.w("Printing info");
   Printing.info().then((info) {
     Editor.canRasterPdf = info.canRaster;
   });

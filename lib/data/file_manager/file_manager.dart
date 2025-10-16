@@ -120,6 +120,7 @@ class FileManager {
   static Future<void> watchRootDirectory() async {
     Directory rootDir = Directory(documentsDirectory);
     await rootDir.create(recursive: true);
+
     // 苹果、鸿蒙不支持 File system watching is not supported on this platform
     if (Platform.isAndroid) {
       rootDir.watch(recursive: true).listen((FileSystemEvent event) {

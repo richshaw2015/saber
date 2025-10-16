@@ -1,7 +1,8 @@
 import 'dart:async';
 import 'dart:math';
 
-import 'package:audioplayers/audioplayers.dart';
+import 'package:audio_session/audio_session.dart';
+import 'package:audioplayers/audioplayers.dart' hide AVAudioSessionCategory;
 import 'package:saber/data/prefs.dart';
 import 'package:saber/service/log/log.dart';
 
@@ -26,7 +27,24 @@ abstract class PencilSound {
   //       ]);
   static Future<void> preload() async {
     await stows.pencilSoundEffect.waitUntilRead();
-    await setAudioContext();
+    Log.w('PencilSound setting audio context');
+
+    final session = await AudioSession.instance;
+    await session.configure(const AudioSessionConfiguration(
+      // 环境音频。与其他音频混合播放：遵循静音开关；不阻止屏幕锁定；不争夺音频焦点
+      avAudioSessionCategory: AVAudioSessionCategory.ambient,
+      avAudioSessionCategoryOptions: AVAudioSessionCategoryOptions.mixWithOthers,
+      androidAudioAttributes: AndroidAudioAttributes(
+        contentType: AndroidAudioContentType.music,
+        usage: AndroidAudioUsage.media,
+        flags: AndroidAudioFlags.audibilityEnforced,
+      ),
+      ohosAudioAttributes: OhosAudioAttributes(
+        streamUsage: StreamUsage.music,
+      ),
+    ));
+
+    Log.w('PencilSound loading audio source');
     _player.audioCache.loadPath(_source);
   }
 
@@ -40,34 +58,34 @@ abstract class PencilSound {
   //       respectSilence: stows.pencilSound.value.respectSilence,
   //     ).build());
   
-  /// Updates the `respectSilence` setting in the audio context.
-  static Future<void> setAudioContext() async {
-    // audioplayers v6.1.0 的 API, do not support respectSilence param
-    const config = AudioContext(
-      // iOS: AudioContextIOS(
-      //   category: AVAudioSessionCategory.playback,  // 忽略静音模式
-      //   options: [
-      //     AVAudioSessionOptions.mixWithOthers,  // 与其他音频混合播放
-      //   ],
-      // ),
-      android: AudioContextAndroid(
-        isSpeakerphoneOn: false,
-        stayAwake: false,
-        contentType: AndroidContentType.music,
-        usageType: AndroidUsageType.media,
-        // AndroidAudioFocus.none,  // 不抢占音频焦点 this option is incompatible with audioplayers 6.1
-        // 短暂获得焦点，允许其他音频降低音量
-        audioFocus: AndroidAudioFocus.gainTransientMayDuck,
-      ),
-      ohos: AudioContextOhos(
-        isSpeakerphoneOn: false,
-        stayAwake: false,
-        usageType: OhosUsageType.music,
-      ),
-    );
-    
-    await AudioPlayer.global.setAudioContext(config);
-  }
+  /// setAudioContext 在鸿蒙平台会卡住，改用 audio_session 设置
+  // static Future<void> setAudioContext() async {
+  //   // audioplayers v6.1.0 的 API, do not support respectSilence param
+  //   const config = AudioContext(
+  //     iOS: AudioContextIOS(
+  //       category: AVAudioSessionCategory.playback,  // 忽略静音模式
+  //       options: [
+  //         AVAudioSessionOptions.mixWithOthers,  // 与其他音频混合播放
+  //       ],
+  //     ),
+  //     android: AudioContextAndroid(
+  //       isSpeakerphoneOn: false,
+  //       stayAwake: false,
+  //       contentType: AndroidContentType.music,
+  //       usageType: AndroidUsageType.media,
+  //       // AndroidAudioFocus.none,  // 不抢占音频焦点 this option is incompatible with audioplayers 6.1
+  //       // 短暂获得焦点，允许其他音频降低音量
+  //       audioFocus: AndroidAudioFocus.gainTransientMayDuck,
+  //     ),
+  //     ohos: AudioContextOhos(
+  //       isSpeakerphoneOn: false,
+  //       stayAwake: false,
+  //       usageType: OhosUsageType.music,
+  //     ),
+  //   );
+  //
+  //   await AudioPlayer.global.setAudioContext(config);
+  // }
 
   static void resume() {
     _pauseTimer?.cancel();
