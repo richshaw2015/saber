@@ -20,10 +20,15 @@ abstract class PencilSound {
 
   /// Loads the audio file into the audio cache
   /// and sets the audio context.
-  static Future<void> preload() => Future.wait([
-        stows.pencilSoundEffect.waitUntilRead().then((_) => setAudioContext()),
-        _player.audioCache.loadPath(_source),
-      ]);
+  ///   static Future<void> preload() => Future.wait([
+  //         stows.pencilSoundEffect.waitUntilRead().then((_) => setAudioContext()),
+  //         _player.audioCache.loadPath(_source),
+  //       ]);
+  static Future<void> preload() async {
+    await stows.pencilSoundEffect.waitUntilRead();
+    await setAudioContext();
+    _player.audioCache.loadPath(_source);
+  }
 
   // static Future<void> setAudioContext() =>
   //     AudioPlayer.global.setAudioContext(AudioContextConfig(
@@ -39,12 +44,12 @@ abstract class PencilSound {
   static Future<void> setAudioContext() async {
     // audioplayers v6.1.0 的 API, do not support respectSilence param
     const config = AudioContext(
-      iOS: AudioContextIOS(
-        category: AVAudioSessionCategory.playback,  // 忽略静音模式
-        options: [
-          AVAudioSessionOptions.mixWithOthers,  // 与其他音频混合播放
-        ],
-      ),
+      // iOS: AudioContextIOS(
+      //   category: AVAudioSessionCategory.playback,  // 忽略静音模式
+      //   options: [
+      //     AVAudioSessionOptions.mixWithOthers,  // 与其他音频混合播放
+      //   ],
+      // ),
       android: AudioContextAndroid(
         isSpeakerphoneOn: false,
         stayAwake: false,
