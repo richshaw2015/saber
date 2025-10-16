@@ -1,10 +1,7 @@
 import 'dart:async';
-import 'dart:io';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_quill/flutter_quill.dart';
 import 'package:get/get.dart';
 import 'package:go_router/go_router.dart';
@@ -18,7 +15,6 @@ import 'package:saber/components/canvas/pencil_shader.dart';
 import 'package:saber/components/theming/dynamic_material_app.dart';
 import 'package:saber/data/editor/pencil_sound.dart';
 import 'package:saber/data/file_manager/file_manager.dart';
-import 'package:saber/data/nextcloud/nc_http_overrides.dart';
 import 'package:saber/data/prefs.dart';
 import 'package:saber/data/routes.dart';
 import 'package:saber/data/tools/stroke_properties.dart';
@@ -57,11 +53,11 @@ Future<void> appRunner() async {
   Stows.markAsOnMainIsolate();
 
   await Future.wait([
-    stows.customDataDir.waitUntilRead().then((_) => FileManager.init()),
+    // stows.customDataDir.waitUntilRead().then((_) => FileManager.init()),
     workerManager.init(),
     stows.locale.waitUntilRead(),
     stows.url.waitUntilRead(),
-    stows.allowInsecureConnections.waitUntilRead(),
+    // stows.allowInsecureConnections.waitUntilRead(),
     PencilShader.init(),
     PencilSound.preload(),
     Printing.info().then((info) {
@@ -71,21 +67,9 @@ Future<void> appRunner() async {
 
   setLocale();
   stows.locale.addListener(setLocale);
-  stows.customDataDir.addListener(FileManager.migrateDataDir);
+  // stows.customDataDir.addListener(FileManager.migrateDataDir);
 
-  LicenseRegistry.addLicense(() async* {
-    for (final licenseFile in const [
-      'assets/google_fonts/Atkinson_Hyperlegible_Next/OFL.txt',
-      'assets/google_fonts/Dekko/OFL.txt',
-      'assets/google_fonts/Fira_Mono/OFL.txt',
-      'assets/google_fonts/Neucha/OFL.txt',
-    ]) {
-      final license = await rootBundle.loadString(licenseFile);
-      yield LicenseEntryWithLineBreaks(const ['google_fonts'], license);
-    }
-  });
-
-  HttpOverrides.global = NcHttpOverrides();
+  // HttpOverrides.global = NcHttpOverrides();
 
   runApp(TranslationProvider(child: const App()));
 
