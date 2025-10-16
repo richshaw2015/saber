@@ -1070,11 +1070,11 @@ packages:
     dependency: "direct main"
     description:
       path: printing
-      ref: HEAD
-      resolved-ref: "8284efd467ac986d3aaa78f20d3f617216eed6ec"
+      ref: "br_printing-v5.14.2_ohos"
+      resolved-ref: deff8bde9e6beced0406cefc1a52e921b9193459
       url: "https://gitcode.com/openharmony-sig/fluttertpc_printing.git"
     source: git
-    version: "5.13.3"
+    version: "5.14.2"
   provider:
     dependency: transitive
     description:
