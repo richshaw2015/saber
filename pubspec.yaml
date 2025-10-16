@@ -5,7 +5,7 @@ description: A cross-platform libre notes app
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 
-version: 1.0.0+1
+version: 1.0.0+2
 
 environment:
   sdk: ">=3.4.0 <4.0.0"
@@ -48,6 +48,13 @@ dependencies:
       url: https://gitcode.com/openharmony-sig/fluttertpc_flutter_secure_storage.git
       path: flutter_secure_storage_ohos
       ref: br_v9.2.2_ohos
+
+  # 这个对 ohos 的支持比 pdfrx 好
+  pdfx:
+    git:
+      url: "https://gitcode.com/openharmony-sig/flutter_pdfx"
+      path: "packages/pdfx"
+      ref: br_0.8.0_ohos
 
   url_launcher:
     git:
@@ -180,10 +187,6 @@ dependencies:
   path: ^1.9.0
   keybinder: ^1.0.1
 
-  # 使用本地包
-  pdfrx:
-    path: packages/pdfrx
-
   stack_trace: ^1.11.1
 
   smooth_corner: ^1.1.0
@@ -237,6 +240,11 @@ dependency_overrides:
     git:
       url: "https://gitcode.com/openharmony-tpc/flutter_packages.git"
       path: "packages/url_launcher/url_launcher"
+
+  device_info_plus:
+    git:
+      url: https://gitcode.com/openharmony-sig/flutter_plus_plugins.git
+      path: packages/device_info_plus/device_info_plus
 
   # 强制使用新版本的 http
   http: ^1.1.0

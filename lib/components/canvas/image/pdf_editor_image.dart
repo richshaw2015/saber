@@ -168,6 +168,7 @@ class PdfEditorImage extends EditorImage {
         if (pdfDocument == null) {
           return SizedBox.fromSize(size: srcRect.size);
         }
+
         return InvertWidget(
           invert: invert,
           child: PdfPageView(
