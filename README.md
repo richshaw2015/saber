@@ -27,7 +27,7 @@ flutter create --platforms=ios .
     - assets/images/logo.webp 192X192
     - ohos/AppScope/resources/base/media/foreground.png  1024X024
 - 签名配置 ohos/build-profile.json5，每个应用的签名都不一样，后台创建一个发布的 profile
-
+- 其他模块配置，权限、支持平台、打开文件等
 
 ### Build
 通过 flutter devices 指令发现 ohos 设备之后，使用 hdc -t <deviceId> install <hap file path> 进行安装。
