@@ -52,18 +52,14 @@ Future<void> appRunner() async {
   StrokeOptionsExtension.setDefaults();
   Stows.markAsOnMainIsolate();
 
-  await Future.wait([
-    // stows.customDataDir.waitUntilRead().then((_) => FileManager.init()),
-    workerManager.init(),
-    stows.locale.waitUntilRead(),
-    // stows.url.waitUntilRead(),
-    // stows.allowInsecureConnections.waitUntilRead(),
-    PencilShader.init(),
-    PencilSound.preload(),
-    Printing.info().then((info) {
-      Editor.canRasterPdf = info.canRaster;
-    }),
-  ]);
+  await workerManager.init();
+  await stows.locale.waitUntilRead();
+  await PencilShader.init();
+  await PencilSound.preload();
+
+  Printing.info().then((info) {
+    Editor.canRasterPdf = info.canRaster;
+  });
 
   setLocale();
   stows.locale.addListener(setLocale);
