@@ -60,7 +60,6 @@ Future<void> appRunner() async {
 
   await PencilSound.preload();
 
-  Log.w("Printing info");
   Printing.info().then((info) {
     Editor.canRasterPdf = info.canRaster;
   });

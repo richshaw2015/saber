@@ -415,7 +415,6 @@ class _SettingsPageState extends State<SettingsPage> {
                     : FontAwesomeIcons.bellSlash,
                 pref: _SettingsStows.pencilSoundEffect,
                 afterChange: (_) {
-                  PencilSound.setAudioContext();
                   setState(() {});
                 },
               ),

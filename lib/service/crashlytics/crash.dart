@@ -137,7 +137,7 @@ class Crashlytics {
       if (response.statusCode == 200) {
         Log.d('Log sent successfully');
       } else {
-        Log.w('Failed to send log: ${response.statusCode}');
+        Log.i('Failed to send log: ${response.statusCode}');
       }
     } catch (e) {
       Log.e('Error sending log: $e');
