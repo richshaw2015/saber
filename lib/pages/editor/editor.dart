@@ -1183,16 +1183,21 @@ class EditorState extends State<Editor> {
     if (coreInfo.readOnly) return false;
     if (!Editor.canRasterPdf) return false;
 
-    final FilePickerResult? result = await FilePicker.platform.pickFiles(
-      type: FileType.custom,
-      allowedExtensions: ['pdf'],
-      allowMultiple: false,
-      withData: false,
-    );
-    if (result == null) return false;
+    try {
+      final FilePickerResult? result = await FilePicker.platform.pickFiles(
+        type: FileType.custom,
+        allowedExtensions: ['pdf'],
+        allowMultiple: false,
+        withData: false,
+      );
+      if (result == null) return false;
 
-    final PlatformFile file = result.files.single;
-    return importPdfFromFilePath(file.path!);
+      final PlatformFile file = result.files.single;
+      return importPdfFromFilePath(file.path!);
+    } catch (e) {
+      Log.w('Exception when pickFile $e');
+      return false;
+    }
   }
 
   Future<bool> importPdfFromFilePath(String path) async {
