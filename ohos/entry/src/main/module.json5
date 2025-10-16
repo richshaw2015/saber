@@ -6,7 +6,8 @@
     "description": "$string:module_desc",
     "mainElement": "EntryAbility",
     "deviceTypes": [
-      "phone"
+      "phone",
+      "tablet"
     ],
     "deliveryWithInstall": true,
     "installationFree": false,
@@ -29,12 +30,99 @@
             "actions": [
               "action.system.home"
             ]
+          },
+          // 处理SEND动作的文件类型
+          {
+            "actions": ["ohos.want.action.sendData"],
+            "uris": [
+              {
+                "scheme": "file",
+                "type": "application/sbn"
+              },
+              {
+                "scheme": "file",
+                "type": "application/json"
+              },
+              {
+                "scheme": "file",
+                "type": "text/\*"
+              },
+              {
+                "scheme": "file",
+                "type": "application/sbn2"
+              },
+              {
+                "scheme": "file",
+                "type": "application/octet-stream"
+              },
+              {
+                "scheme": "file",
+                "type": "application/sba"
+              },
+              {
+                "scheme": "file",
+                "type": "application/zip"
+              },
+              {
+                "scheme": "file",
+                "type": "application/pdf"
+              }
+            ]
+          },
+
+          // 处理VIEW动作的文件路径匹配
+          {
+            "actions": ["ohos.want.action.viewData"],
+            "uris": [
+              {
+                "scheme": "file",
+                "type": "application/sbn",
+                "pathRegex": ".\*\\.sb[n2a]+"
+              },
+              {
+                "scheme": "content",
+                "type": "application/sbn",
+                "pathRegex": ".\*\\.sb[n2a]+"
+              },
+              {
+                "scheme": "file",
+                "type": "application/pdf",
+                "pathRegex": ".\*\\.pdf"
+              },
+              {
+                "scheme": "content",
+                "type": "application/pdf",
+                "pathRegex": ".\*\\.pdf"
+              }
+            ]
           }
         ]
       }
     ],
     "requestPermissions": [
       {"name" :  "ohos.permission.INTERNET"},
+      // TODO add later
+//      {
+//        "name" : "ohos.permission.READ_PASTEBOARD",
+//        "reason": "$string:app_name",
+//        "usedScene": {
+//          "when": "inuse"
+//        }
+//      },
+      {
+        "name": "ohos.permission.READ_MEDIA",
+        "reason": "$string:app_name",
+        "usedScene": {
+          "when": "inuse"
+        }
+      },
+      {
+        "name": "ohos.permission.WRITE_MEDIA",
+        "reason": "$string:app_name",
+        "usedScene": {
+          "when": "inuse"
+        }
+      }
     ]
   }
 }
