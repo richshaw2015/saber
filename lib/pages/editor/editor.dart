@@ -10,6 +10,7 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_quill/flutter_quill.dart' as flutter_quill;
+import 'package:get/get.dart';
 import 'package:keybinder/keybinder.dart';
 import 'package:logging/logging.dart';
 import 'package:printing/printing.dart';
@@ -1697,9 +1698,11 @@ class EditorState extends State<Editor> {
                     onPressed: () {
                       showDialog(
                         context: context,
-                        builder: (context) => AdaptiveAlertDialog(
+                        builder: (dialogContext) => AdaptiveAlertDialog(
                           title: Text(t.editor.pages),
-                          content: pageManager(context),
+                          content: pageManager(dialogContext, onPageSelected: () {
+                            Get.back();
+                          }),
                           actions: const [],
                         ),
                       );
@@ -1875,7 +1878,7 @@ class EditorState extends State<Editor> {
     );
   }
 
-  Widget pageManager(BuildContext context) {
+  Widget pageManager(BuildContext context, {VoidCallback? onPageSelected}) {
     return EditorPageManager(
       coreInfo: coreInfo,
       currentPageIndex: currentPageIndex,
@@ -1929,6 +1932,7 @@ class EditorState extends State<Editor> {
         autosaveAfterDelay();
       }),
       transformationController: _transformationController,
+      onPageSelected: onPageSelected,
     );
   }
 

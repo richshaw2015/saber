@@ -19,6 +19,7 @@ class EditorPageManager extends StatefulWidget {
     required this.clearPage,
     required this.deletePage,
     required this.transformationController,
+    this.onPageSelected,
   });
 
   final EditorCoreInfo coreInfo;
@@ -31,6 +32,9 @@ class EditorPageManager extends StatefulWidget {
   final void Function(int) deletePage;
 
   final TransformationController transformationController;
+  
+  /// Callback when a page is selected, typically used to close the dialog
+  final VoidCallback? onPageSelected;
 
   @override
   State<EditorPageManager> createState() => _EditorPageManagerState();
@@ -58,7 +62,10 @@ class _EditorPageManagerState extends State<EditorPageManager> {
                   widget.coreInfo.pages[pageIndex].isEmpty;
           return InkWell(
             key: ValueKey(pageIndex),
-            onTap: () => scrollToPage(pageIndex),
+            onTap: () {
+              scrollToPage(pageIndex);
+              widget.onPageSelected?.call();
+            },
             child: Padding(
               padding: const EdgeInsets.all(8),
               child: Column(
