@@ -27,7 +27,6 @@ abstract class PencilSound {
   //       ]);
   static Future<void> preload() async {
     await stows.pencilSoundEffect.waitUntilRead();
-    Log.w('PencilSound setting audio context');
 
     final session = await AudioSession.instance;
     await session.configure(const AudioSessionConfiguration(
@@ -44,7 +43,6 @@ abstract class PencilSound {
       ),
     ));
 
-    Log.w('PencilSound loading audio source');
     _player.audioCache.loadPath(_source);
   }
 
