@@ -265,17 +265,17 @@ update:
   downloadNotAvailableYet: The download isn't available yet for your platform. Please check back shortly.
 editor: 
   toolbar: 
-    toggleColors: Toggle colors (Ctrl C)
+    toggleColors: Toggle colors
     select: Select
-    toggleEraser: Toggle eraser (Ctrl E)
+    toggleEraser: Toggle eraser
     photo: Images
     text: Text
-    toggleFingerDrawing: Toggle finger drawing (Ctrl F)
+    toggleFingerDrawing: Toggle finger drawing
     undo: Undo
     redo: Redo
-    export: Export (Ctrl Shift S)
+    export: Export
     exportAs: "Export as:"
-    fullscreen: Toggle fullscreen (F11)
+    fullscreen: Toggle fullscreen
   pens: 
     fountainPen: Fountain pen
     ballpointPen: Ballpoint pen

@@ -626,17 +626,17 @@ class _TranslationsEditorToolbarZhHansCn extends TranslationsEditorToolbarEn {
 	final TranslationsZhHansCn _root; // ignore: unused_field
 
 	// Translations
-	@override String get toggleColors => '切换颜色 (Ctrl C)';
+	@override String get toggleColors => '切换颜色';
 	@override String get select => '选择';
-	@override String get toggleEraser => '切换橡皮擦 (Ctrl E)';
+	@override String get toggleEraser => '切换橡皮擦';
 	@override String get photo => '照片';
 	@override String get text => '文本';
-	@override String get toggleFingerDrawing => '切换手写 (Ctrl F)';
+	@override String get toggleFingerDrawing => '切换手写';
 	@override String get undo => '撤销';
 	@override String get redo => '重做';
-	@override String get export => '导出 (Ctrl Shift S)';
+	@override String get export => '导出';
 	@override String get exportAs => '导出为：';
-	@override String get fullscreen => '切换全屏 (F11)';
+	@override String get fullscreen => '切换全屏';
 }
 
 // Path: editor.pens
@@ -920,12 +920,12 @@ class _TranslationsEditorMenuBgPatternsZhHansCn extends TranslationsEditorMenuBg
 
 	// Translations
 	@override String get none => '空白';
-	@override String get college => 'College-ruled';
-	@override String get collegeRtl => 'College-ruled（反转）';
+	@override String get college => '单行线';
+	@override String get collegeRtl => '单行线（反转）';
 	@override String get lined => '横线';
 	@override String get grid => '网格';
 	@override String get dots => '点';
 	@override String get staffs => '五线谱';
 	@override String get tablature => '绘画';
-	@override String get cornell => 'Cornell';
+	@override String get cornell => '康奈尔式';
 }

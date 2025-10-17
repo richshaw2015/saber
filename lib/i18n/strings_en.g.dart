@@ -990,14 +990,14 @@ class TranslationsEditorToolbarEn {
 
 	// Translations
 
-	/// en: 'Toggle colors (Ctrl C)'
-	String get toggleColors => 'Toggle colors (Ctrl C)';
+	/// en: 'Toggle colors'
+	String get toggleColors => 'Toggle colors';
 
 	/// en: 'Select'
 	String get select => 'Select';
 
-	/// en: 'Toggle eraser (Ctrl E)'
-	String get toggleEraser => 'Toggle eraser (Ctrl E)';
+	/// en: 'Toggle eraser'
+	String get toggleEraser => 'Toggle eraser';
 
 	/// en: 'Images'
 	String get photo => 'Images';
@@ -1005,8 +1005,8 @@ class TranslationsEditorToolbarEn {
 	/// en: 'Text'
 	String get text => 'Text';
 
-	/// en: 'Toggle finger drawing (Ctrl F)'
-	String get toggleFingerDrawing => 'Toggle finger drawing (Ctrl F)';
+	/// en: 'Toggle finger drawing'
+	String get toggleFingerDrawing => 'Toggle finger drawing';
 
 	/// en: 'Undo'
 	String get undo => 'Undo';
@@ -1014,14 +1014,14 @@ class TranslationsEditorToolbarEn {
 	/// en: 'Redo'
 	String get redo => 'Redo';
 
-	/// en: 'Export (Ctrl Shift S)'
-	String get export => 'Export (Ctrl Shift S)';
+	/// en: 'Export'
+	String get export => 'Export';
 
 	/// en: 'Export as:'
 	String get exportAs => 'Export as:';
 
-	/// en: 'Toggle fullscreen (F11)'
-	String get fullscreen => 'Toggle fullscreen (F11)';
+	/// en: 'Toggle fullscreen'
+	String get fullscreen => 'Toggle fullscreen';
 }
 
 // Path: editor.pens

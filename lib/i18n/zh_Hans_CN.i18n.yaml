@@ -264,17 +264,17 @@ update:
   downloadNotAvailableYet: 该下载在您的平台暂不可用。请稍后重试。
 editor: 
   toolbar: 
-    toggleColors: 切换颜色 (Ctrl C)
+    toggleColors: 切换颜色
     select: 选择
-    toggleEraser: 切换橡皮擦 (Ctrl E)
+    toggleEraser: 切换橡皮擦
     photo: 照片
     text: 文本
-    toggleFingerDrawing: 切换手写 (Ctrl F)
+    toggleFingerDrawing: 切换手写
     undo: 撤销
     redo: 重做
-    export: 导出 (Ctrl Shift S)
+    export: 导出
     exportAs: 导出为：
-    fullscreen: 切换全屏 (F11)
+    fullscreen: 切换全屏
   pens: 
     fountainPen: 钢笔
     ballpointPen: 圆珠笔
@@ -342,14 +342,14 @@ editor:
       contain: 包含
     bgPatterns: 
       none: 空白
-      college: College-ruled
-      collegeRtl: College-ruled（反转）
+      college: 单行线
+      collegeRtl: 单行线（反转）
       lined: 横线
       grid: 网格
       dots: 点
       staffs: 五线谱
       tablature: 绘画
-      cornell: Cornell
+      cornell: 康奈尔式
   newerFileFormat: 
     readOnlyMode: 只读模式
     title: 此笔记使用新版 Saber 编辑而成
