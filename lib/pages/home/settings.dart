@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:material_symbols_icons/symbols.dart';
+import 'package:saber/common/extension.dart';
 import 'package:saber/components/navbar/responsive_navbar.dart';
 import 'package:saber/components/settings/app_info.dart';
 import 'package:saber/components/settings/settings_color.dart';
@@ -20,6 +21,8 @@ import 'package:saber/i18n/strings.g.dart';
 import 'package:saber/packages/stow/stow.dart';
 
 import '../../common/config.dart';
+import '../../common/strings.dart';
+import '../../components/settings/settings_link.dart';
 import '../../service/log/log.dart';
 
 class SettingsPage extends StatefulWidget {
@@ -154,10 +157,10 @@ class _SettingsPageState extends State<SettingsPage> {
               //   child: AppInfo(),
               // ),
               // const AppInfo(),
-              SettingsSubtitle(
-                subtitle: t.settings.prefCategories.general,
-                topPadding: false,
-              ),
+              // SettingsSubtitle(
+              //   subtitle: t.settings.prefCategories.general,
+              //   topPadding: false,
+              // ),
               SettingsDropdown(
                 title: t.settings.prefLabels.locale,
                 icon: CupertinoIcons.globe,
@@ -468,8 +471,17 @@ class _SettingsPageState extends State<SettingsPage> {
               ),
 
               // TODO 通用 -》用户隐私 / 服务协议
-              // SettingsSubtitle(subtitle: t.settings.prefCategories.advanced),
-
+              SettingsSubtitle(subtitle: t.settings.prefCategories.general),
+              SettingsLink(
+                title: '隐私政策',
+                icon: CupertinoIcons.shield_lefthalf_fill,
+                onTap: () => Cfg.urlPrivacy.launch(),
+              ),
+              SettingsLink(
+                title: '用户协议',
+                icon: CupertinoIcons.doc_text,
+                onTap: () => Cfg.urlAgreement.launch(),
+              ),
               // if (isSentryAvailable) const SettingsSentryConsent(),
               // disable data directory setting
               // if (Platform.isAndroid)

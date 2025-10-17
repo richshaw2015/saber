@@ -39,7 +39,7 @@ class Cfg {
   static const settingAll = "setting_all";
 
   // 地址
-  static const urlPrivacy = "https://agreement-drcn.hispace.dbankcloud.cn/index.html?lang=zh&agreementId=saber";
+  static const urlPrivacy = "https://agreement-drcn.hispace.dbankcloud.cn/index.html?lang=zh&agreementId=1798532317455605184";
   static const urlAgreement = "https://www.superedu.app/agreement/saber";
   static const urlCrashlytics = "https://superedu.site:8000/crashlytics";
   static const urlRemoteLog = "https://superedu.site:8000/log";
