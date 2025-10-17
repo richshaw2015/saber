@@ -45,7 +45,7 @@
               },
               {
                 "scheme": "file",
-                "type": "text/\*"
+                "type": "text/*"
               },
               {
                 "scheme": "file",
@@ -77,22 +77,18 @@
               {
                 "scheme": "file",
                 "type": "application/sbn",
-                "pathRegex": ".\*\\.sb[n2a]+"
               },
               {
                 "scheme": "content",
                 "type": "application/sbn",
-                "pathRegex": ".\*\\.sb[n2a]+"
               },
               {
                 "scheme": "file",
                 "type": "application/pdf",
-                "pathRegex": ".\*\\.pdf"
               },
               {
                 "scheme": "content",
                 "type": "application/pdf",
-                "pathRegex": ".\*\\.pdf"
               }
             ]
           }
@@ -113,14 +109,14 @@
         "name": "ohos.permission.READ_MEDIA",
         "reason": "$string:app_name",
         "usedScene": {
-          "when": "inuse"
+          "when": "always"
         }
       },
       {
         "name": "ohos.permission.WRITE_MEDIA",
         "reason": "$string:app_name",
         "usedScene": {
-          "when": "inuse"
+          "when": "always"
         }
       }
     ]
