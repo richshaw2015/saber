@@ -28,63 +28,65 @@
               "entity.system.home"
             ],
             "actions": [
-              "action.system.home"
-            ]
-          },
-          // 处理SEND动作的文件类型
-          {
-            "actions": ["ohos.want.action.sendData"],
+              "action.system.home",
+              "ohos.want.action.viewData",
+              "ohos.want.action.sendData"
+            ],
             "uris": [
               {
                 "scheme": "file",
-                "type": "application/sbn"
+                "utd": "general.entity",
+                "maxFileSupported": 15
               },
               {
                 "scheme": "file",
-                "type": "application/json"
-              },
-              {
-                "scheme": "file",
-                "type": "text/*"
-              },
-              {
-                "scheme": "file",
-                "type": "application/sbn2"
-              },
-              {
-                "scheme": "file",
-                "type": "application/octet-stream"
-              },
-              {
-                "scheme": "file",
-                "type": "application/sba"
-              },
-              {
-                "scheme": "file",
-                "type": "application/zip"
-              },
-              {
-                "scheme": "file",
-                "type": "application/pdf"
-              }
-            ]
-          },
-
-          // 处理VIEW动作的文件路径匹配
-          {
-            "actions": ["ohos.want.action.viewData"],
-            "uris": [
-              {
-                "scheme": "file",
-                "utd": "general.entity"
-              },
-              {
-                "scheme": "file",
-                "utd": "general.object"
+                "utd": "general.object",
+                "maxFileSupported": 15
               },
               {
                 "scheme": "file",
                 "utd": "com.adobe.pdf",
+                "maxFileSupported": 15
+              },
+              {
+                "scheme": "file",
+                "type": "application/sbn",
+                "maxFileSupported": 15
+              },
+              {
+                "scheme": "file",
+                "type": "application/json",
+                "maxFileSupported": 15
+              },
+              {
+                "scheme": "file",
+                "type": "text/*",
+                "maxFileSupported": 15
+              },
+              {
+                "scheme": "file",
+                "type": "application/sbn2",
+                "maxFileSupported": 15
+              },
+              {
+                "scheme": "file",
+                "type": "application/octet-stream",
+                "maxFileSupported": 15
+              },
+              {
+                "scheme": "file",
+                "type": "application/sba",
+                "maxFileSupported": 15
+              },
+              {
+                "scheme": "file",
+                "type": "application/zip",
+                "maxFileSupported": 15
+              },
+              {
+                "scheme": "file",
+                "type": "application/pdf",
+                "maxFileSupported": 15
               }
             ]
           }
