@@ -285,10 +285,10 @@ flutter:
   assets:
     - assets/icon/icon.svg
     - assets/images/
-    - assets/google_fonts/Atkinson_Hyperlegible_Next/OFL.txt
-    - assets/google_fonts/Dekko/OFL.txt
-    - assets/google_fonts/Fira_Mono/OFL.txt
-    - assets/google_fonts/Neucha/OFL.txt
+    - assets/google_fonts/Atkinson_Hyperlegible_Next/
+    - assets/google_fonts/Dekko/
+    - assets/google_fonts/Fira_Mono/
+    - assets/google_fonts/Neucha/
     - assets/audio/
     - assets/data/
 
@@ -348,10 +348,6 @@ flutter:
     - family: Neucha
       fonts:
         - asset: assets/google_fonts/Neucha/Neucha-Regular.ttf
-    - family: HeiTi
-      fonts:
-        - asset: assets/fonts/HeiW3.otf
-        - asset: assets/fonts/HeiW6.otf
 
   shaders:
     - shaders/pencil.frag
