@@ -4,6 +4,8 @@ import 'dart:io';
 import 'package:archive/archive_io.dart';
 import 'package:device_info_plus/device_info_plus.dart';
 import 'package:flutter/foundation.dart';
+import 'package:flutter/gestures.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:intl/intl.dart' show DateFormat;
 import 'package:logging/logging.dart';
@@ -16,6 +18,8 @@ import 'package:saber/i18n/strings.g.dart';
 import 'package:saber/pages/editor/editor.dart';
 import 'package:saver_gallery/saver_gallery.dart';
 import 'package:share_plus/share_plus.dart';
+
+import '../../common/constant.dart';
 
 /// A collection of cross-platform utility functions for working with a virtual file system.
 class FileManager {
@@ -249,7 +253,9 @@ class FileManager {
     await dir.create(recursive: true);
   }
 
-  static Future exportFile(
+
+  // 只有图片才会保存到相册，才有返回值。其他文件都走分享
+  static Future<SaveResult?> exportFile(
     String fileName,
     List<int> bytes, {
     bool isImage = false,
@@ -267,7 +273,7 @@ class FileManager {
       final permissionGranted = await _requestPhotosPermission();
       // save image to gallery
       if (permissionGranted) {
-        await SaverGallery.saveImage(
+        return await SaverGallery.saveImage(
           Uint8List.fromList(bytes),
           fileName: fileName,
           androidRelativePath: 'Pictures/Saber',
@@ -283,6 +289,7 @@ class FileManager {
 
     // delete temp file if it isn't null
     await tempFile?.delete();
+    return null;
   }
 
   static Future<bool> _requestPhotosPermission() async {
@@ -290,9 +297,11 @@ class FileManager {
       final sdkInt = await DeviceInfoPlugin()
           .androidInfo
           .then((info) => info.version.sdkInt);
-      if (sdkInt > 33) {
+      if (sdkInt >= 33) {
+        // Android 13+ (API 33+) uses scoped storage
         return await Permission.photos.request().isGranted;
       } else {
+        // Android 12 and below
         return await Permission.storage.request().isGranted;
       }
     } else {

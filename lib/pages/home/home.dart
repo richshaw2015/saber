@@ -7,6 +7,10 @@ import 'package:saber/pages/home/recent_notes.dart';
 import 'package:saber/pages/home/settings.dart';
 import 'package:saber/pages/home/whiteboard.dart';
 
+import '../../common/constant.dart';
+import '../../model/event.dart';
+import '../../ui/widgets/my_toast.dart';
+
 class HomePage extends StatefulWidget {
   const HomePage({
     super.key,
@@ -35,8 +39,16 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   @override
   void initState() {
-    DynamicMaterialApp.addFullscreenListener(_setState);
     super.initState();
+
+    DynamicMaterialApp.addFullscreenListener(_setState);
+
+    // toast 提示
+    G.event.on<ShowToastEvent>().listen((event) {
+      if (mounted) {
+        showMyToast(context, event.message, event.duration, event.bottom);
+      }
+    });
 
     // _showDialogs();
   }

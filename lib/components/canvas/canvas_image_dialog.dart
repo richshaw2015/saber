@@ -11,6 +11,8 @@ import 'package:saber/data/file_manager/file_manager.dart';
 import 'package:saber/data/prefs.dart';
 import 'package:saber/i18n/strings.g.dart';
 
+import '../../common/constant.dart';
+
 class CanvasImageDialog extends StatefulWidget {
   const CanvasImageDialog({
     super.key,
@@ -90,8 +92,18 @@ class _CanvasImageDialogState extends State<CanvasImageDialog> {
               }
           }
           if (!context.mounted) return;
+
           FileManager.exportFile(imageFileName, bytes,
-              isImage: true, context: context);
+              isImage: true, context: context).then((result) {
+                if (result != null) {
+                  // TODO 翻译适配
+                  if (result.isSuccess) {
+                    G.toast('已保存到相册');
+                  } else {
+                    G.toast(result.errorMessage ?? 'Save Failed!');
+                  }
+                }
+          });
           Get.back();
         },
         title: t.editor.imageOptions.download,

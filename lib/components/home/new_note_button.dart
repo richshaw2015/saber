@@ -7,6 +7,8 @@ import 'package:saber/data/routes.dart';
 import 'package:saber/i18n/strings.g.dart';
 import 'package:saber/pages/editor/editor.dart';
 
+import '../../common/constant.dart';
+
 class NewNoteButton extends StatefulWidget {
   const NewNoteButton({
     super.key,
@@ -94,9 +96,7 @@ class _NewNoteButtonState extends State<NewNoteButton> {
               context.push(RoutePaths.editImportPdf(sbnFilePath, filePath));
             } else {
               if (context.mounted) {
-                ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                  content: Text(t.home.invalidFormat),
-                ));
+                G.toast(t.home.invalidFormat);
               }
               throw 'Invalid file type';
             }

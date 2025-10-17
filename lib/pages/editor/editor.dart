@@ -53,6 +53,7 @@ import 'package:saber/i18n/strings.g.dart';
 import 'package:saber/pages/home/whiteboard.dart';
 import 'package:screenshot/screenshot.dart';
 
+import '../../common/constant.dart';
 import '../../service/log/log.dart';
 // 临时禁用 super_clipboard 来测试冲突
 // import 'package:super_clipboard/super_clipboard.dart';
@@ -742,7 +743,7 @@ class EditorState extends State<Editor> {
   }
 
   void onStylusButtonChanged(bool buttonPressed) {
-    Log.d('onStylusButtonChanged: buttonPressed=$buttonPressed, stylusButtonPressed=$stylusButtonPressed, isHovering=$isHovering, currentTool=$currentTool, tmpTool=$tmpTool');
+    // Log.d('onStylusButtonChanged: buttonPressed=$buttonPressed, stylusButtonPressed=$stylusButtonPressed, isHovering=$isHovering, currentTool=$currentTool, tmpTool=$tmpTool');
 
     if (isHovering) {
       if (buttonPressed) {
@@ -1745,9 +1746,8 @@ class EditorState extends State<Editor> {
 
   void snackBarNeedsToSaveBeforeExiting() {
     if (!mounted) return;
-    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-      content: Text(t.editor.needsToSaveBeforeExiting),
-    ));
+
+    G.toast(t.editor.needsToSaveBeforeExiting);
   }
 
   Widget bottomSheet(BuildContext context) {
