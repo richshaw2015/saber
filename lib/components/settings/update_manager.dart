@@ -169,7 +169,7 @@
 //   };
 //
 //   /// Downloads the update file from [downloadUrl] and installs it.
-//   // TODO(adil192): use a downloader like background_downloader for progress
+//   // (adil192): use a downloader like background_downloader for progress
 //   static Future<void> directlyDownloadUpdate(String downloadUrl) async {
 //     final Uint8List bytes = await http.readBytes(Uri.parse(downloadUrl));
 //

@@ -551,7 +551,7 @@ class _QuillEditorSelectionGestureDetectorBuilder
               }
               break;
             case PointerDeviceKind.trackpad:
-              // TODO: Handle this case.
+              //  Handle this case.
               break;
           }
         } else {
@@ -723,7 +723,7 @@ class RenderEditor extends RenderEditableContainerBox
     final startPosition =
         TextPosition(offset: selection.start, affinity: selection.affinity);
     final startOffset = _getOffsetForCaret(startPosition);
-    // TODO(justinmc): https://github.com/flutter/flutter/issues/31495
+    // (justinmc): https://github.com/flutter/flutter/issues/31495
     // Check if the selection is visible with an approximation because a
     // difference between rounded and unrounded values causes the caret to be
     // reported as having a slightly (< 0.5) negative y offset. This rounding

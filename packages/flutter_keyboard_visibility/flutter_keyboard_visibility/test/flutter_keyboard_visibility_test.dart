@@ -205,7 +205,7 @@ void main() {
     });
   });
 
-  // TODO this test complains when ran because SizedBox is not hit testable
+  //  this test complains when ran because SizedBox is not hit testable
   // since KeyboardDismissOnTap captures the hit with its GestureDetector
   group('KeyboardDismissOnTap', () {
     testWidgets('It removes focus when tapped', (WidgetTester tester) async {

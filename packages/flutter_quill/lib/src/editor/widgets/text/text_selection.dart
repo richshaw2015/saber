@@ -555,7 +555,7 @@ class _TextSelectionHandleOverlayState
         break;
     }
 
-    // TODO: This logic doesn't work for TextStyle.height larger 1.
+    //  This logic doesn't work for TextStyle.height larger 1.
     // It makes the extent handle top end on iOS extend too high which makes
     // stick out above the selection background.
     // May have to use getSelectionBoxes instead of preferredLineHeight.

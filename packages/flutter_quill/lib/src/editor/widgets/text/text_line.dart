@@ -684,7 +684,7 @@ class _TextLineState extends State<TextLine> {
       link = 'https://$link';
     }
 
-    // TODO(EchoEllet): Refactor onLaunchUrl or add a new API to give full control of the launch? See https://github.com/singerdmx/flutter-quill/issues/1776
+    // (EchoEllet): Refactor onLaunchUrl or add a new API to give full control of the launch? See https://github.com/singerdmx/flutter-quill/issues/1776
     final launchUrl = widget.onLaunchUrl ?? _launchUrl;
     launchUrl(link);
   }
@@ -1123,7 +1123,7 @@ class RenderEditableTextLine extends RenderEditableBox {
       cursorCont.style.height ??
       preferredLineHeight(const TextPosition(offset: 0));
 
-  // TODO: This is no longer producing the highest-fidelity caret
+  // This is no longer producing the highest-fidelity caret
   // heights for Android, especially when non-alphabetic languages
   // are involved. The current implementation overrides the height set
   // here with the full measured height of the text on Android which looks

@@ -269,7 +269,7 @@ class MarkdownToDelta extends Converter<String, Delta>
   }
 
   void _insertNewLineAfterElementIfNeeded(md.Element element) {
-    // TODO: refactor this to allow embeds to specify if they require
+    //  refactor this to allow embeds to specify if they require
     // new line after them
     if (element.tag == 'hr' || element.tag == EmbeddableTable.tableType) {
       // Always add new line after divider
