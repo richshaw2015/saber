@@ -252,7 +252,7 @@ class App extends StatefulWidget {
       );
       _router.push(RoutePaths.editImportPdf(sbnFilePath, file.path));
     } else {
-      log.warning('openFile: Unsupported file type: $extension');
+      Log.w('openFile: Unsupported file type: $extension');
     }
   }
 
@@ -265,8 +265,9 @@ class _AppState extends State<App> {
 
   @override
   void initState() {
-    setupSharingIntent();
     super.initState();
+
+    setupSharingIntent();
   }
 
   void setupSharingIntent() {

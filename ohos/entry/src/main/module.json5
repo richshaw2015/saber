@@ -76,19 +76,15 @@
             "uris": [
               {
                 "scheme": "file",
-                "type": "application/sbn",
-              },
-              {
-                "scheme": "content",
-                "type": "application/sbn",
+                "utd": "general.entity"
               },
               {
                 "scheme": "file",
-                "type": "application/pdf",
+                "utd": "general.object"
               },
               {
-                "scheme": "content",
-                "type": "application/pdf",
+                "scheme": "file",
+                "utd": "com.adobe.pdf",
               }
             ]
           }
