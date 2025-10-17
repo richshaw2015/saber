@@ -2,6 +2,7 @@ import 'dart:async';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_quill/flutter_quill.dart';
 import 'package:get/get.dart';
 import 'package:go_router/go_router.dart';
@@ -65,7 +66,9 @@ Future<void> appRunner() async {
   });
 
   setLocale();
+  // 后续的设置
   stows.locale.addListener(setLocale);
+
   // stows.customDataDir.addListener(FileManager.migrateDataDir);
 
   // HttpOverrides.global = NcHttpOverrides();
@@ -98,11 +101,12 @@ Future<void> appRunner() async {
 // }
 
 void setLocale() {
-  if (stows.locale.value.isNotEmpty &&
-      AppLocaleUtils.supportedLocalesRaw.contains(stows.locale.value)) {
-    LocaleSettings.setLocaleRaw(stows.locale.value);
+  final locale = stows.locale.value;
+
+  if (AppLocaleUtils.supportedLocalesRaw.contains(locale)) {
+    LocaleSettings.setLocaleRaw(locale);
   } else {
-    LocaleSettings.useDeviceLocale();
+    LocaleSettings.setLocaleRaw(AppLocale.zhHansCn.languageTag);
   }
 }
 

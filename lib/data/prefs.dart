@@ -22,6 +22,8 @@ import 'package:saber/packages/stow_codecs/stow_codecs.dart';
 import 'package:saber/packages/stow_plain/stow_plain.dart';
 import 'package:saber/packages/stow_secure/stow_secure.dart';
 
+import '../i18n/strings.g.dart';
+
 /// If false, all stows are stuck at their default values.
 bool _isOnMainIsolate = false;
 
@@ -226,7 +228,8 @@ class Stows {
   final shouldCheckForUpdates = false;
   final shouldAlwaysAlertForUpdates = false;
 
-  final locale = PlainStow('locale', '', volatile: !_isOnMainIsolate);
+  // 默认中文
+  final locale = PlainStow('locale', AppLocale.zhHansCn.languageTag, volatile: !_isOnMainIsolate);
 
   final sentryConsent = PlainStow('sentryConsent', SentryConsent.unknown,
       codec: SentryConsent.codec, volatile: !_isOnMainIsolate);

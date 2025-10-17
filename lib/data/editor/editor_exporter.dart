@@ -157,7 +157,7 @@ abstract class EditorExporter {
     return await screenshotController.captureFromWidget(
       Localizations(
         // needed to avoid errors with Quill, but not actually used
-        locale: const Locale('en', 'US'),
+        locale: const Locale('zh', 'CN'),
         delegates: GlobalMaterialLocalizations.delegates,
         child: Theme(
           data: ThemeData(

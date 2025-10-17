@@ -20,6 +20,7 @@ import 'package:saber/i18n/strings.g.dart';
 import 'package:saber/packages/stow/stow.dart';
 
 import '../../common/config.dart';
+import '../../service/log/log.dart';
 
 class SettingsPage extends StatefulWidget {
   const SettingsPage({super.key});
@@ -161,19 +162,15 @@ class _SettingsPageState extends State<SettingsPage> {
                 title: t.settings.prefLabels.locale,
                 icon: CupertinoIcons.globe,
                 pref: stows.locale,
-                options: [
-                  ToggleButtonsOption('', Text(t.settings.systemLanguage, style: toggleBtnTextStyle,)),
-                  ...AppLocaleUtils.supportedLocales.map((locale) {
-                    final String localeCode = locale.toLanguageTag();
-                    String? localeName = localeNames[localeCode];
-                    assert(localeName != null,
-                        'Missing locale name for $localeCode');
-                    return ToggleButtonsOption(
-                      localeCode,
-                      Text(localeName ?? localeCode, style: toggleBtnTextStyle),
-                    );
-                  }),
-                ],
+                options: AppLocaleUtils.supportedLocales.map((locale) {
+                  final String localeCode = locale.toLanguageTag();
+                  String? localeName = localeNames[localeCode];
+                  assert(localeName != null, 'Missing locale name for $localeCode');
+                  return ToggleButtonsOption(
+                    localeCode,
+                    Text(localeName ?? localeCode, style: toggleBtnTextStyle),
+                  );
+                }).toList(),
               ),
               SettingsSelection(
                 title: t.settings.prefLabels.appTheme,

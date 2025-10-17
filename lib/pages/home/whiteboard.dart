@@ -48,6 +48,7 @@ class _WhiteboardState extends State<Whiteboard> {
     stows.hideFingerDrawingToggle.addListener(_onSettingsChanged);
     stows.autoStraightenLines.addListener(_onSettingsChanged);
     stows.disableEraserAfterUse.addListener(_onSettingsChanged);
+    stows.locale.addListener(_onSettingsChanged);
   }
 
   @override
@@ -61,6 +62,7 @@ class _WhiteboardState extends State<Whiteboard> {
     stows.hideFingerDrawingToggle.removeListener(_onSettingsChanged);
     stows.autoStraightenLines.removeListener(_onSettingsChanged);
     stows.disableEraserAfterUse.removeListener(_onSettingsChanged);
+    stows.locale.removeListener(_onSettingsChanged);
 
     super.dispose();
   }
