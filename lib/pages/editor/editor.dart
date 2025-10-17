@@ -1273,7 +1273,7 @@ class EditorState extends State<Editor> {
     return true;
   }
 
-  // TODO 这里先简单返回，后续再完善剪贴板功能
+  // TODO 暂不支持粘贴操作，在 PC 上通过 Ctrl + V 触发
   Future paste() async {
     Log.w('TODO paste...');
     return;

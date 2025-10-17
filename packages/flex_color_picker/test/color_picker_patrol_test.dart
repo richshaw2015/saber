@@ -291,7 +291,7 @@ void main() {
         expect(resultColor, const Color(0xff92b300));
 
         // Find the OpacitySlider
-        // TODO(rydmike): Get the slider test working!
+        // (rydmike): Get the slider test working!
         expect(find.byType(OpacitySlider), findsOneWidget);
         // expect(find.byType(Slider), findsOneWidget);
         // Tap center of the OpacitySlider
@@ -307,7 +307,7 @@ void main() {
         // Find the Text entry
         expect(find.byType(ColorCodeField), findsOneWidget);
         expect(find.byType(TextField), findsOneWidget);
-        // TODO(rydmike): Get the color code entry test working!
+        // (rydmike): Get the color code entry test working!
         // await $(find.byType(TextField)).enterText('613E42');
         // await $(find.byType(ColorCodeField)).enterText('613E42');
         // expect(resultColor, const Color(0xFF613E42));
@@ -436,7 +436,7 @@ void main() {
         Color resultColor = const Color(0xFF613E42);
         await $.pumpWidgetAndSettle(
           TestPicker(
-            // TODO(rydmike): Do not see RTL hit test result, why?
+            // (rydmike): Do not see RTL hit test result, why?
             // Testing RTL Directionality but not getting hits on RTL
             // version OpacitySliderTrack, should get it! Why not?
             directionality: TextDirection.rtl,

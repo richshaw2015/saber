@@ -188,7 +188,7 @@ class QuillRawEditorConfig {
   /// Defaults to null.
   final bool? checkBoxReadOnly;
 
-  // TODO: (11.0.0) Should move this property to QuillClipboardConfig? Also exist in QuillEditorConfig
+  // : (11.0.0) Should move this property to QuillClipboardConfig? Also exist in QuillEditorConfig
   /// Disable Clipboard features
   ///
   /// when this is set to true clipboard can not be used

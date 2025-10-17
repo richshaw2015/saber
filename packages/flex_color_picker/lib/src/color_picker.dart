@@ -2540,7 +2540,7 @@ class _ColorPickerState extends State<ColorPicker> {
     }
     // ELSE FOR: Clipboard could not parsed to a Color()
     else {
-      // TODO(rydmike): Improve sound when it can be done with SDK features.
+      // (rydmike): Improve sound when it can be done with SDK features.
       // This is a nice idea, but it does not do much on most platforms.
       // Would just like to get a nice "error bleep" sound on all platforms
       // without any plugin by using SDK only, but not doable, bummer.

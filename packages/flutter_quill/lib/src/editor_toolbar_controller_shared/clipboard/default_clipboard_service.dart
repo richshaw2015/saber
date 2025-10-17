@@ -52,7 +52,7 @@ class DefaultClipboardService extends ClipboardService {
       return null;
     }
     if (kIsWeb) {
-      // TODO: Can't read file with dart:io on the Web (See related https://github.com/FlutterQuill/quill-native-bridge/issues/6)
+      // Can't read file with dart:io on the Web (See related https://github.com/FlutterQuill/quill-native-bridge/issues/6)
       return null;
     }
     final filePaths = await QuillNativeProvider.instance.getClipboardFiles();

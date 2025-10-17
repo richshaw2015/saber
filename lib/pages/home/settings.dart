@@ -470,7 +470,7 @@ class _SettingsPageState extends State<SettingsPage> {
                 pref: stows.simplifiedHomeLayout,
               ),
 
-              // TODO 通用 -》用户隐私 / 服务协议
+              // 用户隐私 / 服务协议
               SettingsSubtitle(subtitle: t.settings.prefCategories.general),
               SettingsLink(
                 title: '隐私政策',
