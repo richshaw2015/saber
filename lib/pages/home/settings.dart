@@ -178,9 +178,9 @@ class _SettingsPageState extends State<SettingsPage> {
               SettingsSelection(
                 title: t.settings.prefLabels.appTheme,
                 iconBuilder: (i) {
-                  if (i == ThemeMode.system.index) return Icons.brightness_auto;
-                  if (i == ThemeMode.light.index) return Icons.light_mode;
-                  if (i == ThemeMode.dark.index) return Icons.dark_mode;
+                  if (i == ThemeMode.system.index) return CupertinoIcons.circle_lefthalf_fill;
+                  if (i == ThemeMode.light.index) return CupertinoIcons.sun_max;
+                  if (i == ThemeMode.dark.index) return CupertinoIcons.moon_fill;
                   return null;
                 },
                 pref: _SettingsStows.appTheme,
@@ -188,15 +188,15 @@ class _SettingsPageState extends State<SettingsPage> {
                 options: [
                   ToggleButtonsOption(
                       ThemeMode.system.index,
-                      Icon(Icons.brightness_auto,
+                      Icon(CupertinoIcons.circle_lefthalf_fill,
                           semanticLabel: t.settings.themeModes.system)),
                   ToggleButtonsOption(
                       ThemeMode.light.index,
-                      Icon(Icons.light_mode,
+                      Icon(CupertinoIcons.sun_max,
                           semanticLabel: t.settings.themeModes.light)),
                   ToggleButtonsOption(
                       ThemeMode.dark.index,
-                      Icon(Icons.dark_mode,
+                      Icon(CupertinoIcons.moon_fill,
                           semanticLabel: t.settings.themeModes.dark)),
                 ],
               ),
@@ -251,30 +251,30 @@ class _SettingsPageState extends State<SettingsPage> {
                 },
                 afterChange: (_) => setState(() {}),
                 iconBuilder: (i) => switch (LayoutSize.values[i]) {
-                  LayoutSize.auto => Icons.aspect_ratio,
-                  LayoutSize.phone => Icons.smartphone,
-                  LayoutSize.tablet => Icons.tablet,
+                  LayoutSize.auto => CupertinoIcons.rectangle_expand_vertical,
+                  LayoutSize.phone => CupertinoIcons.device_phone_portrait,
+                  LayoutSize.tablet => CupertinoIcons.device_laptop,
                 },
                 pref: _SettingsStows.layoutSize,
                 optionsWidth: 60,
                 options: [
                   ToggleButtonsOption(
                       LayoutSize.auto.index,
-                      Icon(Icons.aspect_ratio,
+                      Icon(CupertinoIcons.rectangle_expand_vertical,
                           semanticLabel: t.settings.layoutSizes.auto)),
                   ToggleButtonsOption(
                       LayoutSize.phone.index,
-                      Icon(Icons.smartphone,
+                      Icon(CupertinoIcons.device_phone_portrait,
                           semanticLabel: t.settings.layoutSizes.phone)),
                   ToggleButtonsOption(
                       LayoutSize.tablet.index,
-                      Icon(Icons.tablet,
+                      Icon(CupertinoIcons.device_laptop,
                           semanticLabel: t.settings.layoutSizes.tablet)),
                 ],
               ),
               SettingsColor(
                 title: t.settings.prefLabels.customAccentColor,
-                icon: Icons.colorize,
+                icon: CupertinoIcons.eyedropper,
                 pref: stows.accentColor,
               ),
               SettingsSwitch(
@@ -386,12 +386,12 @@ class _SettingsPageState extends State<SettingsPage> {
               ),
               SettingsSwitch(
                 title: t.settings.prefLabels.recentColorsDontSavePresets,
-                icon: Icons.palette,
+                icon: CupertinoIcons.color_filter,
                 pref: stows.recentColorsDontSavePresets,
               ),
               SettingsSelection(
                 title: t.settings.prefLabels.recentColorsLength,
-                icon: Icons.history,
+                icon: CupertinoIcons.time,
                 pref: stows.recentColorsLength,
                 options: [
                   ToggleButtonsOption(5, Text('5', style: toggleBtnTextStyle)),
@@ -401,7 +401,7 @@ class _SettingsPageState extends State<SettingsPage> {
               SettingsSwitch(
                 title: t.settings.prefLabels.printPageIndicators,
                 subtitle: t.settings.prefDescriptions.printPageIndicators,
-                icon: Icons.numbers,
+                icon: CupertinoIcons.number,
                 pref: stows.printPageIndicators,
               ),
 
@@ -466,7 +466,7 @@ class _SettingsPageState extends State<SettingsPage> {
                 title: t.settings.prefLabels.simplifiedHomeLayout,
                 subtitle: t.settings.prefDescriptions.simplifiedHomeLayout,
                 iconBuilder: (simplified) =>
-                    simplified ? Icons.grid_view : Symbols.browse,
+                    simplified ? CupertinoIcons.rectangle_grid_2x2 : Symbols.browse,
                 pref: stows.simplifiedHomeLayout,
               ),
 
