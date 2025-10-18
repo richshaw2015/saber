@@ -37,7 +37,7 @@ abstract class HomeRoutes {
           routePath: _homeFunction({'subpage': HomePage.recentSubpage}),
           label: t.home.tabs.home,
           icon: const AdaptiveIcon(
-            icon: Icons.home,
+            icon: CupertinoIcons.house,
             cupertinoIcon: CupertinoIcons.house,
           ),
         ),
@@ -53,7 +53,7 @@ abstract class HomeRoutes {
           routePath: _homeFunction({'subpage': HomePage.whiteboardSubpage}),
           label: t.home.tabs.whiteboard,
           icon: const AdaptiveIcon(
-            icon: Icons.draw,
+            icon: CupertinoIcons.pencil_outline,
             cupertinoIcon: CupertinoIcons.pencil_outline,
           ),
         ),
@@ -61,7 +61,7 @@ abstract class HomeRoutes {
           routePath: _homeFunction({'subpage': HomePage.settingsSubpage}),
           label: t.home.tabs.settings,
           icon: const AdaptiveIcon(
-            icon: Icons.settings,
+            icon: CupertinoIcons.settings,
             cupertinoIcon: CupertinoIcons.settings,
           ),
         ),

@@ -77,7 +77,7 @@ class _SettingsSwitchState extends State<SettingsColor> {
   Widget build(BuildContext context) {
     IconData? icon = widget.icon;
     icon ??= widget.iconBuilder?.call(widget.pref.value);
-    icon ??= Icons.settings;
+    icon ??= CupertinoIcons.settings;
 
     return ListTile(
       contentPadding: const EdgeInsets.symmetric(vertical: 4, horizontal: 16),

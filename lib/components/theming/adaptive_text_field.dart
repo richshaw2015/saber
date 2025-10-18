@@ -35,7 +35,7 @@ class _AdaptiveTextFieldState extends State<AdaptiveTextField> {
   Widget? get suffixIcon {
     if (!widget.isPassword) return null;
     return IconButton(
-      icon: Icon(obscureText ? Icons.visibility_off : Icons.visibility),
+      icon: Icon(obscureText ? CupertinoIcons.eye_slash_fill : CupertinoIcons.eye_fill),
       iconSize: 18,
       onPressed: () {
         setState(() {

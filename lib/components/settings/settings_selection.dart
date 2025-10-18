@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -66,7 +67,7 @@ class _SettingsSelectionState<T extends num>
 
     IconData? icon = widget.icon;
     icon ??= widget.iconBuilder?.call(widget.pref.value);
-    icon ??= Icons.settings;
+    icon ??= CupertinoIcons.settings;
 
     final expSelectionWidth = widget.options.length * widget.optionsWidth;
     final useDropdownInstead =

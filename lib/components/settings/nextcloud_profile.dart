@@ -133,7 +133,7 @@ class _NextcloudProfileState extends State<NextcloudProfile> {
                 ),
                 IconButton(
                   icon: const AdaptiveIcon(
-                    icon: Icons.cloud_upload,
+                    icon: CupertinoIcons.cloud_upload,
                     cupertinoIcon: CupertinoIcons.cloud_upload,
                   ),
                   tooltip: t.settings.resyncEverything,
@@ -185,7 +185,7 @@ class _UnknownPfp extends StatelessWidget {
       child: ColoredBox(
         color: colorScheme.primaryContainer,
         child: Icon(
-          Icons.person,
+          CupertinoIcons.person,
           color: colorScheme.onPrimaryContainer,
           size: size * 0.7,
         ),

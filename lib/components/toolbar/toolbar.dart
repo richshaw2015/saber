@@ -390,7 +390,7 @@ class _ToolbarState extends State<Toolbar> {
                   );
                 },
                 child: currentColor == null
-                    ? const Icon(Icons.palette)
+                    ? const Icon(CupertinoIcons.color_filter)
                     : Container(
                         width: 18,
                         height: 18,
@@ -453,7 +453,7 @@ class _ToolbarState extends State<Toolbar> {
                 onPressed: widget.pickPhoto,
                 padding: buttonPadding,
                 child: const AdaptiveIcon(
-                  icon: Icons.photo,
+                  icon: CupertinoIcons.photo,
                   cupertinoIcon: CupertinoIcons.photo,
                 ),
               ),
@@ -464,7 +464,7 @@ class _ToolbarState extends State<Toolbar> {
                 onPressed: widget.toggleTextEditing,
                 padding: buttonPadding,
                 child: const AdaptiveIcon(
-                  icon: Icons.text_fields,
+                  icon: CupertinoIcons.text_cursor,
                   cupertinoIcon: CupertinoIcons.text_cursor,
                 ),
               ),
@@ -485,8 +485,8 @@ class _ToolbarState extends State<Toolbar> {
                 padding: buttonPadding,
                 child: AdaptiveIcon(
                   icon: DynamicMaterialApp.isFullscreen
-                      ? Icons.fullscreen_exit
-                      : Icons.fullscreen,
+                      ? CupertinoIcons.fullscreen_exit
+                      : CupertinoIcons.fullscreen,
                   cupertinoIcon: DynamicMaterialApp.isFullscreen
                       ? CupertinoIcons.fullscreen_exit
                       : CupertinoIcons.fullscreen,
@@ -501,7 +501,7 @@ class _ToolbarState extends State<Toolbar> {
                     onPressed: widget.undo,
                     padding: buttonPadding,
                     child: const AdaptiveIcon(
-                      icon: Icons.undo,
+                      icon: CupertinoIcons.arrow_uturn_left,
                       cupertinoIcon: CupertinoIcons.arrow_uturn_left,
                     ),
                   ),
@@ -511,7 +511,7 @@ class _ToolbarState extends State<Toolbar> {
                     onPressed: widget.redo,
                     padding: buttonPadding,
                     child: const AdaptiveIcon(
-                      icon: Icons.redo,
+                      icon: CupertinoIcons.arrow_uturn_right,
                       cupertinoIcon: CupertinoIcons.arrow_uturn_right,
                     ),
                   ),

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:saber/data/extensions/color_extensions.dart';
 
+import '../../common/config.dart';
+
 class ColorOption extends StatelessWidget {
   const ColorOption({
     super.key,
@@ -62,9 +64,11 @@ class ColorOptionSeparatorIcon extends StatelessWidget {
   const ColorOptionSeparatorIcon({
     super.key,
     required this.icon,
+    this.size
   });
 
   final IconData icon;
+  final double? size;
 
   @override
   Widget build(BuildContext context) {
@@ -76,7 +80,7 @@ class ColorOptionSeparatorIcon extends StatelessWidget {
       ),
       child: Icon(
         icon,
-        size: 16,
+        size: size ?? Cfg.fontBodySmall,
         color: Color.lerp(
           colorScheme.onSurface,
           colorScheme.primary,

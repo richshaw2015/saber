@@ -9,6 +9,8 @@ import 'package:saber/data/extensions/color_extensions.dart';
 import 'package:saber/data/prefs.dart';
 import 'package:saber/i18n/strings.g.dart';
 
+import '../../common/config.dart';
+
 typedef NamedColor = ({String name, Color color});
 
 class ColorBar extends StatefulWidget {
@@ -178,7 +180,8 @@ class _ColorBarState extends State<ColorBar> {
       // pinned colors
       if (stows.pinnedColors.value.isNotEmpty) ...[
         const ColorOptionSeparatorIcon(
-          icon: Icons.pin_drop,
+          icon: CupertinoIcons.pin,
+          size: Cfg.fontLabelLarge
         ),
         for (String colorString in stows.pinnedColors.value)
           ColorOption(
@@ -204,7 +207,8 @@ class _ColorBarState extends State<ColorBar> {
       ],
 
       const ColorOptionSeparatorIcon(
-        icon: Icons.history,
+        icon: CupertinoIcons.clock,
+        size: Cfg.fontBodyLarge,
       ),
 
       // recent colors
@@ -252,7 +256,8 @@ class _ColorBarState extends State<ColorBar> {
         ),
 
       const ColorOptionSeparatorIcon(
-        icon: Icons.palette,
+        icon: CupertinoIcons.color_filter,
+        size: Cfg.fontBodyLarge,
       ),
 
       // custom color

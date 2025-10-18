@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:saber/pages/home/settings.dart';
 import 'package:saber/packages/stow/stow.dart';
@@ -42,7 +43,7 @@ class _SettingsSwitchState extends State<SettingsSwitch> {
   Widget build(BuildContext context) {
     IconData? icon = widget.icon;
     icon ??= widget.iconBuilder?.call(widget.pref.value);
-    icon ??= Icons.settings;
+    icon ??= CupertinoIcons.settings;
 
     return GestureDetector(
       onLongPress: () {
