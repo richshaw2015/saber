@@ -5,7 +5,7 @@ description: A cross-platform libre notes app
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 
-version: 1.0.1+18
+version: 1.0.1+22
 
 environment:
   sdk: ">=3.4.0 <4.0.0"
@@ -84,7 +84,9 @@ dependencies:
 
   file_picker:
     git:
+      # 官方合并分支还没更新，这里先用我的个人仓库
       url: https://gitcode.com/openharmony-sig/fluttertpc_file_picker.git
+      # url: https://gitcode.com/richshaw2015/fluttertpc_file_picker.git
       # path: ohos
       ref: br_v8.0.7_ohos
 

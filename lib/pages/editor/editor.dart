@@ -1180,8 +1180,14 @@ class EditorState extends State<Editor> {
       ],
       allowMultiple: true,
       withData: true,
+      // ohos 不支持压缩
+      allowCompression: false
     );
     if (result == null) return const [];
+
+    for (final PlatformFile file in result.files) {
+      Log.w('Picked file: ${file.name}, size: ${file.size}, extension: ${file.extension}, path: ${file.path}, bytes: ${file.bytes?.length}');
+    }
 
     return [
       for (final PlatformFile file in result.files)

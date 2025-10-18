@@ -138,7 +138,6 @@ class PngEditorImage extends EditorImage {
           .then((buffer) => ui.ImageDescriptor.encoded(buffer))
           .then((descriptor) =>
               Size(descriptor.width.toDouble(), descriptor.height.toDouble()));
-
       if (maxSize == null) {
         await stows.maxImageSize.waitUntilRead();
         maxSize = Size.square(stows.maxImageSize.value);
@@ -154,6 +153,7 @@ class PngEditorImage extends EditorImage {
           width: reducedSize.width.toInt(),
           height: reducedSize.height.toInt(),
         );
+        Log.w('Resized image from ${naturalSize.width}X${naturalSize.height} to ${reducedSize.width}X${reducedSize.height}');
         G.event.fire(LoadingChangeEvent(false));
 
         if (resizedByteData != null) {
