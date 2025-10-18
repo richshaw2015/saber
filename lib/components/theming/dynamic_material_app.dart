@@ -73,6 +73,7 @@ class _DynamicMaterialAppState extends State<DynamicMaterialApp> {
     stows.appTheme.addListener(onChanged);
     stows.accentColor.addListener(onChanged);
     stows.hyperlegibleFont.addListener(onChanged);
+    stows.locale.addListener(onChanged);  // 监听语言变化
 
     SystemChrome.setSystemUIChangeCallback(_onFullscreenChange);
   }
@@ -195,6 +196,7 @@ class _DynamicMaterialAppState extends State<DynamicMaterialApp> {
     stows.appTheme.removeListener(onChanged);
     stows.accentColor.removeListener(onChanged);
     stows.hyperlegibleFont.removeListener(onChanged);
+    stows.locale.removeListener(onChanged);  // 移除语言变化监听
 
     SystemChrome.setSystemUIChangeCallback(null);
 

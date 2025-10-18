@@ -29,9 +29,10 @@ class ResponsiveNavbar extends StatefulWidget {
 class _ResponsiveNavbarState extends State<ResponsiveNavbar> {
   @override
   void initState() {
+    super.initState();
+
     stows.locale.addListener(onChange);
     stows.layoutSize.addListener(onChange);
-    super.initState();
   }
 
   void onChange() {
@@ -106,6 +107,7 @@ class _ResponsiveNavbarState extends State<ResponsiveNavbar> {
   void dispose() {
     stows.locale.removeListener(onChange);
     stows.layoutSize.removeListener(onChange);
+
     super.dispose();
   }
 }
