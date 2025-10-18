@@ -1,6 +1,6 @@
 class Cfg {
   // 是否启用远程日志上传，测试阶段开启，上传商店时要关闭
-  static const bool enableRemoteLog = true;
+  static const bool enableRemoteLog = false;
 
   static const double padding0 = 10.0;
   static const double padding = 12.0;
