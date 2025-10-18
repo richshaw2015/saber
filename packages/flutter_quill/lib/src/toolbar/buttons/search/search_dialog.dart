@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 
@@ -128,7 +129,7 @@ class QuillToolbarSearchDialogState extends State<QuillToolbarSearchDialog> {
       child: Row(
         children: [
           IconButton(
-            icon: const Icon(Icons.close),
+            icon: const Icon(CupertinoIcons.xmark),
             tooltip: context.loc.close,
             visualDensity: VisualDensity.compact,
             onPressed: () {
@@ -136,7 +137,7 @@ class QuillToolbarSearchDialogState extends State<QuillToolbarSearchDialog> {
             },
           ),
           IconButton(
-            icon: const Icon(Icons.more_vert),
+            icon: const Icon(CupertinoIcons.ellipsis_vertical),
             isSelected: _caseSensitive || _wholeWord,
             tooltip: context.loc.searchSettings,
             visualDensity: VisualDensity.compact,
@@ -162,12 +163,12 @@ class QuillToolbarSearchDialogState extends State<QuillToolbarSearchDialog> {
             ),
           ),
           IconButton(
-            icon: const Icon(Icons.keyboard_arrow_up),
+            icon: const Icon(CupertinoIcons.chevron_up),
             tooltip: context.loc.moveToPreviousOccurrence,
             onPressed: (_offsets.isNotEmpty) ? _moveToPrevious : null,
           ),
           IconButton(
-            icon: const Icon(Icons.keyboard_arrow_down),
+            icon: const Icon(CupertinoIcons.chevron_down),
             tooltip: context.loc.moveToNextOccurrence,
             onPressed: (_offsets.isNotEmpty) ? _moveToNext : null,
           ),

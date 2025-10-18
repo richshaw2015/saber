@@ -102,7 +102,7 @@ class _SyncingButtonState extends State<SyncingButton> {
             ),
           ),
           const AdaptiveIcon(
-            icon: Icons.sync,
+            icon: CupertinoIcons.arrow_2_circlepath,
             cupertinoIcon: CupertinoIcons.arrow_2_circlepath,
           ),
         ],

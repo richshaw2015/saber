@@ -34,7 +34,7 @@ class RenameFolderButton extends StatelessWidget {
           },
         );
       },
-      icon: const Icon(Icons.edit_square),
+      icon: const Icon(CupertinoIcons.pencil_circle),
     );
   }
 }
@@ -92,7 +92,7 @@ class _RenameFolderDialogState extends State<_RenameFolderDialog> {
           textInputAction: TextInputAction.done,
           focusOrder: const NumericFocusOrder(1),
           placeholder: t.home.renameFolder.folderName,
-          prefixIcon: const Icon(Icons.edit_square),
+          prefixIcon: const Icon(CupertinoIcons.pencil_circle),
           validator: validateFolderName,
         ),
       ),

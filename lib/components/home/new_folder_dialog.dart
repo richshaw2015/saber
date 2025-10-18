@@ -55,7 +55,7 @@ class _NewFolderDialogState extends State<NewFolderDialog> {
           focusOrder: const NumericFocusOrder(1),
           placeholder: t.home.newFolder.folderName,
           prefixIcon: const AdaptiveIcon(
-            icon: Icons.create_new_folder,
+            icon: CupertinoIcons.folder_badge_plus,
             cupertinoIcon: CupertinoIcons.folder_badge_plus,
           ),
           validator: validateFolderName,

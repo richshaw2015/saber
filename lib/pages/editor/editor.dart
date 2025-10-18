@@ -1712,7 +1712,7 @@ class EditorState extends State<Editor> {
                 actions: [
                   IconButton(
                     icon: const AdaptiveIcon(
-                      icon: Icons.insert_page_break,
+                      icon: CupertinoIcons.add,
                       cupertinoIcon: CupertinoIcons.add,
                     ),
                     tooltip: t.editor.menu.insertPage,
@@ -1729,7 +1729,7 @@ class EditorState extends State<Editor> {
                   ),
                   IconButton(
                     icon: const AdaptiveIcon(
-                      icon: Icons.grid_view,
+                      icon: CupertinoIcons.rectangle_grid_2x2,
                       cupertinoIcon: CupertinoIcons.rectangle_grid_2x2,
                     ),
                     tooltip: t.editor.pages,
@@ -1748,7 +1748,7 @@ class EditorState extends State<Editor> {
                   ),
                   IconButton(
                     icon: const AdaptiveIcon(
-                      icon: Icons.more_vert,
+                      icon: CupertinoIcons.ellipsis_vertical,
                       cupertinoIcon: CupertinoIcons.ellipsis_vertical,
                     ),
                     onPressed: () {

@@ -156,12 +156,12 @@ class _DirectorySelectorState extends State<DirectorySelector> {
                 ),
               ),
               IconButton(
-                icon: const Icon(Icons.folder),
+                icon: const Icon(CupertinoIcons.folder_fill),
                 onPressed: _pickDir,
               ),
               if (stows.customDataDir.value != null)
                 IconButton(
-                  icon: const Icon(Icons.undo),
+                  icon: const Icon(CupertinoIcons.arrow_uturn_left),
                   onPressed: _pickDefaultDir,
                 ),
             ],

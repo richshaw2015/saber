@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:saber/data/routes.dart';
@@ -28,7 +29,7 @@ class SaveIndicator extends StatelessWidget {
             icon: switch (savingState.value) {
               SavingState.waitingToSave => const Icon(Icons.save),
               SavingState.saving => const CircularProgressIndicator.adaptive(),
-              SavingState.saved => const Icon(Icons.arrow_back),
+              SavingState.saved => const Icon(CupertinoIcons.arrow_left),
             },
           ),
         );

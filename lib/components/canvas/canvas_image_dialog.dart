@@ -108,7 +108,7 @@ class _CanvasImageDialogState extends State<CanvasImageDialog> {
         },
         title: t.editor.imageOptions.download,
         child: const AdaptiveIcon(
-          icon: Icons.download,
+          icon: CupertinoIcons.arrow_down_circle_fill,
           cupertinoIcon: CupertinoIcons.arrow_down_circle_fill,
         ),
       ),
@@ -121,7 +121,7 @@ class _CanvasImageDialogState extends State<CanvasImageDialog> {
             ? t.editor.imageOptions.removeAsBackground
             : t.editor.imageOptions.setAsBackground,
         child: const AdaptiveIcon(
-          icon: Icons.wallpaper,
+          icon: CupertinoIcons.photo_fill_on_rectangle_fill,
           cupertinoIcon: CupertinoIcons.photo_fill_on_rectangle_fill,
         ),
       ),
@@ -133,7 +133,7 @@ class _CanvasImageDialogState extends State<CanvasImageDialog> {
         },
         title: t.editor.imageOptions.delete,
         child: const AdaptiveIcon(
-          icon: Icons.delete,
+          icon: CupertinoIcons.trash_fill,
           cupertinoIcon: CupertinoIcons.trash_fill,
         ),
       ),

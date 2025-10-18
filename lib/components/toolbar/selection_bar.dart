@@ -27,7 +27,7 @@ class SelectionBar extends StatelessWidget {
           ),
           tooltip: t.editor.selectionBar.duplicate,
           icon: const AdaptiveIcon(
-            icon: Icons.content_copy,
+            icon: CupertinoIcons.doc_on_clipboard,
             cupertinoIcon: CupertinoIcons.doc_on_clipboard,
           ),
         ),
@@ -40,7 +40,7 @@ class SelectionBar extends StatelessWidget {
           ),
           tooltip: t.editor.selectionBar.delete,
           icon: const AdaptiveIcon(
-            icon: Icons.delete,
+            icon: CupertinoIcons.delete,
             cupertinoIcon: CupertinoIcons.delete,
           ),
         ),

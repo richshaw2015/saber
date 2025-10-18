@@ -31,7 +31,7 @@ class DeleteFolderButton extends StatelessWidget {
           ),
         );
       },
-      icon: const Icon(Icons.delete_forever),
+      icon: const Icon(CupertinoIcons.delete),
     );
   }
 }

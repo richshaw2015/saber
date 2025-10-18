@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:collapsible/collapsible.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:logging/logging.dart';
@@ -198,7 +199,7 @@ class _RecentPageState extends State<RecentPage> {
                   ]);
                   selectedFiles.value = [];
                 },
-                icon: const Icon(Icons.delete_forever),
+                icon: const Icon(CupertinoIcons.delete),
               ),
               ExportNoteButton(
                 selectedFiles: selectedFiles.value,

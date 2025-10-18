@@ -144,7 +144,7 @@ class _EditorPageManagerState extends State<EditorPageManager> {
                       IconButton(
                         tooltip: t.editor.menu.deletePage,
                         icon: const AdaptiveIcon(
-                          icon: Icons.delete,
+                          icon: CupertinoIcons.delete,
                           cupertinoIcon: CupertinoIcons.delete,
                         ),
                         onPressed: isEmptyLastPage

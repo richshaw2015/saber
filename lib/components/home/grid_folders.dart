@@ -156,10 +156,12 @@ class _GridFolderState extends State<_GridFolder> {
                           },
                           child: AdaptiveIcon(
                             icon: switch (widget.cardType) {
-                              _FolderCardType.backFolder => Icons.folder_open,
+                              _FolderCardType.backFolder =>
+                              CupertinoIcons.folder_open,
                               _FolderCardType.newFolder =>
-                                Icons.create_new_folder,
-                              _FolderCardType.realFolder => Icons.folder,
+                              CupertinoIcons.folder_fill_badge_plus,
+                              _FolderCardType.realFolder =>
+                              CupertinoIcons.folder_fill,
                             },
                             cupertinoIcon: switch (widget.cardType) {
                               _FolderCardType.backFolder =>
@@ -232,7 +234,7 @@ class _GridFolderState extends State<_GridFolder> {
                 ),
                 const SizedBox(height: 8),
                 switch (widget.cardType) {
-                  _FolderCardType.backFolder => const Icon(Icons.arrow_back),
+                  _FolderCardType.backFolder => const Icon(CupertinoIcons.arrow_left),
                   _FolderCardType.newFolder => Text(t.home.newFolder.newFolder),
                   _FolderCardType.realFolder => Text(widget.folderName!),
                 },

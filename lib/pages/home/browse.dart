@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:collapsible/collapsible.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:saber/components/home/export_note_button.dart';
@@ -245,7 +246,7 @@ class _BrowsePageState extends State<BrowsePage> {
                   ]);
                   selectedFiles.value = [];
                 },
-                icon: const Icon(Icons.delete_forever),
+                icon: const Icon(CupertinoIcons.delete),
               ),
               ExportNoteButton(
                 selectedFiles: selectedFiles.value,

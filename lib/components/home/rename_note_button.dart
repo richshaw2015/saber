@@ -35,7 +35,7 @@ class RenameNoteButton extends StatelessWidget {
           },
         );
       },
-      icon: const Icon(Icons.edit_square),
+      icon: const Icon(CupertinoIcons.pencil_circle),
     );
   }
 }
@@ -113,7 +113,7 @@ class _RenameNoteDialogState extends State<_RenameNoteDialog> {
           textInputAction: TextInputAction.done,
           focusOrder: const NumericFocusOrder(1),
           placeholder: t.home.renameNote.noteName,
-          prefixIcon: const Icon(Icons.edit_square),
+          prefixIcon: const Icon(CupertinoIcons.pencil_circle),
           validator: validateNoteName,
         ),
       ),

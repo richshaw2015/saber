@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:saber/data/extensions/color_extensions.dart';
@@ -85,10 +86,10 @@ class _FileTreeBranchState extends State<FileTreeBranch> {
               child: Row(
                 children: [
                   if (widget.isDirectory) ...[
-                    Icon(areChildrenVisible ? Icons.folder_open : Icons.folder,
+                    Icon(areChildrenVisible ? CupertinoIcons.folder_open : CupertinoIcons.folder_fill,
                         color: colorScheme.primary, size: 25),
                   ] else ...[
-                    const Icon(Icons.insert_drive_file, size: 25),
+                    const Icon(CupertinoIcons.doc_fill, size: 25),
                   ],
                   const SizedBox(width: 5),
                   Expanded(

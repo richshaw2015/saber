@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:material_symbols_icons/symbols.dart';
 import 'package:saber/components/canvas/hud/canvas_gesture_lock_btn.dart';
@@ -69,7 +70,7 @@ class _CanvasHudState extends State<CanvasHud> {
               child: CanvasGestureLockBtn(
                 lock: widget.zoomLock,
                 setLock: widget.setZoomLock,
-                icon: widget.zoomLock ? Icons.lock : Icons.lock_open,
+                icon: widget.zoomLock ? CupertinoIcons.lock : CupertinoIcons.lock_open,
                 tooltip: widget.zoomLock
                     ? t.editor.hud.unlockZoom
                     : t.editor.hud.lockZoom,
@@ -81,6 +82,7 @@ class _CanvasHudState extends State<CanvasHud> {
               child: CanvasGestureLockBtn(
                 lock: widget.singleFingerPanLock,
                 setLock: widget.setSingleFingerPanLock,
+                // 这个图标暂时没有好的替代的
                 icon: widget.singleFingerPanLock ? Icons.pinch : Icons.swipe_up,
                 tooltip: widget.singleFingerPanLock
                     ? t.editor.hud.unlockSingleFingerPan

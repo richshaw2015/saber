@@ -1,4 +1,5 @@
 import 'package:file_picker/file_picker.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 import 'package:go_router/go_router.dart';
@@ -38,11 +39,11 @@ class _NewNoteButtonState extends State<NewNoteButton> {
             shape: const CircleBorder(),
             onPressed: toggleChildren,
             tooltip: t.home.tooltips.newNote,
-            child: const Icon(Icons.add));
+            child: const Icon(CupertinoIcons.add));
       },
       children: [
         SpeedDialChild(
-          child: const Icon(Icons.create),
+          child: const Icon(CupertinoIcons.create),
           label: t.home.create.newNote,
           onTap: () async {
             if (widget.path == null) {
@@ -56,7 +57,7 @@ class _NewNoteButtonState extends State<NewNoteButton> {
           },
         ),
         SpeedDialChild(
-          child: const Icon(Icons.note_add),
+          child: const Icon(CupertinoIcons.square_arrow_down),
           label: t.home.create.importNote,
           onTap: () async {
             final result = await FilePicker.platform.pickFiles(

@@ -44,7 +44,9 @@ class _VerticalNavbarState extends State<VerticalNavbar> {
                 });
               },
               child: AdaptiveIcon(
-                icon: expanded ? Icons.chevron_left : Icons.chevron_right,
+                icon: expanded
+                    ? CupertinoIcons.chevron_left
+                    : CupertinoIcons.chevron_right,
                 cupertinoIcon: expanded
                     ? CupertinoIcons.chevron_left
                     : CupertinoIcons.chevron_right,

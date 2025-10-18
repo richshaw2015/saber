@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:logging/logging.dart';
@@ -95,7 +96,7 @@ class _NcLoginPageState extends State<NcLoginPage> {
         }),
         leading: widget.forceAppBarLeading
             ? IconButton(
-                icon: const Icon(Icons.arrow_back),
+                icon: const Icon(CupertinoIcons.arrow_left),
                 onPressed: () => Get.back(),
               )
             : null,

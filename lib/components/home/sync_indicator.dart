@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:saber/data/file_manager/file_manager.dart';
 import 'package:saber/data/nextcloud/saber_syncer.dart';
@@ -83,10 +84,10 @@ class _SyncIndicatorState extends State<SyncIndicator> {
                 duration: const Duration(milliseconds: 200),
                 child: switch (status) {
                   _SyncIndicatorStatus.done => null,
-                  _SyncIndicatorStatus.uploading => const Icon(Icons.upload),
+                  _SyncIndicatorStatus.uploading => const Icon(CupertinoIcons.upload_circle_fill),
                   _SyncIndicatorStatus.downloading =>
-                    const Icon(Icons.download),
-                  _SyncIndicatorStatus.merging => const Icon(Icons.sync),
+                    const Icon(CupertinoIcons.download_circle_fill),
+                  _SyncIndicatorStatus.merging => const Icon(CupertinoIcons.arrow_2_circlepath),
                 },
               );
             },

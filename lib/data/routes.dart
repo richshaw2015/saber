@@ -45,7 +45,7 @@ abstract class HomeRoutes {
           routePath: _homeFunction({'subpage': HomePage.browseSubpage}),
           label: t.home.tabs.browse,
           icon: const AdaptiveIcon(
-            icon: Icons.folder,
+            icon: CupertinoIcons.folder,
             cupertinoIcon: CupertinoIcons.folder,
           ),
         ),

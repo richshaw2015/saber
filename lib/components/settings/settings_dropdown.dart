@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:saber/components/theming/adaptive_toggle_buttons.dart';
@@ -63,7 +64,7 @@ class _SettingsDropdownState<T> extends State<SettingsDropdown<T>> {
 
     IconData? icon = widget.icon;
     icon ??= widget.iconBuilder?.call(widget.pref.value);
-    icon ??= Icons.settings;
+    icon ??= CupertinoIcons.settings;
 
     return MergeSemantics(
       child: ListTile(

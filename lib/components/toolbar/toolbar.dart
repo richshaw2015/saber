@@ -530,7 +530,7 @@ class _ToolbarState extends State<Toolbar> {
                   );
                 },
                 child: const AdaptiveIcon(
-                  icon: Icons.share,
+                  icon: CupertinoIcons.share,
                   cupertinoIcon: CupertinoIcons.share,
                 ),
               ),

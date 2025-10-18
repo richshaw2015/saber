@@ -93,7 +93,7 @@ class _ExportNoteButtonState extends State<ExportNoteButton> {
                 padding: EdgeInsets.zero,
                 tooltip: t.home.tooltips.exportNote,
                 onPressed: toggleChildren,
-                icon: const Icon(Icons.share),
+                icon: const Icon(CupertinoIcons.share),
               );
       },
       children: [

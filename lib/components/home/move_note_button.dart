@@ -33,7 +33,7 @@ class MoveNoteButton extends StatelessWidget {
           },
         );
       },
-      icon: const Icon(Icons.drive_file_move),
+      icon: const Icon(CupertinoIcons.arrow_right_arrow_left),
     );
   }
 }
