@@ -54,9 +54,13 @@ Future<void> appRunner() async {
   StrokeOptionsExtension.setDefaults();
   Stows.markAsOnMainIsolate();
 
+  await stows.locale.waitUntilRead();
+  setLocale();
+  stows.locale.addListener(setLocale);
+
   await FileManager.init();
   await workerManager.init();
-  await stows.locale.waitUntilRead();
+
   await PencilShader.init();
 
   await PencilSound.preload();
@@ -64,10 +68,6 @@ Future<void> appRunner() async {
   Printing.info().then((info) {
     Editor.canRasterPdf = info.canRaster;
   });
-
-  setLocale();
-  // 后续的设置
-  stows.locale.addListener(setLocale);
 
   // stows.customDataDir.addListener(FileManager.migrateDataDir);
 
@@ -266,7 +266,6 @@ class _AppState extends State<App> {
   @override
   void initState() {
     super.initState();
-
     setupSharingIntent();
   }
 
@@ -314,3 +313,4 @@ class _AppState extends State<App> {
     super.dispose();
   }
 }
+

@@ -206,8 +206,6 @@ class EditorState extends State<Editor> {
 
     _initAsync();
     _assignKeybindings();
-
-    Log.d('Editor: initState complete');
   }
 
   void _initAsync() async {
