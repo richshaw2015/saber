@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:saber/components/canvas/_canvas_background_painter.dart';
@@ -95,7 +96,7 @@ class _EditorBottomSheetState extends State<EditorBottomSheet> {
                       : null,
                   child: Wrap(
                     children: [
-                      const Icon(Icons.cleaning_services),
+                      const Icon(CupertinoIcons.paintbrush),
                       const SizedBox(width: 8),
                       Text(t.editor.menu.clearPage(
                         page: widget.currentPageIndex == null
@@ -115,7 +116,7 @@ class _EditorBottomSheetState extends State<EditorBottomSheet> {
                       : null,
                   child: Wrap(
                     children: [
-                      const Icon(Icons.cleaning_services),
+                      const Icon(CupertinoIcons.paintbrush_fill),
                       const SizedBox(width: 8),
                       Text(t.editor.menu.clearAllPages),
                     ],

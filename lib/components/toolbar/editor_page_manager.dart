@@ -96,7 +96,7 @@ class _EditorPageManagerState extends State<EditorPageManager> {
                           child: const Padding(
                             padding: EdgeInsets.all(8),
                             child: Icon(
-                              Icons.drag_handle,
+                              CupertinoIcons.line_horizontal_3,
                             ),
                           ),
                         ),
@@ -109,7 +109,7 @@ class _EditorPageManagerState extends State<EditorPageManager> {
                       IconButton(
                         tooltip: t.editor.menu.insertPage,
                         icon: const AdaptiveIcon(
-                          icon: Icons.insert_page_break,
+                          icon: CupertinoIcons.add,
                           cupertinoIcon: CupertinoIcons.add,
                         ),
                         onPressed: () => setState(() {
@@ -120,7 +120,7 @@ class _EditorPageManagerState extends State<EditorPageManager> {
                       IconButton(
                         tooltip: t.editor.menu.duplicatePage,
                         icon: const AdaptiveIcon(
-                          icon: Icons.content_copy,
+                          icon: CupertinoIcons.doc_on_clipboard,
                           cupertinoIcon: CupertinoIcons.doc_on_clipboard,
                         ),
                         onPressed: () => setState(() {
@@ -133,7 +133,7 @@ class _EditorPageManagerState extends State<EditorPageManager> {
                           page: pageIndex + 1,
                           totalPages: widget.coreInfo.pages.length,
                         ),
-                        icon: const Icon(Icons.cleaning_services),
+                        icon: const Icon(CupertinoIcons.paintbrush),
                         onPressed: isEmptyLastPage
                             ? null
                             : () => setState(() {

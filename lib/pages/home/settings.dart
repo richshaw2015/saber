@@ -302,7 +302,7 @@ class _SettingsPageState extends State<SettingsPage> {
                 title: t.settings.prefLabels.autoClearWhiteboardOnExit,
                 // no sync features currently
                 // subtitle: t.settings.prefDescriptions.autoClearWhiteboardOnExit,
-                icon: Icons.cleaning_services,
+                icon: CupertinoIcons.paintbrush,
                 pref: stows.autoClearWhiteboardOnExit,
               ),
               SettingsSwitch(
