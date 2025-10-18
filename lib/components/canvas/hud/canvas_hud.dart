@@ -83,28 +83,31 @@ class _CanvasHudState extends State<CanvasHud> {
                 lock: widget.singleFingerPanLock,
                 setLock: widget.setSingleFingerPanLock,
                 // 这个图标暂时没有好的替代的
-                icon: widget.singleFingerPanLock ? Icons.pinch : Icons.swipe_up,
+                icon: widget.singleFingerPanLock ? CupertinoIcons.hand_raised : CupertinoIcons.hand_draw,
                 tooltip: widget.singleFingerPanLock
                     ? t.editor.hud.unlockSingleFingerPan
                     : t.editor.hud.lockSingleFingerPan,
               ),
             ),
-            Positioned(
-              top: 85,
-              left: 5,
-              child: CanvasGestureLockBtn(
-                lock: widget.axisAlignedPanLock,
-                setLock: widget.setAxisAlignedPanLock,
-                tooltip: widget.axisAlignedPanLock
-                    ? t.editor.hud.unlockAxisAlignedPan
-                    : t.editor.hud.lockAxisAlignedPan,
-                child: AnimatedRotation(
-                  duration: const Duration(milliseconds: 200),
-                  turns: widget.axisAlignedPanLock ? 0 : 1 / 8,
-                  child: const Icon(Symbols.drag_pan),
-                ),
-              ),
-            ),
+
+            // 自由拖动，这个选项似乎没有生效，先禁用 TODO
+            // Positioned(
+            //   top: 85,
+            //   left: 5,
+            //   child: CanvasGestureLockBtn(
+            //     lock: widget.axisAlignedPanLock,
+            //     setLock: widget.setAxisAlignedPanLock,
+            //     tooltip: widget.axisAlignedPanLock
+            //         ? t.editor.hud.unlockAxisAlignedPan
+            //         : t.editor.hud.lockAxisAlignedPan,
+            //     child: AnimatedRotation(
+            //       duration: const Duration(milliseconds: 200),
+            //       turns: widget.axisAlignedPanLock ? 0 : 1 / 8,
+            //       child: const Icon(Symbols.drag_pan),
+            //     ),
+            //   ),
+            // ),
+
             Positioned(
               top: 5,
               right: 5,
