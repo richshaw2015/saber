@@ -242,7 +242,7 @@ class Stroke {
     // 记录被过滤的无效点
     final invalidCount = polygon.length - validPolygon.length;
     if (invalidCount > 0) {
-      Log.w('Filtered $invalidCount invalid points (NaN/Infinity) from stroke polygon');
+      print('Filtered $invalidCount invalid points (NaN/Infinity) from stroke polygon');
     }
     
     // 如果没有有效点，返回空路径

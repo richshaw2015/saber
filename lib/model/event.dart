@@ -6,3 +6,8 @@ class ShowToastEvent {
   bool bottom;
   ShowToastEvent(this.message, this.duration, this.bottom);
 }
+
+class LoadingChangeEvent {
+  bool busy;
+  LoadingChangeEvent(this.busy);
+}

@@ -145,13 +145,17 @@ class PngEditorImage extends EditorImage {
       }
       final Size reducedSize = EditorImage.resize(naturalSize, maxSize!);
       if (naturalSize.width != reducedSize.width && !isThumbnail) {
-        await null; // wait for next event-loop iteration
+        // 需要缩小图片，加载中动画
+        G.event.fire(LoadingChangeEvent(true));
+        await Future.delayed(const Duration(milliseconds: 60));
 
         final resizedByteData = await resizeImage(
           bytes,
           width: reducedSize.width.toInt(),
           height: reducedSize.height.toInt(),
         );
+        G.event.fire(LoadingChangeEvent(false));
+
         if (resizedByteData != null) {
           imageProvider = MemoryImage(resizedByteData.buffer.asUint8List());
         }

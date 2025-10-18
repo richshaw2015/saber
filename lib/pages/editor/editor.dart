@@ -53,7 +53,9 @@ import 'package:saber/i18n/strings.g.dart';
 import 'package:saber/pages/home/whiteboard.dart';
 import 'package:screenshot/screenshot.dart';
 
+import '../../common/config.dart';
 import '../../common/constant.dart';
+import '../../model/event.dart';
 import '../../service/log/log.dart';
 // 临时禁用 super_clipboard 来测试冲突
 // import 'package:super_clipboard/super_clipboard.dart';
@@ -109,6 +111,9 @@ class EditorState extends State<Editor> {
   final log = Logger('EditorState');
 
   late EditorCoreInfo coreInfo = EditorCoreInfo(filePath: '');
+  
+  // 加载状态管理
+  bool _isLoading = false;
 
   final _canvasGestureDetectorKey = GlobalKey<CanvasGestureDetectorState>();
   final _transformationController = TransformationController();
@@ -186,12 +191,23 @@ class EditorState extends State<Editor> {
 
   @override
   void initState() {
+    super.initState();
+
     DynamicMaterialApp.addFullscreenListener(_setState);
+    
+    // 监听加载事件
+    G.event.on<LoadingChangeEvent>().listen((event) {
+      if (mounted) {
+        setState(() {
+          _isLoading = event.busy;
+        });
+      }
+    });
 
     _initAsync();
     _assignKeybindings();
 
-    super.initState();
+    Log.d('Editor: initState complete');
   }
 
   void _initAsync() async {
@@ -1595,9 +1611,9 @@ class EditorState extends State<Editor> {
       ),
     );
 
-    final Widget body;
+    final Widget bodyContent;
     if (isToolbarVertical) {
-      body = Row(
+      bodyContent = Row(
         textDirection: stows.editorToolbarAlignment.value == AxisDirection.left
             ? TextDirection.ltr
             : TextDirection.rtl,
@@ -1613,7 +1629,7 @@ class EditorState extends State<Editor> {
         ],
       );
     } else {
-      body = Column(
+      bodyContent = Column(
         verticalDirection:
             stows.editorToolbarAlignment.value == AxisDirection.up
                 ? VerticalDirection.up
@@ -1625,6 +1641,27 @@ class EditorState extends State<Editor> {
         ],
       );
     }
+    
+    // 包装 body 添加加载遮罩
+    final Widget body = Stack(
+      children: [
+        bodyContent,
+
+        // 加载遮罩
+        if (_isLoading)
+          Positioned.fill(
+            child: ColoredBox(
+              color: Colors.black26,
+              child: Center(
+                child: CupertinoActivityIndicator(
+                  radius: 2*Cfg.padding,
+                  color: colorScheme.primary,
+                ),
+              ),
+            ),
+          ),
+      ],
+    );
 
     return ValueListenableBuilder(
       valueListenable: savingState,

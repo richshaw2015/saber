@@ -20,6 +20,8 @@ import 'package:saber/data/file_manager/file_manager.dart';
 import 'package:saber/data/prefs.dart';
 import 'package:saber/pages/editor/editor.dart';
 
+import '../../../common/constant.dart';
+import '../../../model/event.dart';
 import '../../../service/log/log.dart';
 
 part 'png_editor_image.dart';
@@ -270,6 +272,8 @@ Future<ByteData?> resizeImage(
   required int width,
   required int height,
 }) async {
+  final startTime = DateTime.now().millisecondsSinceEpoch;
+
   try {
     // Decode the image
     final img.Image? originalImage = img.decodeImage(bytes);
@@ -289,7 +293,9 @@ Future<ByteData?> resizeImage(
     // Encode back to PNG to maintain quality
     final List<int> resizedBytes = img.encodePng(resizedImage);
 
-    Log.d('Image resized from ${originalImage.width}x${originalImage.height} to ${width}x${height}');
+    final endTime = DateTime.now().millisecondsSinceEpoch;
+    final duration = endTime - startTime;
+    Log.d('Image resized from ${originalImage.width}x${originalImage.height} to ${width}x${height} in ${duration}ms (started: $startTime, ended: $endTime)');
     return ByteData.sublistView(Uint8List.fromList(resizedBytes));
   } catch (e) {
     Log.w('Image resize failed with image package: $e');
