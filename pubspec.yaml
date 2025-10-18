@@ -151,7 +151,7 @@ dependencies:
   # super_clipboard:
   #   path: packages/super_native_extensions/super_clipboard
 
-  fast_image_resizer: ^0.0.2
+#  fast_image_resizer: ^0.0.2
 
   bson: ^5.0.0
 
@@ -195,6 +195,7 @@ dependencies:
   stack_trace: ^1.11.1
 
   smooth_corner: ^1.1.0
+  image: ^4.5.4
 
 dev_dependencies:
   flutter_test:

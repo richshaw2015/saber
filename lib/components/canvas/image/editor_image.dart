@@ -5,10 +5,10 @@ import 'dart:isolate';
 import 'dart:math';
 import 'dart:ui' as ui;
 
-import 'package:fast_image_resizer/fast_image_resizer.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:image/image.dart' as img;
 import 'package:logging/logging.dart';
 import 'package:meta/meta.dart';
 import 'package:pdfx/pdfx.dart';
@@ -19,6 +19,8 @@ import 'package:saber/components/canvas/invert_widget.dart';
 import 'package:saber/data/file_manager/file_manager.dart';
 import 'package:saber/data/prefs.dart';
 import 'package:saber/pages/editor/editor.dart';
+
+import '../../../service/log/log.dart';
 
 part 'png_editor_image.dart';
 part 'pdf_editor_image.dart';
@@ -259,5 +261,38 @@ sealed class EditorImage extends ChangeNotifier {
     }
 
     return Size(width, height);
+  }
+}
+
+/// Resize image using the image package for better HarmonyOS compatibility
+Future<ByteData?> resizeImage(
+  Uint8List bytes, {
+  required int width,
+  required int height,
+}) async {
+  try {
+    // Decode the image
+    final img.Image? originalImage = img.decodeImage(bytes);
+    if (originalImage == null) {
+      Log.w('Failed to decode image for resizing');
+      return null;
+    }
+
+    // Resize the image with high quality interpolation
+    final img.Image resizedImage = img.copyResize(
+      originalImage,
+      width: width,
+      height: height,
+      interpolation: img.Interpolation.linear,
+    );
+
+    // Encode back to PNG to maintain quality
+    final List<int> resizedBytes = img.encodePng(resizedImage);
+
+    Log.d('Image resized from ${originalImage.width}x${originalImage.height} to ${width}x${height}');
+    return ByteData.sublistView(Uint8List.fromList(resizedBytes));
+  } catch (e) {
+    Log.w('Image resize failed with image package: $e');
+    return null;
   }
 }
