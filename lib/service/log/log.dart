@@ -13,7 +13,7 @@ class Log {
           filter: DevelopmentFilter(),
           level: Level.debug,
           printer: PrettyPrinter(
-              methodCount: 2,
+              methodCount: 4,
               errorMethodCount: 8,
               lineLength: 100,
               colors: false,
@@ -23,8 +23,8 @@ class Log {
           filter: ProductionFilter(),
           level: Level.warning,
           printer: PrettyPrinter(
-            methodCount: 4,
-            errorMethodCount: 8,
+            methodCount: 8,
+            errorMethodCount: 12,
             lineLength: 100,
             colors: false,
             printEmojis: false,
