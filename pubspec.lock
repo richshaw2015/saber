@@ -947,18 +947,20 @@ packages:
   pdf:
     dependency: "direct main"
     description:
-      name: pdf
-      sha256: "28eacad99bffcce2e05bba24e50153890ad0255294f4dd78a17075a2ba5c8416"
-      url: "https://pub.dev"
-    source: hosted
+      path: "."
+      ref: HEAD
+      resolved-ref: db1edf5816f241162ca94d17398120d8131b1ad3
+      url: "https://gitcode.com/richshaw2015/pdf.git"
+    source: git
     version: "3.11.3"
   pdf_widget_wrapper:
     dependency: transitive
     description:
-      name: pdf_widget_wrapper
-      sha256: c930860d987213a3d58c7ec3b7ecf8085c3897f773e8dc23da9cae60a5d6d0f5
-      url: "https://pub.dev"
-    source: hosted
+      path: "."
+      ref: HEAD
+      resolved-ref: da5a799cb1ddc859f8bb708071a95ff5b4b6a75f
+      url: "https://gitcode.com/richshaw2015/pdf_widget_wrapper.git"
+    source: git
     version: "1.0.4"
   pdfx:
     dependency: "direct main"
@@ -1086,10 +1088,10 @@ packages:
   printing:
     dependency: "direct main"
     description:
-      path: printing
-      ref: "br_printing-v5.14.2_ohos"
-      resolved-ref: deff8bde9e6beced0406cefc1a52e921b9193459
-      url: "https://gitcode.com/openharmony-sig/fluttertpc_printing.git"
+      path: "."
+      ref: HEAD
+      resolved-ref: c39894cb00a099718c09ac8a7f3ed6bb2dd9ff8d
+      url: "https://gitcode.com/richshaw2015/printing.git"
     source: git
     version: "5.14.2"
   provider:

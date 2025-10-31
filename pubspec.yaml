@@ -74,8 +74,9 @@ dependencies:
 
   http: ^1.1.0
 
-
-  pdf: ^3.8.4
+  pdf:
+    git:
+      url: "https://gitcode.com/richshaw2015/pdf.git"
 
   share_plus:
     git:
@@ -138,9 +139,11 @@ dependencies:
 
   printing:
     git:
-      url: https://gitcode.com/openharmony-sig/fluttertpc_printing.git
-      path: printing
-      ref: br_printing-v5.14.2_ohos
+      url: "https://gitcode.com/richshaw2015/printing.git"
+#    git:
+#      url: https://gitcode.com/openharmony-sig/fluttertpc_printing.git
+#      path: printing
+#      ref: br_printing-v5.14.2_ohos
 
   package_info_plus:
     git:
