@@ -5,7 +5,7 @@ description: A cross-platform libre notes app
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 
-version: 1.0.1+23
+version: 1.27.0+24
 
 environment:
   sdk: ">=3.4.0 <4.0.0"
@@ -115,7 +115,8 @@ dependencies:
   animations: ^2.0.7
 
   flutter_quill:
-    path: packages/flutter_quill
+    git:
+      url: "https://gitcode.com/richshaw2015/flutter_quill.git"
 
   worker_manager: ^7.0.1
   # 还没有 ohos 的支持
@@ -123,11 +124,11 @@ dependencies:
 
   archive: ^4.0.3
 
-  receive_sharing_intent:
+  receive_sharing_intent_ohos:
     git:
-      url: "https://gitcode.com/openharmony-sig/fluttertpc_receive_sharing_intent.git"
-      # path: ./ohos
-      ref: br_v1.8.1_ohos
+      url: "https://gitcode.com/fanfan-2019/fluttertpc_receive_sharing_intent.git"
+      path: ./ohos
+      ref: 1.8.1
 
   screenshot: ^3.0.0
 
@@ -235,14 +236,14 @@ dependency_overrides:
       url: "https://gitcode.com/openharmony-tpc/flutter_packages.git"
       path: "packages/path_provider/path_provider"
       ref: master
-  
+
   # 同时统一平台实现
 #  path_provider_android:
 #    git:
 #      url: "https://gitcode.com/openharmony-tpc/flutter_packages.git"
 #      path: "packages/path_provider/path_provider_android"
 #      ref: master
-  
+
   # 强制使用 Git 版本的 url_launcher（解决 flutter_web_auth_2 冲突）
   url_launcher:
     git:

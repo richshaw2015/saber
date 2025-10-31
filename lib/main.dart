@@ -9,7 +9,7 @@ import 'package:go_router/go_router.dart';
 import 'package:logging/logging.dart';
 import 'package:path_to_regexp/path_to_regexp.dart';
 import 'package:printing/printing.dart';
-import 'package:receive_sharing_intent/receive_sharing_intent.dart';
+import 'package:receive_sharing_intent_ohos/receive_sharing_intent_ohos.dart';
 import 'package:saber/common/constant.dart';
 import 'package:saber/common/strings.dart';
 import 'package:saber/components/canvas/pencil_shader.dart';

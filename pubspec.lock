@@ -475,9 +475,11 @@ packages:
   flutter_keyboard_visibility:
     dependency: transitive
     description:
-      path: "packages/flutter_keyboard_visibility/flutter_keyboard_visibility"
-      relative: true
-    source: path
+      path: flutter_keyboard_visibility
+      ref: HEAD
+      resolved-ref: "2cf019833eed5ba58e2ae84be2f99b764ae27fc6"
+      url: "https://gitcode.com/richshaw2015/flutter_keyboard_visibility"
+    source: git
     version: "6.0.0"
   flutter_keyboard_visibility_platform_interface:
     dependency: transitive
@@ -511,9 +513,11 @@ packages:
   flutter_quill:
     dependency: "direct main"
     description:
-      path: "packages/flutter_quill"
-      relative: true
-    source: path
+      path: "."
+      ref: HEAD
+      resolved-ref: "5d0417eb11b6d1fcb4d46de41e062aa68896f639"
+      url: "https://gitcode.com/richshaw2015/flutter_quill.git"
+    source: git
     version: "11.4.2"
   flutter_quill_delta_from_html:
     dependency: transitive
@@ -1172,15 +1176,15 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.2.3"
-  receive_sharing_intent:
+  receive_sharing_intent_ohos:
     dependency: "direct main"
     description:
-      path: "."
-      ref: "br_v1.8.1_ohos"
-      resolved-ref: a84746b45b69bb861335cd3708a188956cb5c415
-      url: "https://gitcode.com/openharmony-sig/fluttertpc_receive_sharing_intent.git"
+      path: ohos
+      ref: "1.8.1"
+      resolved-ref: "8e25d1bc118ff5027d836e065810f53922ee3341"
+      url: "https://gitcode.com/fanfan-2019/fluttertpc_receive_sharing_intent.git"
     source: git
-    version: "1.8.1"
+    version: "1.0.1"
   regexed_validator:
     dependency: "direct main"
     description:
