@@ -5,7 +5,7 @@ description: A cross-platform libre notes app
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 
-version: 1.27.0+24
+version: 1.27.0+25
 
 environment:
   sdk: ">=3.4.0 <4.0.0"
