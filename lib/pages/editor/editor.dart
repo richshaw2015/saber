@@ -1237,7 +1237,7 @@ class EditorState extends State<Editor> {
 
     final raster = Printing.raster(
       pdfBytes,
-      dpi: 1,
+      // dpi: 72,  // 使用标准 72 DPI，生成合理尺寸的图片
     );
 
     int currentPdfPage = -1;
