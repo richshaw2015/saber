@@ -96,10 +96,12 @@ dependencies:
   slang_flutter:
 
   flex_color_picker:
-    path: packages/flex_color_picker
+    git:
+      url: "https://gitcode.com/richshaw2015/flex_color_picker.git"
 
   font_awesome_flutter:
-    path: packages/font_awesome_flutter
+    git:
+      url: "https://gitcode.com/richshaw2015/font_awesome_flutter.git"
 
   flutter_svg: ^2.0.0+1
 

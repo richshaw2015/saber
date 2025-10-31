@@ -219,20 +219,18 @@ class App extends StatefulWidget {
   );
 
   static void openFile(SharedMediaFile file) async {
-    log.info('Opening file: (${file.type}) ${file.path}');
-
-    if (file.type != SharedMediaType.file) return;
+    log.info('Opening file: (${file.toMap()})');
 
     final String extension;
-    if (file.path.contains('.')) {
-      extension = file.path.split('.').last.toLowerCase();
+    if (file.uri != null && file.uri!.contains('.')) {
+      extension = file.uri!.split('.').last.toLowerCase();
     } else {
       extension = 'sbn2';
     }
 
     if (extension == 'sbn' || extension == 'sbn2' || extension == 'sba') {
       final String? path = await FileManager.importFile(
-        file.path,
+        file.uri!,
         null,
         extension: '.$extension',
       );
@@ -243,14 +241,14 @@ class App extends StatefulWidget {
 
       _router.push(RoutePaths.editFilePath(path));
     } else if (extension == 'pdf' && Editor.canRasterPdf) {
-      final fileNameWithoutExtension = file.path
+      final fileNameWithoutExtension = file.uri!
           .split(RegExp(r'[\\/]'))
           .last
-          .substring(0, file.path.length - '.pdf'.length);
+          .substring(0, file.uri!.length - '.pdf'.length);
       final sbnFilePath = await FileManager.suffixFilePathToMakeItUnique(
         '/$fileNameWithoutExtension',
       );
-      _router.push(RoutePaths.editImportPdf(sbnFilePath, file.path));
+      _router.push(RoutePaths.editImportPdf(sbnFilePath, file.uri!));
     } else {
       Log.w('openFile: Unsupported file type: $extension');
     }

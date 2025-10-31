@@ -447,9 +447,11 @@ packages:
   flex_color_picker:
     dependency: "direct main"
     description:
-      path: "packages/flex_color_picker"
-      relative: true
-    source: path
+      path: "."
+      ref: HEAD
+      resolved-ref: "702d42a191266ddde3f6500f46f8c48414ed86a4"
+      url: "https://gitcode.com/richshaw2015/flex_color_picker.git"
+    source: git
     version: "3.6.0"
   flex_seed_scheme:
     dependency: transitive
@@ -597,9 +599,11 @@ packages:
   font_awesome_flutter:
     dependency: "direct main"
     description:
-      path: "packages/font_awesome_flutter"
-      relative: true
-    source: path
+      path: "."
+      ref: HEAD
+      resolved-ref: b314fc1a8f9230c2e961fd9da2314737ec4d04e5
+      url: "https://gitcode.com/richshaw2015/font_awesome_flutter.git"
+    source: git
     version: "10.9.0"
   get:
     dependency: "direct main"
