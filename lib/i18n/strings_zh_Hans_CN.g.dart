@@ -67,7 +67,7 @@ class _TranslationsHomeZhHansCn extends TranslationsHomeEn {
 	@override late final _TranslationsHomeTitlesZhHansCn titles = _TranslationsHomeTitlesZhHansCn._(_root);
 	@override late final _TranslationsHomeTooltipsZhHansCn tooltips = _TranslationsHomeTooltipsZhHansCn._(_root);
 	@override late final _TranslationsHomeCreateZhHansCn create = _TranslationsHomeCreateZhHansCn._(_root);
-	@override String get welcome => '欢迎使用 Saber';
+	@override String get welcome => '欢迎使用';
 	@override String get invalidFormat => '不支持该文件。请选择 .sbn、.sbn2、.sba 或 .pdf 文件。';
 	@override String get noFiles => '未找到文件';
 	@override String get noPreviewAvailable => '无可用预览';
@@ -113,7 +113,7 @@ class _TranslationsSettingsZhHansCn extends TranslationsSettingsEn {
 	];
 	@override late final _TranslationsSettingsResetZhHansCn reset = _TranslationsSettingsResetZhHansCn._(_root);
 	@override String get resyncEverything => '重新同步所有';
-	@override String get openDataDir => '打开 Saber 文件夹';
+	@override String get openDataDir => '打开数据文件夹';
 	@override late final _TranslationsSettingsCustomDataDirZhHansCn customDataDir = _TranslationsSettingsCustomDataDirZhHansCn._(_root);
 	@override String get autosaveDisabled => '禁用';
 	@override String get shapeRecognitionDisabled => '禁用';
@@ -358,7 +358,7 @@ class _TranslationsSentryConsentZhHansCn extends TranslationsSentryConsentEn {
 	final TranslationsZhHansCn _root; // ignore: unused_field
 
 	// Translations
-	@override String get title => '帮助改进 Saber？';
+	@override String get title => '帮助改进？';
 	@override late final _TranslationsSentryConsentDescriptionZhHansCn description = _TranslationsSentryConsentDescriptionZhHansCn._(_root);
 	@override late final _TranslationsSentryConsentAnswersZhHansCn answers = _TranslationsSentryConsentAnswersZhHansCn._(_root);
 }
@@ -390,7 +390,7 @@ class _TranslationsSettingsPrefLabelsZhHansCn extends TranslationsSettingsPrefLa
 	@override String get layoutSize => '布局大小';
 	@override String get customAccentColor => '自定义主题色';
 	@override String get hyperlegibleFont => '易读字体';
-	@override String get shouldCheckForUpdates => '自动检查 Saber 更新';
+	@override String get shouldCheckForUpdates => '自动检查更新';
 	@override String get shouldAlwaysAlertForUpdates => '更快的更新提醒';
 	@override String get allowInsecureConnections => '允许不安全的连接';
 	@override String get editorToolbarAlignment => '编辑工具栏对齐方式';
@@ -410,7 +410,7 @@ class _TranslationsSettingsPrefLabelsZhHansCn extends TranslationsSettingsPrefLa
 	@override String get shapeRecognitionDelay => '形状识别延迟';
 	@override String get autoStraightenLines => '自动拉直线';
 	@override String get simplifiedHomeLayout => '简化主页布局';
-	@override String get customDataDir => '自定义 Saber 文件夹';
+	@override String get customDataDir => '自定义数据文件夹';
 	@override String get pencilSoundSetting => '画笔音效';
 	@override String get sentry => '错误报告';
 }
@@ -423,7 +423,7 @@ class _TranslationsSettingsPrefDescriptionsZhHansCn extends TranslationsSettings
 
 	// Translations
 	@override String get hyperlegibleFont => 'Atkinson Hyperlegible 字体为低视力读者提高易读性';
-	@override String get allowInsecureConnections => '（不推荐）允许 Saber 连接到具有自签名/不受信任证书的服务器';
+	@override String get allowInsecureConnections => '（不推荐）允许连接到具有自签名/不受信任证书的服务器';
 	@override String get preferGreyscale => '用于电子墨水显示器';
 	@override String get autoClearWhiteboardOnExit => '这将会同步到您的其他设备';
 	@override String get disableEraserAfterUse => '使用橡皮擦后自动切换回笔';
@@ -536,7 +536,7 @@ class _TranslationsLoginNcLoginStepZhHansCn extends TranslationsLoginNcLoginStep
 
 	// Translations
 	@override String get whereToStoreData => '选择数据存储位置：';
-	@override String get saberNcServer => 'Saber 的 Nextcloud 服务器';
+	@override String get saberNcServer => '官方的 Nextcloud 服务器';
 	@override String get otherNcServer => '其他 Nextcloud 服务器';
 	@override String get serverUrl => '服务器 URL';
 	@override String get loginWithSaber => '使用 Saber 登录';
@@ -552,7 +552,7 @@ class _TranslationsLoginEncLoginStepZhHansCn extends TranslationsLoginEncLoginSt
 
 	// Translations
 	@override String get enterEncPassword => '为了保护您的数据，请输入您的加密密码：';
-	@override String get newToSaber => 'Saber 新手？只需输入新的加密密码即可。';
+	@override String get newToSaber => '新手？只需输入新的加密密码即可。';
 	@override String get encPassword => '加密密码';
 	@override String get encFaqTitle => '常见问题解答';
 	@override String get wrongEncPassword => '使用提供的密码解密失败。请再次尝试输入。';
@@ -594,7 +594,7 @@ class _TranslationsProfile$faq$0i1$ZhHansCn extends TranslationsProfile$faq$0i1$
 
 	// Translations
 	@override String get q => '如何更改我的 Nextcloud 密码？';
-	@override String get a => '转到您的服务器网站并登录。然后转到设置 > 安全 > 更改密码。更改密码后，您需要注销并重新登录 Saber。';
+	@override String get a => '转到您的服务器网站并登录。然后转到设置 > 安全 > 更改密码。更改密码后，您需要注销并重新登录。';
 }
 
 // Path: profile.faq.2
@@ -605,7 +605,7 @@ class _TranslationsProfile$faq$0i2$ZhHansCn extends TranslationsProfile$faq$0i2$
 
 	// Translations
 	@override String get q => '如何更改我的加密密码？';
-	@override String get a => '1.退出Saber。请确保在注销前完成同步，以免丢失任何数据（在主屏幕上查看同步进度）。\n2.转到您的服务器网站并删除您的“Saber”文件夹。这将从服务器中删除您的所有笔记。\n3.重新登录 Saber。您可以在登录时选择一个新的加密密码。\n4.不要忘记在您的其他设备上注销并重新登录 Saber。';
+	@override String get a => '1.退出Saber。请确保在注销前完成同步，以免丢失任何数据（在主屏幕上查看同步进度）。\n2.转到您的服务器网站并删除您的“Saber”文件夹。这将从服务器中删除您的所有笔记。\n3.重新登录。您可以在登录时选择一个新的加密密码。\n4.不要忘记在您的其他设备上注销并重新登录。';
 }
 
 // Path: profile.faq.3
@@ -616,7 +616,7 @@ class _TranslationsProfile$faq$0i3$ZhHansCn extends TranslationsProfile$faq$0i3$
 
 	// Translations
 	@override String get q => '如何删除我的帐户？';
-	@override String get a => '点击上面的 "${_root.profile.quickLinks.deleteAccount}" 按钮，并在需要时登录。\n如果您使用的是官方 Saber 服务器，您的帐户将在 1 周的宽限期后被删除。在此期间，您可以通过 adilhanney@disroot.org 与我联系以取消删除。\n如果您使用的是第三方服务器，则可能没有删除帐户的选项：您需要咨询服务器的隐私政策以获取更多信息。';
+	@override String get a => '点击上面的 "${_root.profile.quickLinks.deleteAccount}" 按钮，并在需要时登录。\n如果您使用的是官方服务器，您的帐户将在 1 周的宽限期后被删除。在此期间，您可以通过 adilhanney@disroot.org 与我联系以取消删除。\n如果您使用的是第三方服务器，则可能没有删除帐户的选项：您需要咨询服务器的隐私政策以获取更多信息。';
 }
 
 // Path: editor.toolbar
@@ -862,7 +862,7 @@ class _TranslationsLoginNcLoginStepLoginFlowZhHansCn extends TranslationsLoginNc
 	final TranslationsZhHansCn _root; // ignore: unused_field
 
 	// Translations
-	@override String get pleaseAuthorize => '请授权 Saber 访问您的 Nextcloud 帐户';
+	@override String get pleaseAuthorize => '请授权访问您的 Nextcloud 帐户';
 	@override String get followPrompts => '请按照 Nextcloud 界面中的提示操作';
 	@override String get browserDidntOpen => '登录页面没有打开？点击这里';
 }
@@ -886,7 +886,7 @@ class _TranslationsLoginEncLoginStep$encFaq$0i1$ZhHansCn extends TranslationsLog
 
 	// Translations
 	@override String get q => '我还没有设置加密密码。我在哪里可以买到它？';
-	@override String get a => '选择新的加密密码并在上面输入。\nSaber 将从此密码自动生成您的加密密钥。';
+	@override String get a => '选择新的加密密码并在上面输入。\n将从此密码自动生成您的加密密钥。';
 }
 
 // Path: login.encLoginStep.encFaq.2
