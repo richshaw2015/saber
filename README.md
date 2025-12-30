@@ -34,7 +34,11 @@ flutter create --platforms=ios .
 
 ```
 # for cloud debug
-flutter322 build hap --target-platform ohos-arm64 --release && open build/ohos/hap/
+flutter build hap --target-platform ohos-arm64 --release && open build/ohos/hap/
 # for app store release
-flutter322 build app --release --flavor release --target-platform ohos-arm64 && open build/ohos/app/
+flutter build app --release --flavor release --target-platform ohos-arm64 && open build/ohos/app/
+```
+### Update translation
+```shell
+dart run slang
 ```
