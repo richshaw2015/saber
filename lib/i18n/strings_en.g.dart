@@ -660,6 +660,21 @@ class TranslationsSettingsPrefLabelsEn {
 
 	/// en: 'Error reporting'
 	String get sentry => 'Error reporting';
+
+	/// en: 'About'
+	String get about => 'About';
+
+	/// en: 'App version'
+	String get appVersion => 'App version';
+
+	/// en: 'Privacy Policy'
+	String get privacyPolicy => 'Privacy Policy';
+
+	/// en: 'Terms of Use'
+	String get termsOfUse => 'Terms of Use';
+
+	/// en: 'Open Source License'
+	String get openSourceLicense => 'Open Source License';
 }
 
 // Path: settings.prefDescriptions

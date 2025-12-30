@@ -111,6 +111,11 @@ settings:
     customDataDir: 自定义数据文件夹
     pencilSoundSetting: 画笔音效
     sentry: 错误报告
+    about: 关于
+    appVersion: 应用版本
+    privacyPolicy: 隐私政策
+    termsOfUse: 用户协议
+    openSourceLicense: 开源许可
   prefDescriptions: 
     hyperlegibleFont: Atkinson Hyperlegible 字体为低视力读者提高易读性
     allowInsecureConnections: （不推荐）允许连接到具有自签名/不受信任证书的服务器

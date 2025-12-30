@@ -413,6 +413,11 @@ class _TranslationsSettingsPrefLabelsZhHansCn extends TranslationsSettingsPrefLa
 	@override String get customDataDir => '自定义数据文件夹';
 	@override String get pencilSoundSetting => '画笔音效';
 	@override String get sentry => '错误报告';
+	@override String get about => '关于';
+	@override String get appVersion => '应用版本';
+	@override String get privacyPolicy => '隐私政策';
+	@override String get termsOfUse => '用户协议';
+	@override String get openSourceLicense => '开源许可';
 }
 
 // Path: settings.prefDescriptions

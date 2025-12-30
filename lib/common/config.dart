@@ -45,4 +45,5 @@ class Cfg {
   static const urlRemoteLog = "https://superedu.site:8000/log";
 
   static const urlEmail = "mailto:saber@superedu.app";
+  static const urlLicense = "https://raw.githubusercontent.com/saber-notes/saber/refs/heads/main/LICENSE.md";
 }

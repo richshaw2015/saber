@@ -111,6 +111,11 @@ settings:
     customDataDir: Custom Saber folder
     pencilSoundSetting: Pencil sound effect
     sentry: Error reporting
+    about: About
+    appVersion: App version
+    privacyPolicy: Privacy Policy
+    termsOfUse: Terms of Use
+    openSourceLicense: Open Source License
   prefDescriptions: 
     hyperlegibleFont: Increases legibility for users with low vision
     allowInsecureConnections: (Not recommended) Allow Saber to connect to servers with self-signed/untrusted certificates

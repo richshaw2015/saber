@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:material_symbols_icons/symbols.dart';
+import 'package:saber/common/constant.dart';
 import 'package:saber/common/extension.dart';
 import 'package:saber/components/navbar/responsive_navbar.dart';
 import 'package:saber/components/settings/app_info.dart';
@@ -19,6 +20,7 @@ import 'package:saber/data/prefs.dart';
 import 'package:saber/data/tools/shape_pen.dart';
 import 'package:saber/i18n/strings.g.dart';
 import 'package:saber/packages/stow/stow.dart';
+import 'package:smooth_corner/smooth_corner.dart';
 
 import '../../common/config.dart';
 import '../../common/strings.dart';
@@ -470,17 +472,12 @@ class _SettingsPageState extends State<SettingsPage> {
                 pref: stows.simplifiedHomeLayout,
               ),
 
-              // 用户隐私 / 服务协议
+              // 关于
               SettingsSubtitle(subtitle: t.settings.prefCategories.general),
               SettingsLink(
-                title: '隐私政策',
-                icon: CupertinoIcons.shield_lefthalf_fill,
-                onTap: () => Cfg.urlPrivacy.launch(),
-              ),
-              SettingsLink(
-                title: '用户协议',
-                icon: CupertinoIcons.doc_text,
-                onTap: () => Cfg.urlAgreement.launch(),
+                title: t.settings.prefLabels.about,
+                icon: CupertinoIcons.info_circle,
+                onTap: () => _openAboutDialog(context),
               ),
               // if (isSentryAvailable) const SettingsSentryConsent(),
               // disable data directory setting
@@ -550,5 +547,99 @@ class _SettingsPageState extends State<SettingsPage> {
     stows.locale.removeListener(onChanged);
     // UpdateManager.status.removeListener(onChanged);
     super.dispose();
+  }
+
+  Future<void> _openAboutDialog(BuildContext context) async {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          content: ConstrainedBox(
+            constraints: const BoxConstraints(
+              maxWidth: 500,
+              minWidth: 300,
+            ),
+            child: SingleChildScrollView(
+              child: SizedBox(
+                width: MediaQuery.of(context).size.width * 0.8,
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    // logo
+                    SmoothClipRRect(
+                      smoothness: 0.6,
+                      borderRadius: BorderRadius.circular(Cfg.phone4Width * 0.2),
+                      child: Image.asset(
+                        'assets/images/logo.webp',
+                        height: Cfg.phone4Width,
+                        width: Cfg.phone4Width,
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                    SizedBox(height: Cfg.padding),
+                    Text(
+                      Strings.appName,
+                      style: TextStyle(
+                        fontSize: Cfg.fontBodyMedium,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    const Divider(),
+                    ListTile(
+                      title: Text(
+                        t.settings.prefLabels.appVersion,
+                        style: const TextStyle(
+                          fontSize: Cfg.fontBodyLarge,
+                          fontWeight: FontWeight.w500,
+                        ),
+                      ),
+                      subtitle: Text(
+                        "${G.pkg.version} (${G.pkg.buildNumber})",
+                        style: const TextStyle(fontSize: Cfg.fontLabelLarge),
+                      ),
+                    ),
+                    ListTile(
+                      title: Text(
+                        t.settings.prefLabels.privacyPolicy,
+                        style: const TextStyle(
+                          fontSize: Cfg.fontBodyLarge,
+                          fontWeight: FontWeight.w500,
+                        ),
+                      ),
+                      onTap: () => Cfg.urlPrivacy.launch(),
+                    ),
+                    ListTile(
+                      title: Text(
+                        t.settings.prefLabels.termsOfUse,
+                        style: const TextStyle(
+                          fontSize: Cfg.fontBodyLarge,
+                          fontWeight: FontWeight.w500,
+                        ),
+                      ),
+                      onTap: () => Cfg.urlAgreement.launch(),
+                    ),
+                    ListTile(
+                      title: Text(
+                        t.settings.prefLabels.openSourceLicense,
+                        style: const TextStyle(
+                          fontSize: Cfg.fontBodyLarge,
+                          fontWeight: FontWeight.w500,
+                        ),
+                      ),
+                      onTap: () => Cfg.urlLicense.launch(),
+                    ),
+                    const Divider(),
+                    Text(
+                      Strings.copyright,
+                      style: TextStyle(fontSize: Cfg.fontLabelMedium),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ),
+        );
+      },
+    );
   }
 }
